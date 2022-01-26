@@ -15,7 +15,7 @@ Signin -->
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="candidate" role="tabpanel">
-                                <form class="mt-4" id="loginForm">
+                                <form class="mt-4" id="loginForm" >
                                     <div class="row">
                                         <div class="mb-3 col-12">
                                             <!-- <label class="form-label" for="Email2">Username / Email Address</label>
@@ -34,7 +34,8 @@ Signin -->
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12 ob-btn-login">
-                                            <a class="btn btn-primary " href="company-profile-dashboard.php">Log In</a>
+
+                                            <button class="btn btn-primary " type="submit" >Log In</button>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="mt-3 mt-md-0 forgot-pass login-link-href">
@@ -61,7 +62,6 @@ Signin -->
     <!--=================================
     feature-info-->
 
-
     <!--=================================
     Back To Top-->
     <div id="back-to-top" class="back-to-top">
@@ -73,7 +73,6 @@ Signin -->
 @section('js')
     <script>
         $(document).ready(function (){
-
             $('.ans-category-item').click(function (){
 
                 let role = $(this).find('h6').text()
@@ -87,7 +86,7 @@ Signin -->
 
             $('#loginForm').validate({
                 rules: {
-                    name:{
+                    email:{
                         required:true,
                     },
                     password:{
@@ -123,7 +122,7 @@ Signin -->
                         console.log(response)
                         alertMsg(response.message, response['status']);
                         // if(response.email){
-                        window.location.replace("{{url('login')}}");
+                        window.location.replace("{{url('home')}}");
                         // }
 
 
