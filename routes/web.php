@@ -23,4 +23,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('logout',[\App\Http\Controllers\Auth\LoginController::class,'logout'])->name('voyager.logout');
 });
 
+Route::get('unauthorized',[\App\Http\Controllers\FrontEnd\HomeController::class,'unauthorized']);
+
 

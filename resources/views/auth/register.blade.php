@@ -479,7 +479,7 @@ header -->
                         console.log(response)
                         alertMsg(response.message, response['status']);
                         // if(response.email){
-                        window.location.replace("{{url('login')}}");
+                        {{--window.location.replace("{{url('login')}}");--}}
                         // }
 
 
