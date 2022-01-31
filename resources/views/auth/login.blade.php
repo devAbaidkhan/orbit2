@@ -42,7 +42,7 @@ Signin -->
                                                 <a href="forgot-password.php" class="">Forgot Password?</a>
                                             </div>
                                             <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">
-                                                <p class="mt-1">Don't have account? <a href="signup.php">Sign Up here</a></p>
+                                                <p class="mt-1">Don't have account? <a href="{{route('register')}}">Sign Up here</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -119,10 +119,14 @@ Signin -->
                     },
                     success: function (response) {
                         swal.close();
-                        console.log(response)
+                        console.log(response['status'])
                         alertMsg(response.message, response['status']);
                         // if(response.email){
-                        window.location.replace("{{url('home')}}");
+                        if(response['status'] === 'success') {
+                            window.location.replace("{{url('/')}}");
+                        }else {
+                            alertMsg('Fialed to Login', 'error');
+                        }
                         // }
 
 

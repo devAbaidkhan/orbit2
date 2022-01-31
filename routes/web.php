@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 require __DIR__.'/front-end/routes.php';
+Route::get('/', [\App\Http\Controllers\FrontEnd\HomeController::class,'index']);
 
-Route::get('/', function () {
-    return view('welcome');
+
+// User Routes
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+    Route::post('logout',[\App\Http\Controllers\Auth\LoginController::class,'logout'])->name('voyager.logout');
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

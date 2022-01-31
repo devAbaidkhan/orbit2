@@ -1,4 +1,4 @@
-@extends('front-end.layouts.app')
+@extends('layouts.app')
 
 <!--=================================
 header -->
@@ -370,7 +370,7 @@ header -->
                                         </div>
                                     </div>
                                 </fieldset>
-                                <p class="mt-1">Already have an account? <a href="login.php">Login here</a></p>
+                                <p class="mt-1">Already have an account? <a href="{{route('login')}}">Login here</a></p>
                             </form>
                         </div>
                     </div>
@@ -414,6 +414,7 @@ header -->
 @section('js')
     <script>
         $(document).ready(function (){
+
 
             $('.ans-category-item').click(function (){
 

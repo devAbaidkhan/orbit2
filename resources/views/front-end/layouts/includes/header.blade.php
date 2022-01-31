@@ -105,6 +105,7 @@
                             </li>
                         </ul>
                     </li>
+                    @if(@auth()->user()->hasRole('company'))
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Company <i class="fas fa-chevron-down fa-xs"></i>
@@ -120,6 +121,7 @@
                             <li><a class="dropdown-item" href="company-sites.php">Company Sites</a></li>
                         </ul>
                     </li>
+                    @endif
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Staff <i class="fas fa-chevron-down fa-xs"></i>
@@ -137,7 +139,13 @@
                             More <i class="fas fa-chevron-down fa-xs"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                            <li class="dropdown-item" >
+                                <form action="{{route('logout')}}" method="POST" id="logout_form">
+                                    @csrf
+                                    <button class="dropdown-item" type="submit" id="logout">Logout</button>
+                                </form>
+                            </li>
+
                         </ul>
                     </li>
                 </ul>
@@ -145,9 +153,11 @@
                 </ul>
             </div>
             <div class="add-listing">
+                @if(auth()->user()->hasRole('company'))
                 <div class="login d-inline-block me-4">
-                    <a href="#"><i class="far fa-user pe-2"></i>Sign in</a>
+                    <a href="{{route('company.dashboard')}}">Dashboard</a>
                 </div>
+                @endif
                 <a class="btn btn-white btn-md" href="post-a-job.html"> <i class="fas fa-plus-circle"></i>Post a job</a>
             </div>
         </div>

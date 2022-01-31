@@ -95,11 +95,27 @@
         });
     }
 
-    function alertMsg(msg, status = 'success') {
+    $('#logout').on('click',function(e){
+        e.preventDefault();
+        var form = $(this).parents('form');
+        Swal.fire({
+            title: "Confirm Action",
+            text: "",
+            showCancelButton: true,
+            confirmButtonColor: "#47a4ff",
+            confirmButtonText: "Logout",
+        }).then((result) => {
+           if(result.isConfirmed === true){
+               form.submit()
+           }
+        });
+    });
+
+    function alertMsg(msg, status = 'success',conBtn=false) {
         Swal.fire({
             icon: status,
             title: msg,
-            showConfirmButton: false,
+            showConfirmButton: conBtn,
             timer: 1500
         });
     }

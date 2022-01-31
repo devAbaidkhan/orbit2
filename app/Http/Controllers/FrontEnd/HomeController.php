@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use TCG\Voyager\Models\Role;
 
-class LoginController extends Controller
+class HomeController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,11 +19,12 @@ class LoginController extends Controller
      */
     public function index()
     {
-        if (!Auth::user()) {
-            return view('auth.login');
+        if (Auth::user()->hasRole('company')){
+            return redirect('/company');
+        }elseif (Auth::user()->hasRole('admin')){
+            return redirect('/admin');
         }
 
-        return redirect('/');
     }
 
     /**
@@ -34,24 +32,9 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function login(Request $request)
+    public function create()
     {
-        try {
-
-            $credentials = [
-                'email' => $request['email'],
-                'password' => $request['password'],
-            ];
-
-            if (Auth::attempt($credentials)) {
-                return response(['message'=>'Welcome!','status'=>'success']);
-            }
-
-            return response(['message'=>'Invalid Email or Password','status'=>'error']);
-        }catch (\Exception $exception){
-            return response(['message'=>$exception->getMessage(),'status'=>'error']);
-        }
-
+        //
     }
 
     /**
@@ -60,11 +43,9 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function logout(Request $request)
+    public function store(Request $request)
     {
-        Auth::logout();
-
-        return redirect('/login');
+        //
     }
 
     /**
