@@ -1,5 +1,6 @@
 @extends('front-end.layouts.app')
 @section('content')
+
 <section class="space-ptb">
   <div class="container">
     <div class="row align-items-center">
@@ -7,7 +8,7 @@
 
         <div class="col-lg-3 col-md-4 col-6 text-center mb-3">
             <div class="ans-category-item pt-3">
-                <a href="company-basic-profile.php" class="category-item p-0">
+                <a href="{{url('company/edit/'.auth()->id())}}" class="category-item p-0">
                     <div class="category-icon mb-3">
                     <i class="flaticon-account"></i>
                     </div>
@@ -37,7 +38,7 @@
         </div>
         <div class="col-lg-3 col-md-4 col-6 text-center mb-3">
             <div class="ans-category-item pt-3">
-                <a href="company-sites.php" class="category-item p-0">
+                <a href="{{url('company/sites/create')}}" class="category-item p-0">
                     <div class="category-icon mb-3">
                     <i class="flaticon-worker"></i>
                     </div>

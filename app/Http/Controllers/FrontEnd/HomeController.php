@@ -32,9 +32,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function unauthorized()
     {
-        //
+        dd('You are Not authorized to Perform this Action!');
     }
 
     /**

@@ -1,11 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\FrontEnd\Profile\Company;
+namespace App\Http\Controllers\FrontEnd\Profile;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use TCG\Voyager\Models\Role;
 
-class CompanyController extends Controller
+class CompanyProfileController extends Controller
 {
     public function __construct()
     {
@@ -22,11 +26,6 @@ class CompanyController extends Controller
         return view('front-end.profile.company.show');
     }
 
-    public function dashboard()
-    {
-        return view('front-end.profile.company.dashboard');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -34,7 +33,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -48,6 +47,16 @@ class CompanyController extends Controller
         //
     }
 
+    public function create_confidential()
+    {
+        return view('front-end.profile.company.create-confidential');
+    }
+
+    public function store_confidential(Request $request)
+    {
+        //
+    }
+
     /**
      * Display the specified resource.
      *
@@ -56,7 +65,7 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -67,7 +76,13 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        if (Auth::id() == $id){
+            $user = User::find($id);
+        }else{
+            return redirect('unauthorized');
+        }
+        return view('front-end.profile.company.edit',get_defined_vars());
     }
 
     /**
@@ -79,7 +94,26 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+
+            $duplicate = User::where('email',$request->email)->first();
+            if($duplicate){
+                return  response(['message'=>'User Already Exist','status'=>'error']);
+            }
+            $user = User::find($id);
+            $user->name = $request->name;
+            $user->phone_number = $request->phoneNumber;
+            $user->office_number = $request->officeNumber;
+            $user->address = $request->address;
+            $user->country = $request->country;
+            $user->city = $request->city;
+            $user->postal_code = $request->postalCode;
+            $user->save();
+
+            return response(['message'=>'Profile Updated Successfully','status'=>'success']);
+        }catch (\Exception $exception){
+            return response(['message'=>$exception->getMessage(),'status'=>'error']);
+        }
     }
 
     /**
