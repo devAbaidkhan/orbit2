@@ -12,6 +12,10 @@ Route::group(['prefix' => 'company'], function () {
     Route::get('sites/create',[\App\Http\Controllers\FrontEnd\Site\SiteController::class,'create']);
     Route::post('sites/store',[\App\Http\Controllers\FrontEnd\Site\SiteController::class,'store']);
 
+    // company confidential
+    Route::get('/confidential/create',[\App\Http\Controllers\FrontEnd\Profile\CompanyProfileController::class,'createConfidential'])->name('confidential.create');
+    Route::post('/confidential/update/{id}',[\App\Http\Controllers\FrontEnd\Profile\CompanyProfileController::class,'updateConfidential'])->name('confidential.update');
+
     // company routes
     Route::post('/update/{company}',[\App\Http\Controllers\FrontEnd\Profile\CompanyProfileController::class,'update'])->name('company.update');
     Route::get('/',[\App\Http\Controllers\FrontEnd\Profile\CompanyProfileController::class,'index']);

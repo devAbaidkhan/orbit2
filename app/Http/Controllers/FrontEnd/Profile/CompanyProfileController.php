@@ -47,14 +47,25 @@ class CompanyProfileController extends Controller
         //
     }
 
-    public function create_confidential()
+    public function createConfidential()
     {
-        return view('front-end.profile.company.create-confidential');
+        $user = User::find(\auth()->id());
+        return view('front-end.profile.company.create-confidential',get_defined_vars());
     }
 
-    public function store_confidential(Request $request)
+    public function updateConfidential(Request $request,$id)
     {
-        //
+         try {
+
+        $user = User::find($id);
+        $user->registration_no = $request->registrationNo;
+        $user->vat_no = $request->vatNo;
+        $user->save();
+             return response(['message'=>'Profile Updated Successfully','status'=>'success']);
+
+        }catch (\Exception $exception){
+            return response(['message'=>$exception->getMessage(),'status'=>'error']);
+        }
     }
 
     /**
