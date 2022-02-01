@@ -5,6 +5,9 @@ require __DIR__.'/auth.php';
 
 
 
+//contact person
+//Route::resource('contact-person',[])
+
 //========================================= Company Routes =====================================
 Route::group(['prefix' => 'company'], function () {
 
