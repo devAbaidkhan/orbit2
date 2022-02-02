@@ -20,42 +20,62 @@ Signin -->
             <div class="tab-pane active" id="candidate" role="tabpanel">
                 <form class="mt-4" id="form">
                     <div class="row">
-                    <div class="mb-3 col-12">
+                        <div class="mb-3 col-3">
+                            <div class="my-custom-text-field">
+                                <select name="title" id="title" class="form-control my-custom-input">
+                                    <option value=""  >select title</option>
+                                    <option value="Mr">Mr</option>
+                                    <option value="Mrs">Mrs</option>
+                                    <option value="Miss">Miss</option>
+                                    <option value="Ms">Ms</option>
+                                </select>
+                            </div>
+                        </div>
+                    <div class="mb-3 col-9">
                         <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input" name="name">
+                        <input type="text" class="my-custom-input form-control" name="name">
                         <label class="my-custom-label">Name</label>
                         </div>
                     </div>
+
                     <div class="mb-3 col-12">
                         <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input" name="email">
+                        <input type="email" class="my-custom-input form-control" name="email">
                         <label class="my-custom-label">Email</label>
                         </div>
                     </div>
+
+                        <div class="mb-3 col-12">
+                        <div class="my-custom-text-field">
+                        <input type="text" class="my-custom-input form-control" name="jobTitle">
+                        <label class="my-custom-label">Job Title</label>
+                        </div>
+                    </div>
                     <div class="mb-3 col-12">
                         <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input" name="phoneNumber">
+                        <input type="number" class="my-custom-input form-control" name="phoneNumber">
                         <label class="my-custom-label">Phone Number</label>
                         </div>
                     </div>
-                    <div class="mb-3 col-6">
+                    <div class="mb-3 col-12">
                         <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input" name="address">
+                        <input type="text" class="my-custom-input form-control" name="address">
                         <label class="my-custom-label">Address</label>
                         </div>
                     </div>
                     <div class="mb-3 col-12">
                         <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input" name="postalCode">
+                        <input type="number" class="my-custom-input form-control" name="postalCode">
                         <label class="my-custom-label">Site Postal Zip/Code</label>
                         </div>
                     </div>
+                        <input type="hidden" name="contactable_id" value="{{auth()->id()}}">
                     </div>
                     <div class="row">
                         <div class="col-md-12 ob-btn-login">
                             <button class="btn btn-primary">Save</button>
                         </div>
-
+@csrf
                     </div>
                 </form>
 
@@ -81,36 +101,31 @@ Signin -->
                     address:{
                         required:true,
                     },
-                    city:{
+                    title:{
                         required:true,
                     },
-                    startDate:{
+                    jobTitle:{
                         required:true,
                     },
-                    finishDate:{
+                    phoneNumber:{
                         required:true,
                     },
                     postalCode:{
                         required:true,
                         number:true
                     },
-                    longitude:{
+                    email:{
                         required:true,
-                        number:true
-                    },
-                    latitude:{
-                        required:true,
-                        number:true
                     },
                 },
                 messages: {
                     name:'Name is required',
                     phoneNumber:'Phone Number is required',
-                    password:'Password is required',
                     address:'Address is required',
-                    country:'Country is required',
-                    city:'City is required',
                     postalCode:'Postal Code is required',
+                    email:'Email is required',
+                    title:'Title  is required',
+                    jobTitle:'Job Title  is required',
                 },
             });
 
@@ -120,9 +135,7 @@ Signin -->
                 if (!$('#form').valid() ) {
                     return false;
                 }
-                let id = "{{auth()->id()}}"
-                let route = "{{route('confidential.update',['id'=>':id'])}}";
-                route = route.replace(':id', id);
+                let route = "{{route('contact-person.store')}}";
                 console.log(route)
                 $.ajax({
                     type: 'POST',

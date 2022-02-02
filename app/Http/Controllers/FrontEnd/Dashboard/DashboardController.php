@@ -11,4 +11,8 @@ class DashboardController extends Controller
     {
         return view('front-end.dashboard.company');
     }
+    public function staff()
+    {
+        return view('front-end.dashboard.company');
+    }
 }

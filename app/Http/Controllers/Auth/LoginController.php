@@ -22,6 +22,7 @@ class LoginController extends Controller
      */
     public function index()
     {
+       
         if (!Auth::user()) {
             return view('auth.login');
         }

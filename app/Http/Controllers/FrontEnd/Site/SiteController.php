@@ -36,19 +36,6 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'company_id' => $request->user()->id,
-            'name' => $request->name,
-            'address' => $request->address,
-            'postal_code' => $request->postalCode,
-            'city' => $request->city,
-            'start_date' => $request->startDate,
-            'finish_date' => $request->finishDate,
-            'longitude' => $request->longitude,
-            'latitude' => $request->latitude,
-        ];
-
-
         try {
             $exists = Site::where('name', $request->name)
                 ->where('company_id', $request->user()->id)
