@@ -9,14 +9,14 @@
             <div id="ans-mySidenav" class="ans-sidenav nav-d-none-large">
                 <div class="ans-sidebar-logo-section">
                     <div class="">
-                        <img src="./images/logo/WorkOrBit-Logo-500.png" width="150px" alt="" class="ans-sidebar-logo">
+                        <img src="{{asset('images/logo/logo.png')}}" width="150px" alt="aaa" class="ans-sidebar-logo">
                         <span class="ans-sidebar-logo-tagline">Have a nice day!</span>
                     </div>
                 </div>
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <ul class="nav navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="./">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="dropdown nav-item active">
                         <a href="properties.html" class="nav-link" data-bs-toggle="dropdown">Pages<i class="fas fa-chevron-down fa-xs"></i></a>
@@ -68,7 +68,7 @@
                 </ul>
             </div>
             <a class="navbar-brand" href="#">
-                <img class="img-fluid" src="./images/logo/logo.png" alt="logo" width="200px" height="30px;">
+                <img class="img-fluid" src="{{asset('images/logo/logo.png')}}" alt="logo" width="200px" height="30px;">
             </a>
 
 
@@ -83,7 +83,7 @@
             <div class="navbar-collapse collapse justify-content-end nav-d-none-small">
                 <ul class="nav navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="./">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="dropdown nav-item active">
                         <a href="#" class="nav-link" data-bs-toggle="dropdown">Pages<i class="fas fa-chevron-down fa-xs"></i></a>
@@ -148,8 +148,6 @@
 
                         </ul>
                     </li>
-                </ul>
-                </li>
                 </ul>
             </div>
             <div class="add-listing">
