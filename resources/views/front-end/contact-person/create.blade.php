@@ -21,8 +21,8 @@ Signin -->
                 <form class="mt-4" id="form">
                     <div class="row">
                         <div class="mb-3 col-3">
-                            <div class="my-custom-text-field">
-                                <select name="title" id="title" class="form-control my-custom-input">
+                            <div class="user-input-wrp">
+                                <select name="title" id="title" class="inputText">
                                     <option value=""  >select title</option>
                                     <option value="Mr">Mr</option>
                                     <option value="Mrs">Mrs</option>
@@ -31,51 +31,57 @@ Signin -->
                                 </select>
                             </div>
                         </div>
-                    <div class="mb-3 col-9">
-                        <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input form-control" name="name">
-                        <label class="my-custom-label">Name</label>
-                        </div>
-                    </div>
+                        <div class="mb-3 col-9">
+                            <div class="user-input-wrp">
+                                <input type="text" class="inputText" name="name">
 
-                    <div class="mb-3 col-12">
-                        <div class="my-custom-text-field">
-                        <input type="email" class="my-custom-input form-control" name="email">
-                        <label class="my-custom-label">Email</label>
+                                <span class="floating-label">Name</span>
+                            </div>
                         </div>
-                    </div>
 
                         <div class="mb-3 col-12">
-                        <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input form-control" name="jobTitle">
-                        <label class="my-custom-label">Job Title</label>
+                            <div class="user-input-wrp">
+                                <input type="email" class="inputText" name="email">
+
+                                <span class="floating-label">Email</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-12">
-                        <div class="my-custom-text-field">
-                        <input type="number" class="my-custom-input form-control" name="phoneNumber">
-                        <label class="my-custom-label">Phone Number</label>
+
+                        <div class="mb-3 col-12">
+                            <div class="user-input-wrp">
+                                <input type="text" class="inputText" name="jobTitle">
+
+                                <span class="floating-label">Job Title</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-12">
-                        <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input form-control" name="address">
-                        <label class="my-custom-label">Address</label>
+                        <div class="mb-3 col-12">
+                            <div class="user-input-wrp">
+                                <input type="number" class="inputText" name="phoneNumber">
+
+                                <span class="floating-label">Phone Number</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-12">
-                        <div class="my-custom-text-field">
-                        <input type="number" class="my-custom-input form-control" name="postalCode">
-                        <label class="my-custom-label">Site Postal Zip/Code</label>
+                        <div class="mb-3 col-12">
+                            <div class="user-input-wrp">
+                                <input type="text" class="inputText" name="address">
+
+                                <span class="floating-label">Address</span>
+                            </div>
                         </div>
-                    </div>
+                        <div class="mb-3 col-12">
+                            <div class="user-input-wrp">
+                                <input type="number" class="inputText" name="postalCode">
+
+                                <span class="floating-label">Site Postal Zip/Code</span>
+                            </div>
+                        </div>
                         <input type="hidden" name="contactable_id" value="{{auth()->id()}}">
                     </div>
                     <div class="row">
                         <div class="col-md-12 ob-btn-login">
                             <button class="btn btn-primary">Save</button>
                         </div>
-@csrf
+                        @csrf
                     </div>
                 </form>
 

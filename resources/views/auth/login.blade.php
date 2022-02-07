@@ -20,15 +20,17 @@ Signin -->
                                         <div class="mb-3 col-12">
                                             <!-- <label class="form-label" for="Email2">Username / Email Address</label>
                                             <input type="text" class="form-control" id="Email22"> -->
-                                            <div class="my-custom-text-field">
-                                                <input type="text" class="my-custom-input" name="email">
-                                                <label class="my-custom-label">Phone Number or Email ID</label>
+                                            <div class="user-input-wrp">
+                                                <input type="text" class="inputText" name="email">
+
+                                                <span class="floating-label">Phone Number or Email ID</span>
                                             </div>
                                         </div>
                                         <div class="mb-3 col-12">
-                                            <div class="my-custom-text-field">
-                                                <input type="password" class="my-custom-input" name="password">
-                                                <label class="my-custom-label">Password</label>
+                                            <div class="user-input-wrp">
+                                                <input type="password" class="inputText" name="password">
+                                                <span class="floating-label">Password</span>
+
                                             </div>
                                         </div>
                                     </div>

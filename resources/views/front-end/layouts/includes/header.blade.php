@@ -1,7 +1,7 @@
 <header class="header bg-dark">
     <nav class="navbar navbar-static-top navbar-expand-lg header-sticky">
         <div class="container-fluid">
-            <button  onclick="openNav()" id="nav-icon4" type="button" class="navbar-toggler">
+            <button onclick="openNav()" id="nav-icon4" type="button" class="navbar-toggler">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <ul class="nav navbar-nav">
+                <!--<ul class="nav navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="/">Home</a>
                     </li>
@@ -65,23 +65,16 @@
                             <li><a class="dropdown-item" href="staff-details-personal.php">Staff Personal Details</a></li>
                         </ul>
                     </li>
-                </ul>
+                </ul>-->
             </div>
             <a class="navbar-brand" href="#">
                 <img class="img-fluid" src="{{asset('images/logo/logo.png')}}" alt="logo" width="200px" height="30px;">
             </a>
 
 
-
-
-
-
-
-
-
             <!--/* lad-->
             <div class="navbar-collapse collapse justify-content-end nav-d-none-small">
-                <ul class="nav navbar-nav">
+            <!-- <ul class="nav navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="/">Home</a>
                     </li>
@@ -106,55 +99,55 @@
                         </ul>
                     </li>
                     @if(@auth()->user()->hasRole('company'))
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Company <i class="fas fa-chevron-down fa-xs"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="company-dashboard.php">Company Dashboard</a></li>
-                            <li><a class="dropdown-item" href="company-basic-profile.php">Company Profile</a></li>
-                            <li><a class="dropdown-item" href="company-confidential.php">Company confidential</a></li>
-                            <li><a class="dropdown-item" href="company-post-job.php">Post a Job</a></li>
-                            <li><a class="dropdown-item" href="company-profile-dashboard.php">Company Profile Dashboard</a></li>
-                            <li><a class="dropdown-item" href="company-staff-detail.php">Company Staff Detial</a></li>
-                            <li><a class="dropdown-item" href="staff-job-listing.php">Company Staff Job Listing</a></li>
-                            <li><a class="dropdown-item" href="company-sites.php">Company Sites</a></li>
-                        </ul>
-                    </li>
-                    @endif
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Staff <i class="fas fa-chevron-down fa-xs"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="staff-dashboard.php">Staff Dashboard</a></li>
-                            <li><a class="dropdown-item" href="staff-profile-dashboard.php">Staff Profile</a></li>
-                            <li><a class="dropdown-item" href="staff-details.php">Staff Details</a></li>
-                            <li><a class="dropdown-item" href="staff-details-personal.php">Staff Personal Details</a></li>
-                        </ul>
-                    </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Company <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="company-dashboard.php">Company Dashboard</a></li>
+                        <li><a class="dropdown-item" href="company-basic-profile.php">Company Profile</a></li>
+                        <li><a class="dropdown-item" href="company-confidential.php">Company confidential</a></li>
+                        <li><a class="dropdown-item" href="company-post-job.php">Post a Job</a></li>
+                        <li><a class="dropdown-item" href="company-profile-dashboard.php">Company Profile Dashboard</a></li>
+                        <li><a class="dropdown-item" href="company-staff-detail.php">Company Staff Detial</a></li>
+                        <li><a class="dropdown-item" href="staff-job-listing.php">Company Staff Job Listing</a></li>
+                        <li><a class="dropdown-item" href="company-sites.php">Company Sites</a></li>
+                    </ul>
+                </li>
+@endif
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Staff <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="staff-dashboard.php">Staff Dashboard</a></li>
+                        <li><a class="dropdown-item" href="staff-profile-dashboard.php">Staff Profile</a></li>
+                        <li><a class="dropdown-item" href="staff-details.php">Staff Details</a></li>
+                        <li><a class="dropdown-item" href="staff-details-personal.php">Staff Personal Details</a></li>
+                    </ul>
+                </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            More <i class="fas fa-chevron-down fa-xs"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item" >
-                                <form action="{{route('logout')}}" method="POST" id="logout_form">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        More <i class="fas fa-chevron-down fa-xs"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item" >
+                            <form action="{{route('logout')}}" method="POST" id="logout_form">
                                     @csrf
-                                    <button class="dropdown-item" type="submit" id="logout">Logout</button>
-                                </form>
-                            </li>
+                            <button class="dropdown-item" type="submit" id="logout">Logout</button>
+            </form>
+        </li>
 
-                        </ul>
-                    </li>
-                </ul>
+    </ul>
+</li>
+</ul>-->
             </div>
             <div class="add-listing">
                 @if(auth()->user()->hasRole('company'))
-                <div class="login d-inline-block me-4">
-                    <a href="{{route('company.dashboard')}}">Dashboard</a>
-                </div>
+                    <div class="login d-inline-block me-4">
+                        <a href="{{route('company.dashboard')}}">Dashboard</a>
+                    </div>
                 @endif
                 <a class="btn btn-white btn-md" href="post-a-job.html"> <i class="fas fa-plus-circle"></i>Post a job</a>
             </div>

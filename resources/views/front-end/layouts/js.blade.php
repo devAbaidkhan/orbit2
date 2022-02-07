@@ -32,6 +32,7 @@
 <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 <script src="{{asset('plugins/toastr/toastr.min.js')}}"></script>
 
+<script src="{{asset('plugins/ijaboCropTool/ijaboCropTool.min.js')}}"></script>
 <script src="{{asset('js/custom.js')}}"></script>
 <script>
     $(document).ready(function () {

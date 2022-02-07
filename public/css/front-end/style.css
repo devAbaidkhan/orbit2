@@ -6154,39 +6154,7 @@ iframe {
     display: none;
   }
 }
-.my-custom-text-field {
-  position: relative;
-  margin: 10px 2.5px 20px 2.5px;
-}
 
-.my-custom-input {
-  display: inline-block;
-  width: 100%;
-  border: thin solid #fafafa;
-  border-bottom: solid medium #999;
-  color: #444;
-  background-color: #fafafa;
-  padding: 10px 10px 10px 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.my-custom-label {
-  color: #999;
-  position: absolute;
-  pointer-events: none;
-  left: 10px;
-  top: 10px;
-  transition: 0.2s;
-}
-
-.my-custom-input:focus ~ .my-custom-label {
-  top: -10px;
-  left: 0px;
-  font-size: small;
-  background-color:#fff;
-  padding:0 5px 0 5px;
-}
 
 /* custom css */
 
@@ -6302,39 +6270,7 @@ iframe {
     display: block;
   }
 }
-.my-custom-text-field {
-  position: relative;
-  margin: 10px 2.5px 20px 2.5px;
-}
 
-.my-custom-input {
-  display: inline-block;
-  width: 100%;
-  border: thin solid #fafafa;
-  border-bottom: solid medium #999;
-  color: #444;
-  background-color: #fafafa;
-  padding: 10px 10px 10px 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.my-custom-label {
-  color: #999;
-  position: absolute;
-  pointer-events: none;
-  left: 10px;
-  top: 10px;
-  transition: 0.2s;
-}
-
-.my-custom-input:focus ~ .my-custom-label {
-  top: -10px;
-  left: 0px;
-  font-size: small;
-  background-color:#fff;
-  padding:0 5px 0 5px;
-}
 
 /* custom css */
 
@@ -6469,39 +6405,7 @@ iframe {
     display: none;
   }
 }
-.my-custom-text-field {
-  position: relative;
-  margin: 10px 2.5px 20px 2.5px;
-}
 
-.my-custom-input {
-  display: inline-block;
-  width: 100%;
-  border: thin solid #fafafa;
-  border-bottom: solid medium #999;
-  color: #444;
-  background-color: #fafafa;
-  padding: 10px 10px 10px 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.my-custom-label {
-  color: #999;
-  position: absolute;
-  pointer-events: none;
-  left: 10px;
-  top: 10px;
-  transition: 0.2s;
-}
-
-.my-custom-input:focus ~ .my-custom-label {
-  top: -10px;
-  left: 0px;
-  font-size: small;
-  background-color:#fff;
-  padding:0 5px 0 5px;
-}
 
 /* custom css */
 
@@ -6631,3 +6535,52 @@ iframe {
   color: #fff;
   font-size: 12px;
 }
+
+
+
+/*---------------------------*/
+
+    .user-input-wrp 
+    {
+        position: relative;
+    }
+    
+    .user-input-wrp .inputText
+    {
+        width: 100%;
+        outline: none;
+        border:none;
+        border: thin solid #fafafa;
+        border-bottom: solid medium #999;
+        box-shadow: none !important;
+        color: #444;
+        background-color: #fafafa;
+        padding: 15px 10px 10px 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    
+    /*.user-input-wrp .inputText:focus*/
+    /*{*/
+    /*	border-color: blue;*/
+    /*	border-width: medium medium 2px;*/
+    /*}*/
+
+    .user-input-wrp .floating-label
+    {
+        position: absolute;
+        color: #999;
+        pointer-events: none;
+        top: 14px;
+        left: 0px;
+        transition: 0.2s ease all;
+    }
+    
+    .user-input-wrp input:focus ~ .floating-label,
+    .user-input-wrp input:not(:focus):valid ~ .floating-label
+    {
+        top: 0px;
+        left: 10px;
+        font-size: 13px;
+        opacity: 1;
+    }

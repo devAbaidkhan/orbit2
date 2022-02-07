@@ -102,7 +102,12 @@
                     <div class="category-icon mb-3">
                     <i class="flaticon-check-in"></i>
                     </div>
-                    <h6 class="ans-category-box-heading">Sign Out</h6>
+                    <h6>
+                    <form action="{{route('logout')}}" method="POST" id="logout_form">
+                    @csrf
+                    <button class="dropdown-item" type="submit" id="logout">Sign Out</button>
+                    </form>
+                    </h6>
                 </a>
             </div>
         </div>

@@ -137,4 +137,37 @@ class CompanyProfileController extends Controller
     {
         //
     }
+
+    public function updatePicture(Request $request)
+    {
+        $path = 'users/images';
+        $file = $request->file('image');
+        $new_name = 'UIMG_' . date('Ymd') . uniqid() . '.jpg';
+
+        // Upload new image
+        $upload = $file->move(public_path($path), $new_name);
+        if (!$upload) {
+            return response()->json(['success' => 0, 'msg' => 'Something went wrong']);
+        } else {
+            //get old Picture
+            $oldPicture = User::find(Auth::user()->id)->getAttributes()['avatar'];
+
+            if ($oldPicture != '') {
+                if (\File::exists(public_path($path . $oldPicture))) {
+                    \File::delete((public_path($path . $oldPicture)));
+                }
+            }
+
+            //update DB
+            $update = User::find(Auth::user()->id)->update(['avatar' => $new_name]);
+
+            if (!$upload) {
+                return response()->json(['status' => 0, 'msg' => 'Something went wrong, updating picture in db failed.']);
+            } else {
+                return response()->json(['status' => 1, 'msg' => 'youre Profile picture has been updated sccessfully', 'name'=> asset('/users/images/' . $new_name)]);
+            }
+        }
+
+
+    }
 }

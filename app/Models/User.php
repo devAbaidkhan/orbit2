@@ -21,6 +21,7 @@ class User extends \TCG\Voyager\Models\User
         'name',
         'email',
         'password',
+        'avatar',
     ];
 
     /**
@@ -42,8 +43,18 @@ class User extends \TCG\Voyager\Models\User
         'email_verified_at' => 'datetime',
     ];
 
+    public function getPictureAttribute($value){
+        if ($value){
+            return asset('users/images/'. $value);
+        }else{
+            return asset('users/images/no-image.png');
+        }
+    }
+
     public function contactPerson()
     {
         return $this->morphMany(ContactPerson::class,'contactable');
     }
+
+
 }

@@ -17,55 +17,61 @@
             <div class="tab-pane active" id="candidate" role="tabpanel">
                 <form class="mt-4" id="form" >
                     <div class="row">
-                    <div class="mb-3 col-12">
+                        <div class="mb-3 col-12">
 
-                        <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input" name="name" value="{{$user->name}}">
-                        <label class="my-custom-label">Name</label>
+                            <div class="user-input-wrp">
+                                <input type="text" class="inputText" name="name" value="{{$user->name}}">
+                                <span class="floating-label">Name</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-12">
-                        <div class="my-custom-text-field">
-                        <input type="number" class="my-custom-input" name="phoneNumber" value="{{$user->phone_number}}">
-                        <label class="my-custom-label" >Phone Number</label>
+                        <div class="mb-3 col-12">
+                            <div class="user-input-wrp">
+                                <input type="number" class="inputText" name="phoneNumber" value="{{$user->phone_number}}">
+                                <span class="floating-label">Phone Number</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-12">
-                        <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input" name="officeNumber" value="{{$user->office_number}}">
-                        <label class="my-custom-label">Office Number</label>
+                        <div class="mb-3 col-12">
+                            <div class="user-input-wrp">
+                                <input type="text" class="inputText" name="officeNumber" value="{{$user->office_number}}">
+
+                                <span class="floating-label">Office Number</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-12">
-                        <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input" disabled name="email" value="{{$user->email}}">
-                        <label class="my-custom-label">Email</label>
+                        <div class="mb-3 col-12">
+                            <div class="user-input-wrp">
+                                <input type="text" class="inputText" name="email" value="{{$user->email}}">
+
+                                <span class="floating-label">Email</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-12">
-                        <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input" name="address" value="{{$user->address}}">
-                        <label class="my-custom-label">Address</label>
+                        <div class="mb-3 col-12">
+                            <div class="user-input-wrp">
+                                <input type="text" class="inputText" name="address" value="{{$user->address}}">
+
+                                <span class="floating-label">Address</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-6">
-                        <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input" name="country" value="{{$user->country}}">
-                        <label class="my-custom-label">Country</label>
+                        <div class="mb-3 col-6">
+                            <div class="user-input-wrp">
+                                <input type="text" class="inputText" name="country" value="{{$user->country}}">
+
+                                <span class="floating-label">Country</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-6">
-                        <div class="my-custom-text-field"  >
-                        <input type="text" class="my-custom-input" name="city" value="{{$user->city}}">
-                        <label class="my-custom-label">City</label>
+                        <div class="mb-3 col-6">
+                            <div class="user-input-wrp"  >
+                                <input type="text" class="inputText" name="city" value="{{$user->city}}">
+
+                                <span class="floating-label">City</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-12">
-                        <div class="my-custom-text-field">
-                        <input type="number" class="my-custom-input" name="postalCode" value="{{$user->postal_code}}">
-                        <label class="my-custom-label">Postal Code</label>
+                        <div class="mb-3 col-12">
+                            <div class="user-input-wrp">
+                                <input type="number" class="inputText" name="postalCode" value="{{$user->postal_code}}">
+
+                                <span class="floating-label">Postal Code</span>
+                            </div>
                         </div>
-                    </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 ob-btn-login">

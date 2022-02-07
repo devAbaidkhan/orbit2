@@ -7,15 +7,17 @@
                 <form class="mt-4" id="form">
                     <div class="row">
                         <div class="mb-3 col-12">
-                            <div class="my-custom-text-field">
-                                <input type="number" class="my-custom-input" value="{{$user->registration_no}}" name="registrationNo">
-                                <label class="my-custom-label">Registration No.</label>
+                            <div class="user-input-wrp">
+                                <input type="number" class="inputText" value="{{$user->registration_no}}" name="registrationNo">
+
+                                <span class="floating-label">Registration No</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
-                            <div class="my-custom-text-field">
-                                <input type="number" class="my-custom-input" value="{{$user->vat_no}}" name="vatNo">
-                                <label class="my-custom-label">VAT Number</label>
+                            <div class="user-input-wrp">
+                                <input type="number" class="inputText" value="{{$user->vat_no}}" name="vatNo">
+
+                                <span class="floating-label">VAT Number</span>
                             </div>
                         </div>
 
@@ -24,7 +26,7 @@
                         <div class="col-md-12 ob-btn-login">
                             <button class="btn btn-primary " >Save</button>
                         </div>
-@csrf
+                        @csrf
                     </div>
                 </form>
                 <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">

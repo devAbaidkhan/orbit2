@@ -246,17 +246,17 @@ header -->
         <div class="row justify-content-center mt-0">
             <div class="col-11 ">
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-{{--                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
-{{--                    <p>Fill all form field to go to next step</p>--}}
+                    {{--                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
+                    {{--                    <p>Fill all form field to go to next step</p>--}}
                     <div class="row">
                         <div class="col-md-12 mx-0">
                             <form id="msform">
-                                @csrf
-                                <!-- progressbar -->
+                            @csrf
+                            <!-- progressbar -->
                                 <ul id="progressbar">
                                     <li class="active" id="account"><strong>Account</strong></li>
                                     <li id="personal"><strong>Personal</strong></li>
-                                 {{--   <li id="payment"><strong>Payment</strong></li>--}}
+                                    {{--   <li id="payment"><strong>Payment</strong></li>--}}
                                     <li id="confirm"><strong>Finish</strong></li>
                                 </ul> <!-- fieldsets -->
                                 <fieldset>
@@ -264,52 +264,59 @@ header -->
                                         <h2 class="fs-title">Account Information</h2>
                                         <div class="row">
                                             <div class="mb-3 col-12">
-                                                <div class="my-custom-text-field">
-                                                    <input type="text" class="my-custom-input" name="name">
-                                                    <label class="my-custom-label">Name</label>
+                                                <div class="user-input-wrp">
+                                                    <input type="text" class="inputText" name="name">
+                                                    <span class="floating-label">Name</span>
+
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-12">
-                                                <div class="my-custom-text-field">
-                                                    <input type="number" class="my-custom-input" name="phoneNumber">
-                                                    <label class="my-custom-label" >Phone Number</label>
+                                                <div class="user-input-wrp">
+                                                    <input type="number" class="inputText" name="phoneNumber">
+
+                                                    <span class="floating-label">Phone Number</span>
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-12">
-                                                <div class="my-custom-text-field">
-                                                    <input type="text" class="my-custom-input" name="email">
-                                                    <label class="my-custom-label">Email ID</label>
+                                                <div class="user-input-wrp">
+                                                    <input type="text" class="inputText" name="email">
+
+                                                    <span class="floating-label">Email ID</span>
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-12">
-                                                <div class="my-custom-text-field">
-                                                    <input type="password" class="my-custom-input" id="password" name="password">
-                                                    <label class="my-custom-label" >Password</label>
+                                                <div class="user-input-wrp">
+                                                    <input type="password" class="inputText" id="password"
+                                                           name="password">
+
+                                                    <span class="floating-label">Password</span>
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-12">
-                                                <div class="my-custom-text-field">
-                                                    <input type="password" class="my-custom-input" name="confirmPassword">
-                                                    <label class="my-custom-label" >Confirm Password</label>
+                                                <div class="user-input-wrp">
+                                                    <input type="password" class="inputText"
+                                                           name="confirmPassword">
+
+                                                    <span class="floating-label">Confirm Password</span>
                                                 </div>
                                             </div>
 
                                         </div>
-{{--                                        <input type="email" name="email" placeholder="Email Id" />--}}
-{{--                                        <input type="text" name="uname" placeholder="UserName" />--}}
-{{--                                        <input type="password" name="pwd" placeholder="Password" />--}}
-{{--                                        <input type="password" name="cpwd" placeholder="Confirm Password" />--}}
+                                        {{--                                        <input type="email" name="email" placeholder="Email Id" />--}}
+                                        {{--                                        <input type="text" name="uname" placeholder="UserName" />--}}
+                                        {{--                                        <input type="password" name="pwd" placeholder="Password" />--}}
+                                        {{--                                        <input type="password" name="cpwd" placeholder="Confirm Password" />--}}
                                     </div>
 
 
-                                    <input type="button" name="next" class="next action-button" value="Next Step" />
+                                    <input type="button" name="next" class="next action-button" value="Next Step"/>
                                 </fieldset>
                                 <fieldset id="regiterAs">
                                     <div class="form-card">
                                         <h2 class="fs-title">Register as <span id="register_as"></span></h2>
-                                        <input type="hidden" id="role" name="role" >
+                                        <input type="hidden" id="role" name="role">
                                         <div class="row align-items-center">
-{{--                                            <h2 class="title text-center register-heading">Register as</h2>--}}
+                                            {{--                                            <h2 class="title text-center register-heading">Register as</h2>--}}
 
                                             <div class="col-lg-3 col-md-4 col-6 text-center mb-3 role_div">
                                                 <div class="ans-category-item pt-3">
@@ -355,14 +362,20 @@ header -->
                                         </div>
                                     </div>
 
-                                    <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="next" class="next action-button" value="Next Step" />
+                                    <input type="button" name="previous" class="previous action-button-previous"
+                                           value="Previous"/> <input type="button" name="next" id="next"
+                                                                     class="next action-button" value="Next Step"
+                                                                     disabled style="background-color:lightgrey"/>
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
                                         <h2 class="fs-title text-center">Success !</h2> <br><br>
                                         <div class="row justify-content-center">
-                                            <div class="col-3"> <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image"> </div>
-                                        </div> <br><br>
+                                            <div class="col-3"><img
+                                                    src="https://img.icons8.com/color/96/000000/ok--v2.png"
+                                                    class="fit-image"></div>
+                                        </div>
+                                        <br><br>
                                         <div class="row justify-content-center">
                                             <div class="col-7 text-center">
                                                 <h5>You Have Successfully Signed Up</h5>
@@ -413,47 +426,50 @@ header -->
 @endsection
 @section('js')
     <script>
-        $(document).ready(function (){
+        $(document).ready(function () {
+            $('.ans-category-item').click(function () {
+                $('.ans-category-item.checked').removeClass('checked')
 
-
-            $('.ans-category-item').click(function (){
-
+                $(this).addClass('checked')
                 let role = $(this).find('h6').text()
-
                 console.log(role)
-
                 $('#role').val(role)
                 $('#register_as').text(role)
+            })
+            $('.ans-category-item').click(function () {
+
+                $('#next').prop('disabled', false)
+                $('.next').css({'background-color': 'skyblue'});
             })
 
 
             $('#msform').validate({
                 rules: {
-                    name:{
-                        required:true,
+                    name: {
+                        required: true,
                     },
-                    phoneNumber:{
-                        required:true,
-                        number:true
+                    phoneNumber: {
+                        required: true,
+                        number: true
                     },
-                    email:{
-                        required:true,
+                    email: {
+                        required: true,
                     },
-                    password:{
-                        required:true,
+                    password: {
+                        required: true,
                     },
-                    confirmPassword:{
-                        required:true,
+                    confirmPassword: {
+                        required: true,
                         // min:8,
                         //equalTo:'#password'
                     },
 
                 },
                 messages: {
-                    name:'Name is required',
-                    phoneNumber:'Phone Number is required',
-                    email:'Email is required',
-                    password:'Password is required',
+                    name: 'Name is required',
+                    phoneNumber: 'Phone Number is required',
+                    email: 'Email is required',
+                    password: 'Password is required',
                 },
             });
 
@@ -495,17 +511,17 @@ header -->
             });
         })
 
-        $(document).ready(function(){
+        $(document).ready(function () {
 
             var current_fs, next_fs, previous_fs; //fieldsets
             var opacity;
 
-            $(".next").click(function(){
+            $(".next").click(function () {
 
                 if (!$('#msform').valid()) {
                     return false;
                 }
-                if($('.next').attr('id') !== 'register'  ) {
+                if ($('.next').attr('id') !== 'register') {
                     $(".next").val('Register')
 
                     current_fs = $(this).parent();
@@ -531,16 +547,16 @@ header -->
                         duration: 600
                     });
                 }
-               setTimeout(function (){
-                   $(this).attr('id','register')
-                   $(".next").attr('type','submit')
-               },100)
+                setTimeout(function () {
+                    $(this).attr('id', 'register')
+                    $(".next").attr('type', 'submit')
+                }, 100)
             });
 
-            $(".previous").click(function(){
-                $(".next").attr('id','')
+            $(".previous").click(function () {
+                $(".next").attr('id', '')
                 $(".next").val('Next Step')
-                $(".next").attr('type','button')
+                $(".next").attr('type', 'button')
                 current_fs = $(this).parent();
                 previous_fs = $(this).parent().prev();
 
@@ -552,7 +568,7 @@ header -->
 
 //hide the current fieldset with style
                 current_fs.animate({opacity: 0}, {
-                    step: function(now) {
+                    step: function (now) {
 // for making fielset appear animation
                         opacity = 1 - now;
 
@@ -566,12 +582,12 @@ header -->
                 });
             });
 
-            $('.radio-group .radio').click(function(){
+            $('.radio-group .radio').click(function () {
                 $(this).parent().find('.radio').removeClass('selected');
                 $(this).addClass('selected');
             });
 
-            $(".submit").click(function(){
+            $(".submit").click(function () {
                 return false;
             })
 

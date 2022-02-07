@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{ asset('dist/img/favico.ico') }}" type="image/ico" sizes="16x16">
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/ico" sizes="16x16">
 
 
     <title>{{ config('app.name', 'Laravel') }} || @yield('title')</title>

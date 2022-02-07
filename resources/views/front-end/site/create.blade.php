@@ -22,54 +22,62 @@ Signin -->
 
                     @csrf
                     <div class="row">
-                    <div class="mb-3 col-12">
-                        <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input" name="name">
-                        <label class="my-custom-label">Site Name</label>
+                        <div class="mb-3 col-12">
+                            <div class="user-input-wrp">
+                                <input type="text" class="inputText" name="name">
+
+                                <span class="floating-label">Site Name</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-12">
-                        <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input" name="address">
-                        <label class="my-custom-label">Site Address</label>
+                        <div class="mb-3 col-12">
+                            <div class="user-input-wrp">
+                                <input type="text" class="inputText" name="address">
+
+                                <span class="floating-label">Site Address</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-12">
-                        <div class="my-custom-text-field">
-                        <input type="number" class="my-custom-input" name="postalCode" >
-                        <label class="my-custom-label">Site Postal Zip/Code</label>
+                        <div class="mb-3 col-12">
+                            <div class="user-input-wrp">
+                                <input type="number" class="inputText" name="postalCode" >
+
+                                <span class="floating-label">Site Postal Zip/Code</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-12">
-                        <div class="my-custom-text-field">
-                        <input type="text" class="my-custom-input" name="city">
-                        <label class="my-custom-label">City</label>
+                        <div class="mb-3 col-12">
+                            <div class="user-input-wrp">
+                                <input type="text" class="inputText" name="city">
+
+                                <span class="floating-label">City</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-6">
-                        <div class="my-custom-text-field">
-                        <input type="number" class="my-custom-input" name="longitude">
-                        <label class="my-custom-label">Site Latitude</label>
-                        </div>
-                    </div>
-                    <div class="mb-3 col-6">
-                        <div class="my-custom-text-field">
-                        <input type="number" class="my-custom-input" name="latitude">
-                        <label class="my-custom-label">Site longitude</label>
-                        </div>
-                    </div>
                         <div class="mb-3 col-6">
-                        <div class="my-custom-text-field">
-                        <input type="date" name="startDate" class="my-custom-input" >
-                        <label class="my-custom-label" >Start Date</label>
+                            <div class="user-input-wrp">
+                                <input type="number" class="inputText" name="longitude">
+
+                                <span class="floating-label">Site Latitude</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 col-6">
-                        <div class="my-custom-text-field">
-                        <input type="date" class="my-custom-input" name="finishDate">
-                        <label class="my-custom-label">Finish Date</label>
+                        <div class="mb-3 col-6">
+                            <div class="user-input-wrp">
+                                <input type="number" class="inputText" name="latitude">
+
+                                <span class="floating-label">Site longitude</span>
+                            </div>
                         </div>
-                    </div>
+                        <div class="mb-3 col-6">
+                            <div class="user-input-wrp">
+                                <input type="date" name="startDate" class="inputText" >
+
+                                <span class="floating-label">Start Date</span>
+                            </div>
+                        </div>
+                        <div class="mb-3 col-6">
+                            <div class="user-input-wrp">
+                                <input type="date" class="inputText" name="finishDate">
+
+                                <span class="floating-label">Finish Date</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 ob-btn-login">
