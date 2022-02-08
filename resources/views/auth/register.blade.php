@@ -279,8 +279,8 @@ header -->
                                             </div>
                                             <div class="mb-3 col-12">
                                                 <div class="user-input-wrp">
-                                                    <input type="text" class="inputText" name="email">
-
+                                                    <input id="email" type="text" class="inputText" name="email" onblur="duplicateEmail(this)">
+                                                    <span id="emailValidationError" class="error" style="font-weight: 700;"></span>
                                                     <span class="floating-label">Email ID</span>
                                                 </div>
                                             </div>
@@ -309,7 +309,7 @@ header -->
                                     </div>
 
 
-                                    <input type="button" name="next" class="next action-button" value="Next Step"/>
+                                    <input type="button" name="next" class="next action-button" id="nextstep" value="Next Step" disabled style="background-color:lightgrey"/>
                                 </fieldset>
                                 <fieldset id="regiterAs">
                                     <div class="form-card">
@@ -426,7 +426,43 @@ header -->
 @endsection
 @section('js')
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        function duplicateEmail(element){
+            var email = $(element).val();
+            console.log(email);
+            $.ajax({
+                type: "POST",
+                url: '{{url('checkemail')}}',
+                data: {email:email},
+                dataType: "json",
+                success: function(res) {
+                    if(res.exists){
+                        $('#emailValidationError').text("Email is Already Exists");
+                        if ($('#nextstep').text("Email is Already Exists")){
+                            $('#nextstep').prop('disabled', true);
+                        }
+                    }else{
+                        $('#emailValidationError').empty();
+                        $('#nextstep').removeAttr('disabled');
+                        $('#nextstep').css({'background-color': 'skyblue'});
+                        //alert('false');
+                    }
+                },
+                error: function (jqXHR, exception) {
+
+                }
+            });
+        }
         $(document).ready(function () {
+
+
+
+
             $('.ans-category-item').click(function () {
                 $('.ans-category-item.checked').removeClass('checked')
 
@@ -454,6 +490,23 @@ header -->
                     },
                     email: {
                         required: true,
+                        email: true,
+                        remote:{
+                            url: "checkemail",
+                            type: "post",
+                            data: {
+                                email: $("input[email='email']").val()
+                            },
+                            dataFilter: function(data) {
+                                var json = JSON.parse(data);
+                                if (json.msg == "true") {
+                                    return "\"" + "Email address already in use" + "\"";
+                                } else {
+                                    return 'true';
+                                }
+                            }
+                        },
+
                     },
                     password: {
                         required: true,
@@ -468,7 +521,10 @@ header -->
                 messages: {
                     name: 'Name is required',
                     phoneNumber: 'Phone Number is required',
-                    email: 'Email is required',
+                    email: {
+                        required: 'Email is required',
+
+                    },
                     password: 'Password is required',
                 },
             });
@@ -502,8 +558,10 @@ header -->
                     },
                     error: function (xhr, error, status) {
                         // console.log(xhr.responseJSON.errors.name[0])
+                        //window.location = '/register';
                         swal.close();
                         var response = xhr.responseJSON;
+
                         // alertMsg(response.message, 'error');
                         alertMsg(response.message, 'error');
                     }

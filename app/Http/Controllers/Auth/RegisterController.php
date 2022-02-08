@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpFoundation\Response;
 use TCG\Voyager\Models\Role;
 
 class RegisterController extends Controller
@@ -15,7 +16,7 @@ class RegisterController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -42,7 +43,7 @@ class RegisterController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
     public function store(RegisterRequest $request,User $user)
     {
@@ -50,7 +51,7 @@ class RegisterController extends Controller
 
             $duplicate = User::where('email',$request->email)->first();
             if($duplicate){
-                return  response(['message'=>'User Already Exist','status'=>'error']);
+                return response()->json(array("exists" => true));
             }
 
             $user->name = $request->name;
@@ -72,6 +73,16 @@ class RegisterController extends Controller
             return response(['message'=>'User Registered','status'=>'success']);
         }catch (\Exception $exception){
             return response(['message'=>$exception->getMessage(),'status'=>'error']);
+        }
+    }
+
+    public function checkEmail(Request $request){
+        $email = $request->input('email');
+        $isExists = \App\Models\User::where('email',$email)->first();
+        if($isExists){
+            return response()->json(array("exists" => true));
+        }else{
+            return response()->json(array("exists" => false));
         }
     }
 

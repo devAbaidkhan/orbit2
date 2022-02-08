@@ -9,8 +9,12 @@ require __DIR__.'/auth.php';
 //Route::resource('contact-person',[])
 
 
-Route::resource('contact-person',\App\Http\Controllers\ContactPerson\ContactPersonController::class);
+    Route::resource('contact-person',\App\Http\Controllers\ContactPerson\ContactPersonController::class);
 
+    // Documents Routes
+    Route::resource('document',\App\Http\Controllers\Document\DocumentController::class);
+
+    Route::post('/checkemail',[\App\Http\Controllers\Auth\RegisterController::class,'checkEmail'])->name('checkEmail');
 //========================================= Company Routes =====================================
 Route::group(['prefix' => 'company'], function () {
 
@@ -22,7 +26,7 @@ Route::group(['prefix' => 'company'], function () {
     Route::get('/confidential/create',[\App\Http\Controllers\FrontEnd\Profile\CompanyProfileController::class,'createConfidential'])->name('confidential.create');
     Route::post('/confidential/update/{id}',[\App\Http\Controllers\FrontEnd\Profile\CompanyProfileController::class,'updateConfidential'])->name('confidential.update');
 
-
+    // Company profile Picture
     Route::post('/change/profile/picture',[\App\Http\Controllers\FrontEnd\Profile\CompanyProfileController::class,'updatePicture'])->name('company.picture.update');
 
     // company routes
@@ -30,6 +34,10 @@ Route::group(['prefix' => 'company'], function () {
     Route::get('/',[\App\Http\Controllers\FrontEnd\Profile\CompanyProfileController::class,'index']);
     Route::get('/edit/{id}',[\App\Http\Controllers\FrontEnd\Profile\CompanyProfileController::class,'edit'])->name('company.edit');
     Route::get('dashboard',[\App\Http\Controllers\FrontEnd\Dashboard\DashboardController::class,'company'])->name('company.dashboard');
+
+
+
+    //Route::get('/document',[\App\Http\Controllers\Document\DocumentController::class,'index'])->name('document.index');
 
 });
 
