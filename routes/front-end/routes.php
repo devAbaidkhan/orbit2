@@ -7,14 +7,13 @@ require __DIR__.'/auth.php';
 
 //contact person
 //Route::resource('contact-person',[])
-
-
-    Route::resource('contact-person',\App\Http\Controllers\ContactPerson\ContactPersonController::class);
+      Route::resource('contact-person',\App\Http\Controllers\ContactPerson\ContactPersonController::class);
 
     // Documents Routes
-    Route::resource('document',\App\Http\Controllers\Document\DocumentController::class);
+    Route::resource('document',\App\Http\Controllers\Document\CompanyDocumentController::class);
 
-    Route::post('/checkemail',[\App\Http\Controllers\Auth\RegisterController::class,'checkEmail'])->name('checkEmail');
+
+
 //========================================= Company Routes =====================================
 Route::group(['prefix' => 'company'], function () {
 

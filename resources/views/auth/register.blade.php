@@ -280,7 +280,7 @@ header -->
                                             <div class="mb-3 col-12">
                                                 <div class="user-input-wrp">
                                                     <input id="email" type="text" class="inputText" name="email" onblur="duplicateEmail(this)">
-                                                    <span id="emailValidationError" class="error" style="font-weight: 700;"></span>
+                                                    <span id="emailValidationError" class="error"></span>
                                                     <span class="floating-label">Email ID</span>
                                                 </div>
                                             </div>
@@ -426,38 +426,8 @@ header -->
 @endsection
 @section('js')
     <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
 
-        function duplicateEmail(element){
-            var email = $(element).val();
-            console.log(email);
-            $.ajax({
-                type: "POST",
-                url: '{{url('checkemail')}}',
-                data: {email:email},
-                dataType: "json",
-                success: function(res) {
-                    if(res.exists){
-                        $('#emailValidationError').text("Email is Already Exists");
-                        if ($('#nextstep').text("Email is Already Exists")){
-                            $('#nextstep').prop('disabled', true);
-                        }
-                    }else{
-                        $('#emailValidationError').empty();
-                        $('#nextstep').removeAttr('disabled');
-                        $('#nextstep').css({'background-color': 'skyblue'});
-                        //alert('false');
-                    }
-                },
-                error: function (jqXHR, exception) {
 
-                }
-            });
-        }
         $(document).ready(function () {
 
 
@@ -491,21 +461,6 @@ header -->
                     email: {
                         required: true,
                         email: true,
-                        remote:{
-                            url: "checkemail",
-                            type: "post",
-                            data: {
-                                email: $("input[email='email']").val()
-                            },
-                            dataFilter: function(data) {
-                                var json = JSON.parse(data);
-                                if (json.msg == "true") {
-                                    return "\"" + "Email address already in use" + "\"";
-                                } else {
-                                    return 'true';
-                                }
-                            }
-                        },
 
                     },
                     password: {
@@ -522,8 +477,7 @@ header -->
                     name: 'Name is required',
                     phoneNumber: 'Phone Number is required',
                     email: {
-                        required: 'Email is required',
-
+                        required: 'Email is required11',
                     },
                     password: 'Password is required',
                 },
