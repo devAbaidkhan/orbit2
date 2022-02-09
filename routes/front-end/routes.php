@@ -10,7 +10,7 @@ require __DIR__.'/auth.php';
       Route::resource('contact-person',\App\Http\Controllers\ContactPerson\ContactPersonController::class);
 
     // Documents Routes
-    Route::resource('document',\App\Http\Controllers\Document\CompanyDocumentController::class);
+    Route::resource('document',\App\Http\Controllers\Document\UserDocumentController::class);
 
 
 

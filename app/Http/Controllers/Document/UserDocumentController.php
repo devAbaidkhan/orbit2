@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Document;
 
 use App\Http\Controllers\Controller;
-use App\Models\Document;
-use App\Models\Site;
+use App\Models\UserDocument;
 use Illuminate\Http\Request;
+use App\Models\Document;
 
-class CompanyDocumentController extends Controller
+class UserDocumentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,8 @@ class CompanyDocumentController extends Controller
      */
     public function index()
     {
-        return view('document.index');
+       $document_names  = Document::all();
+        return view('document.index', compact("document_names"));
     }
 
     /**
@@ -35,18 +36,21 @@ class CompanyDocumentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request, Site $site)
+    public function store(Request $request)
     {
         try {
-            $document = new Document();
-            $document->file_name = $request->add_document_file_name;
+            $userdocument = new UserDocument();
+            $userdocument->type = $request->add_document_type;
+
+            $userdocument->user_id = \Auth::user()->id;
+            //dd($request->hasFile('add_document_file_path'));
             if ($request->hasFile('add_document_file_path')) {
                 $file_name = time() . '-document' . '.' . $request->add_document_file_path->extension();
-                $filePath = '/documents/clients/';
+                $filePath = '/documents/users/';
                 $request->add_document_file_path->move(public_path($filePath), $file_name);
-                $document->file_path = $filePath . $file_name;
+                $userdocument->file_path = $filePath . $file_name;
             }
-            $site->document()->save($document);
+            $userdocument->save();
             $response = array('status' => 'success', "message" => "Data Added Successfully");
             return response()->json($response, 200);
         } catch (\Exception $e) {

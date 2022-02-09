@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDocumentsTable extends Migration
+class CreateUserDocumentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('documents', function (Blueprint $table) {
+        Schema::create('user_documents', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->integer('document_id')->nullable();
             $table->string('type')->nullable();
-            $table->boolean('is_active')->default(1);
+            $table->text('file_path')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documents');
+        Schema::dropIfExists('user_documents');
     }
 }

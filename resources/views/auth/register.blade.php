@@ -309,7 +309,7 @@ header -->
                                     </div>
 
 
-                                    <input type="button" name="next" class="next action-button" id="nextstep" value="Next Step" disabled style="background-color:lightgrey"/>
+                                    <input type="button" name="next" class="next action-button" value="Next Step"/>
                                 </fieldset>
                                 <fieldset id="regiterAs">
                                     <div class="form-card">

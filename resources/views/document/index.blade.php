@@ -9,8 +9,12 @@
                         <div class="row">
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
-                                    <label for="add_document_title"></label><input type="text" class="inputText" id="add_document_title" name="add_document_title">
-                                    <span class="floating-label">Title</span>
+                                    <label for="add_document_type"></label><select name="add_document_type" id="add_document_type" class="inputText">
+                                        <option value=""  >Select Type</option>
+                                        @foreach($document_names as $document_name)
+                                        <option value="{{$document_name->id}}">{{$document_name->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
@@ -86,8 +90,8 @@
                     },
                     success: function (response) {
                         //console.info(response);
+                        //alert(response.message);
                         swal.close();
-                        getDocumentList();
                         $('#add_document_form')[0].reset();
                         alertMsg(response.message, response.status);
                     },
