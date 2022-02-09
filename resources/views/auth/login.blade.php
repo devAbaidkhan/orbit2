@@ -41,7 +41,7 @@ Signin -->
                                         </div>
                                         <div class="col-md-12">
                                             <div class="mt-3 mt-md-0 forgot-pass login-link-href">
-                                                <a href="forgot-password.php" class="">Forgot Password?</a>
+                                                <a href="forgot-password.php" class="">Forgot Password  ?</a>
                                             </div>
                                             <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">
                                                 <p class="mt-1">Don't have account? <a href="{{route('register')}}">Sign Up here</a></p>
