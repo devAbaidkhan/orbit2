@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Document;
+namespace App\Http\Controllers\FrontEnd\Job;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserDocument;
 use Illuminate\Http\Request;
-use App\Models\Document;
 
-class UserDocumentController extends Controller
+class JobController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class UserDocumentController extends Controller
      */
     public function index()
     {
-       $document_names  = Document::all();
-        return view('document.index', compact("document_names"));
+        return view('front-end.job.create');
     }
 
     /**
@@ -34,30 +31,11 @@ class UserDocumentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        try {
-            $userdocument = new UserDocument();
-            $userdocument->type = $request->add_document_type;
-
-            $userdocument->user_id = \Auth::user()->id;
-            //dd($request->hasFile('add_document_file_path'));
-            if ($request->hasFile('add_document_file_path')) {
-                $file_name = time() . '-document' . '.' . $request->add_document_file_path->extension();
-                $filePath = '/documents/users/';
-                //dd($filePath);
-                $request->add_document_file_path->move(public_path($filePath), $file_name);
-                $userdocument->file_path = $filePath . $file_name;
-            }
-            $userdocument->save();
-            $response = array('status' => 'success', "message" => "Data Added Successfully");
-            return response()->json($response, 200);
-        } catch (\Exception $e) {
-            $response = array('status' => 'error', "message" => $e->getMessage());
-            return response()->json($response, 406);
-        }
+        //
     }
 
     /**

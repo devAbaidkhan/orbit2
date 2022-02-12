@@ -9,6 +9,9 @@ require __DIR__.'/auth.php';
 //Route::resource('contact-person',[])
       Route::resource('contact-person',\App\Http\Controllers\ContactPerson\ContactPersonController::class);
 
+    // Job Post Routes
+    Route::resource('job',\App\Http\Controllers\FrontEnd\Job\JobController::class);
+
     // Documents Routes
     Route::resource('document',\App\Http\Controllers\Document\UserDocumentController::class);
 
@@ -35,8 +38,6 @@ Route::group(['prefix' => 'company'], function () {
     Route::get('dashboard',[\App\Http\Controllers\FrontEnd\Dashboard\DashboardController::class,'company'])->name('company.dashboard');
 
 
-
-    //Route::get('/document',[\App\Http\Controllers\Document\DocumentController::class,'index'])->name('document.index');
 
 });
 

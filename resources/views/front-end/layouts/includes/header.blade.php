@@ -46,7 +46,7 @@
                             <li><a class="dropdown-item" href="company-dashboard.php">Company Dashboard</a></li>
                             <li><a class="dropdown-item" href="company-basic-profile.php">Company Profile</a></li>
                             <li><a class="dropdown-item" href="company-confidential.php">Company confidential</a></li>
-                            <li><a class="dropdown-item" href="company-post-job.php">Post a Job</a></li>
+                            <li><a class="dropdown-item" href="company-job.php">Post a Job</a></li>
                             <li><a class="dropdown-item" href="company-profile-dashboard.php">Company Profile Dashboard</a></li>
                             <li><a class="dropdown-item" href="company-staff-detail.php">Company Staff Detial</a></li>
                             <li><a class="dropdown-item" href="staff-job-listing.php">Company Staff Job Listing</a></li>
@@ -107,7 +107,7 @@
                         <li><a class="dropdown-item" href="company-dashboard.php">Company Dashboard</a></li>
                         <li><a class="dropdown-item" href="company-basic-profile.php">Company Profile</a></li>
                         <li><a class="dropdown-item" href="company-confidential.php">Company confidential</a></li>
-                        <li><a class="dropdown-item" href="company-post-job.php">Post a Job</a></li>
+                        <li><a class="dropdown-item" href="company-job.php">Post a Job</a></li>
                         <li><a class="dropdown-item" href="company-profile-dashboard.php">Company Profile Dashboard</a></li>
                         <li><a class="dropdown-item" href="company-staff-detail.php">Company Staff Detial</a></li>
                         <li><a class="dropdown-item" href="staff-job-listing.php">Company Staff Job Listing</a></li>
