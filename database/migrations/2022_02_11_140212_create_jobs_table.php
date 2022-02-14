@@ -15,6 +15,25 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('site_id')->references('id')->on('sites');
+            $table->foreignId('company_id')->references('id')->on('companies');
+            $table->string('job_title');
+            $table->longText('job_description');
+            $table->time('time_in')->nullable();
+            $table->time('time_out')->nullable();
+            $table->time('break_time_start')->nullable();
+            $table->time('break_time_end')->nullable();
+            $table->date('job-start_date')->nullable();
+            $table->date('job-end_date')->nullable();
+            $table->json('working_days')->nullable();
+
+            $table->string('job_type')->nullable();
+            $table->string('experience')->nullable();
+            $table->integer('salary')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('position')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
     }

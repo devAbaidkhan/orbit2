@@ -22,7 +22,7 @@
                                 </a>
                             </li>
                             <li class="flex-fill">
-                                <a class="nav-item" id="packageTabBtn"  data-toggle="tab" href="#Package" role="tab"
+                                <a class="nav-item" id="packageTabBtn" data-toggle="tab" href="#Package" role="tab"
                                    aria-controls="Package" aria-selected="false">
                                     <div class="feature-info-icon mb-3">
                                         <i class="flaticon-businessman"></i>
@@ -31,7 +31,7 @@
                                 </a>
                             </li>
                             <li class="flex-fill">
-                                <a class="nav-item"  data-toggle="tab" href="#Confirm" role="tab"
+                                <a class="nav-item" data-toggle="tab" href="#Confirm" role="tab"
                                    aria-controls="Confirm" aria-selected="false">
                                     <div class="feature-info-icon mb-3">
                                         <i class="flaticon-tick"></i>
@@ -45,65 +45,105 @@
             </div>
         </div>
     </section>
-    <form action="">
+    <form action="" id="step1">
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade active show" id="Job-detail" role="tabpanel" aria-labelledby="Job-detail-tab">
                 <section class="space-ptb">
-                    <div class="container" id="step1">
+                    <div class="container">
                         <div class="row">
                             <div class="col-12">
-{{--                                <form class="row">--}}
-                                    {{csrf_field()}}
-                                    <div class="form-group col-md-12 mb-3">
-                                        <label class="mb-2">Job Title *</label>
-                                        <input type="text" class="form-control" name="title" placeholder="Enter a Title">
-                                    </div>
-                                    <div class="form-group col-md-12 select-border mb-3">
-                                        <label class="mb-2">Select Site</label>
-                                        <select class="form-control basic-select" id="site" name="site">
-                                            <option value="value 01">Howdy Bridge</option>
-                                            <option value="value 02">Theme park</option>
-                                            <option value="value 03">IT Towers</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-12 mb-3">
-                                        <label class="mb-2">Description *</label>
-                                        <textarea class="form-control" name="description" rows="4"></textarea>
-                                    </div>
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label class="mb-2">Time In *</label>
-                                        <input type="text" class="form-control" name="inTime" id="" placeholder="In Time"/>
-                                    </div>
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label class="mb-2">Time Out *</label>
-                                        <input type="text" class="form-control" id="" name="outTime" placeholder="Out Time"/>
-                                    </div>
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label class="mb-2">Break Time Starts *</label>
-                                        <input type="text" class="form-control" id="" name="breakTimeStart" placeholder="Break Time Start"/>
-                                    </div>
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label class="mb-2">Break Time Ends *</label>
-                                        <input type="text" class="form-control" id="" name="breakTimeEnd" placeholder="End Break Time"/>
-                                    </div>
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label class="mb-2">Job Start Date *</label>
-                                        <input type="text" class="form-control" id="" name="jobStartDate" placeholder="Job Satrt Date"/>
-                                    </div>
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label class="mb-2">Job End Date *</label>
-                                        <input type="text" class="form-control" id="" name="jobEndDate" placeholder="Job End Date"/>
-                                    </div>
+                                {{csrf_field()}}
+                                <div class="user-input-wrp">
+                                    <label class="mb-2">Job Title *</label>
+                                    <input type="text" class="form-control" id="title" name="title"
+                                           placeholder="Enter a Title">
+                                </div>
+                                <div class="user-input-wrp">
+                                    <label class="mb-2">Select Site</label>
+                                    <select class="form-control" id="" name="site">
+                                        <option value="">Howdy Bridge</option>
+                                        <option value="value 02">Theme park</option>
+                                        <option value="value 03">IT Towers</option>
+                                    </select>
+                                </div>
+                                <div class="user-input-wrp">
+                                    <label class="mb-2">Description *</label>
+                                    <textarea class="form-control" name="description" rows="4"></textarea>
+                                </div>
+                                <div class="user-input-wrp">
+                                    <label class="mb-2">Time In *</label>
+                                    <input type="time" class="form-control" name="inTime" id=""
+                                           placeholder="In Time"/>
+                                </div>
+                                <div class="user-input-wrp">
+                                    <label class="mb-2">Time Out *</label>
+                                    <input type="time" class="form-control" id="" name="outTime"
+                                           placeholder="Out Time"/>
+                                </div>
+                                <div class="user-input-wrp">
+                                    <label class="mb-2">Break Time Starts *</label>
+                                    <input type="time" class="form-control" id="" name="breakTimeStart"
+                                           placeholder="Break Time Start"/>
+                                </div>
+                                <div class="user-input-wrp">
+                                    <label class="mb-2">Break Time Ends *</label>
+                                    <input type="time" class="form-control" id="" name="breakTimeEnd"
+                                           placeholder="End Break Time"/>
+                                </div>
+                                <div class="user-input-wrp">
+                                    <label class="mb-2">Job Start Date *</label>
+                                    <input type="date" class="form-control" id="" name="jobStartDate"
+                                           placeholder="Job Satrt Date"/>
+                                </div>
+                                <div class="user-input-wrp">
+                                    <label class="mb-2">Job End Date *</label>
+                                    <input type="date" class="form-control" id="" name="jobEndDate"
+                                           placeholder="Job End Date"/>
+                                </div>
 
-{{--                                </form>--}}
+                                <div class="user-input-wrp">
+                                    <input class="inputText" type="checkbox" value="monday" id="">
+                                    <span class="floating-label">Monday</span>
+                                </div>
+                                <div class="user-input-wrp">
+                                    <input class="inputText" type="checkbox" value="tuesday" id="">
+
+                                    <span class="floating-label">Tuesday</span>
+                                </div>
+                                <div class="user-input-wrp">
+                                    <input class="inputText" type="checkbox" value="wednesday" id="">
+
+                                    <span class="floating-label">Wednesday</span>
+                                </div>
+                                <div class="user-input-wrp">
+                                    <input class="inputText" type="checkbox" value="thuresday" id="">
+
+                                    <span class="floating-label">Thuresday</span>
+                                </div>
+                                <div class="user-input-wrp">
+                                    <input class="inputText" type="checkbox" value="friday" id="">
+
+                                    <span class="floating-label">Firday</span>
+                                </div>
+                                <div class="user-input-wrp">
+                                    <input class="inputText" type="checkbox" value="saturday" id="">
+
+                                    <span class="floating-label">Saturday</span>
+                                </div>
+                                <div class="user-input-wrp">
+                                    <input class="inputText" type="checkbox" value="sunday" id="">
+                                    <span class="floating-label">Sunday</span>
+                                </div>
                             </div>
+
                         </div>
 
 
                         <div class="form-group col-12 mt-3 mb-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="accepts-01">
-                                <label class="form-check-label ps-1" for="accepts-01">You accept our Terms and Conditions
+                                <label class="form-check-label ps-1" for="accepts-01">You accept our Terms and
+                                    Conditions
                                     and Privacy Policy</label>
                             </div>
                         </div>
@@ -111,12 +151,13 @@
                             <button class="btn btn-primary" type="submit" id="next">Next</button>
                         </div>
                     </div>
+
                 </section>
             </div>
             <div class="tab-pane fade show" id="Package" data-toggle="tab">
                 @include('front-end.job.includes.create-step-3')
             </div>
-            <div class="tab-pane fade show" id="Confirm"  data-toggle="tab">
+            <div class="tab-pane fade show" id="Confirm" data-toggle="tab">
                 @include('front-end.job.includes.create-step-2')
             </div>
         </div>
@@ -135,59 +176,70 @@
 @endsection
 @section('js')
     <script>
-
-        $(document).ready(function (){
-            $('#next').on('click',function (){
+        $(document).ready(function () {
+            $('#next').on('click', function () {
                 let check = $('#step1').valid()
                 console.log(check)
-                if(check){
+                if (check) {
                     // $('#packageTabBtn').trigger('click')
                 }
 
             })
             $(".checkBox").rules("add", {
-                required:true,
-                minlength:3
+                required: true,
+                minlength: 3
             });
 
 
-            $('#previous').on('click',function (){
+            $('#previous').on('click', function () {
                 $('#Job-detail-tab').trigger('click')
             })
 
 
             $('#step1').validate({
-                rules:{
-                    title:{
-                        required:true
+                rules: {
+                    title: {
+                        required: true
                     },
-                     site:{
-                        required:true
+                    site: {
+                        required: true
                     },
-                     description:{
-                        required:true
+                    description: {
+                        required: true
                     },
-                     inTime:{
-                        required:true
+                    inTime: {
+                        required: true
                     },
-                     outTime:{
-                        required:true
+                    outTime: {
+                        required: true
                     },
-                     breakTimeStart:{
-                        required:true
+                    breakTimeStart: {
+                        required: true
                     },
-                     breakTimeEnd:{
-                        required:true
+                    breakTimeEnd: {
+                        required: true
                     },
-                     jobStartDate:{
-                        required:true
+                    jobStartDate: {
+                        required: true
                     },
-                     jobEndDate:{
-                        required:true
+                    jobEndDate: {
+                        required: true
+                    },
+                    gender: {
+                        required: true
+                    },
+                    salary: {
+                        required: true
+                    },
+                    quantity: {
+                        required: true
+                    },
+                    type: {
+                        required: true
                     }
 
                 },
-                messages:{
+                messages: {
                     title: 'Title is Required',
                     site: 'Site is Required',
                     description: 'Description is Required',
@@ -197,6 +249,9 @@
                     breakTimeEnd: 'Break Time End is Required',
                     jobStartDate: 'Job Start Date is Required',
                     jobEndDate: 'Job End Date is Required',
+                    salary: 'Salary is Required',
+                    quantity: 'quantity is Required',
+                    type: 'Type is Required',
                 }
             })
         })
