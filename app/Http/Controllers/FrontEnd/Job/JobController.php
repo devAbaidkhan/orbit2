@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\FrontEnd\Job;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
+use App\Models\JobType;
+use App\Models\Site;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use PHPUnit\Exception;
 
 class JobController extends Controller
 {
@@ -14,7 +20,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        return view('front-end.job.create');
+
     }
 
     /**
@@ -24,7 +30,9 @@ class JobController extends Controller
      */
     public function create()
     {
-
+        $sites = Site::all();
+        $jobTypes = JobType::all();
+        return view('front-end.job.create',get_defined_vars());
     }
 
     /**
@@ -33,9 +41,58 @@ class JobController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Job $job)
     {
-        //
+
+        try {
+            $response = array('response' => '', 'success'=>false);
+            $validator = Validator::make($request->all(), [
+                'title'=>'required',
+                'description'=>'required',
+                'inTime'=>'required',
+                'outTime'=>'required',
+                'breakTimeStart'=>'required',
+                'breakTimeEnd'=>'required',
+                'jobStartDate'=>'required',
+                'jobEndDate'=>'required',
+                'type'=>'required',
+                'experience'=>'required',
+                'salary'=>'required',
+                'gender'=>'required',
+                'position'=>'required',
+                'quantity'=>'required',
+                'workingDays'=>'required|array',
+            ]);
+
+            if ($validator->fails()) {
+                $response['response'] = $validator->messages()->first();
+                return response(['status'=>'error','message'=>$validator->messages()->first()]);
+            }
+
+            $job->site_id = $request->site;
+            $job->company_id = Auth::id();
+            $job->job_title = $request->title;
+            $job->job_description = $request->description;
+            $job->time_in = $request->inTime;
+            $job->time_out = $request->outTime;
+            $job->break_time_start = $request->breakTimeStart;
+            $job->break_time_end = $request->breakTimeEnd;
+            $job->job_start_date = $request->jobStartDate;
+            $job->job_end_date = $request->jobEndDate;
+            $job->job_type = $request->type;
+            $job->working_days = json_encode($request->workingDays);
+            $job->experience = $request->experience;
+            $job->salary = $request->salary;
+            $job->gender = $request->gender;
+            $job->position = $request->position;
+            $job->quantity = $request->quantity;
+            $job->save();
+
+            return response(['status'=>'success','message'=>'Job Posted Successfully']);
+
+        }catch (\Exception $exception){
+            return response(['status'=>'error','message'=>$exception->getMessage()]);
+        }
     }
 
     /**

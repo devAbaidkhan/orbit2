@@ -10,50 +10,45 @@
             <div class="row">
                 <div class="form-group col-md-6 select-border mb-3">
                     <label class="mb-2">Job Type *</label>
-                    <select class="form-control basic-select" id="" name="type">
-                        <option value="" >Job Type</option>
-                        <option value="value 02">9M Experience</option>
-                        <option value="value 03">1Y Experience</option>
-                        <option value="value 04">2Y Experience</option>
-                        <option value="value 05">5Y Experience</option>
+                    <select class="form-control " id="" name="type">
+                        <option value="" >-Select One-</option>
+                        @foreach($jobTypes as $jobType)
+                        <option value="{{$jobType->id}}">{{ucwords($jobType->name)}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-md-6 select-border mb-3">
-                    <label class="mb-2">Experience *</label>
-                    <select class="form-control basic-select" id="" name="experience">
-                        <option value="value 01" selected="selected">6M Experience</option>
-                        <option value="value 02">9M Experience</option>
-                        <option value="value 03">1Y Experience</option>
-                        <option value="value 04">2Y Experience</option>
-                        <option value="value 05">5Y Experience</option>
-                    </select>
+                    <label class="mb-2">Experience *(Years)</label>
+                    <input type="number" class="form-control" name="experience" id=""/>
                 </div>
                 <div class="form-group col-md-6 select-border mb-3">
                     <label class="mb-2">Gender *</label>
-                    <select class="form-control basic-select" id="" name="gender">
-                        <option value="value 03">Male</option>
-                        <option value="value 01">Female</option>
+                    <select class="form-control" id="" name="gender">
+                        <option value="">-Select One-</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
                     </select>
                 </div>
                 <div class="form-group col-md-6 select-border mb-md-0 mb-3">
                     <label class="mb-2">Position *</label>
-                    <select class="form-control basic-select" id="" name="position">
-                        <option value="value 02">Human Resources</option>
-                        <option value="value 01">Energy</option>
-                        <option value="value 03">IT & Telecoms</option>
+                    <select class="form-control " id="" name="position">
+                        <option value="">-Select One-</option>
+                        <option value="1">Human Resources</option>
+                        <option value="2">Energy</option>
+                        <option value="3">IT & Telecoms</option>
                     </select>
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label class="mb-2">Enter Salary *</label>
-                    <input type="number" class="form-control" name="salary" id=""/>
+                    <input type="number" class="form-control" name="salary" />
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label class="mb-2">Enter Quantity *</label>
                     <input type="number" class="form-control" name="quantity" id=""/>
                 </div>
                 <div class="col-md-12 mt-4">
-                    <button class="btn btn-primary" type="button" id="previous">Previous</button>
-                    <button class="btn btn-primary" type="submit">Post Job</button>
+                    <button class="btn btn-dark" type="button" id="previous">Previous</button>
+                    <button class="btn btn-primary" type="submit" id="postJob" >Post Job</button>
                 </div>
             </div>
         </div>

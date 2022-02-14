@@ -3,13 +3,13 @@
     <section class="space-ptb bg-light">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12">
+                <div class="col-12 tabBtns">
                     <div class="section-title text-center">
                         <h2 class="text-primary">Post a New Job</h2>
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div class=" justify-content-center">
+                    <div class=" justify-content-center tabBtns">
                         <ul class="nav nav-tabs nav-tabs-03 justify-content-center d-sm-flex text-center" id="myTab"
                             role="tablist">
                             <li class="flex-fill">
@@ -32,7 +32,7 @@
                             </li>
                             <li class="flex-fill">
                                 <a class="nav-item" data-toggle="tab" href="#Confirm" role="tab"
-                                   aria-controls="Confirm" aria-selected="false">
+                                   aria-controls="Confirm" id="confirmTabBtn" aria-selected="false">
                                     <div class="feature-info-icon mb-3">
                                         <i class="flaticon-tick"></i>
                                     </div>
@@ -45,7 +45,7 @@
             </div>
         </div>
     </section>
-    <form action="" id="step1">
+    <form id="form">
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade active show" id="Job-detail" role="tabpanel" aria-labelledby="Job-detail-tab">
                 <section class="space-ptb">
@@ -59,11 +59,12 @@
                                            placeholder="Enter a Title">
                                 </div>
                                 <div class="user-input-wrp">
-                                    <label class="mb-2">Select Site</label>
+                                    <label class="mb-2">Sites</label>
                                     <select class="form-control" id="" name="site">
-                                        <option value="">Howdy Bridge</option>
-                                        <option value="value 02">Theme park</option>
-                                        <option value="value 03">IT Towers</option>
+                                        <option value="">-Select One-</option>
+                                        @foreach($sites as $site)
+                                            <option value="{{$site->id}}">{{$site->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="user-input-wrp">
@@ -102,36 +103,36 @@
                                 </div>
 
                                 <div class="user-input-wrp">
-                                    <input class="inputText" type="checkbox" value="monday" id="">
+                                    <input class="inputText" type="checkbox" name="workingDays[]" value="monday" id="">
                                     <span class="floating-label">Monday</span>
                                 </div>
                                 <div class="user-input-wrp">
-                                    <input class="inputText" type="checkbox" value="tuesday" id="">
+                                    <input class="inputText" type="checkbox" name="workingDays[]" value="tuesday" id="">
 
                                     <span class="floating-label">Tuesday</span>
                                 </div>
                                 <div class="user-input-wrp">
-                                    <input class="inputText" type="checkbox" value="wednesday" id="">
+                                    <input class="inputText" type="checkbox" name="workingDays[]" value="wednesday" id="">
 
                                     <span class="floating-label">Wednesday</span>
                                 </div>
                                 <div class="user-input-wrp">
-                                    <input class="inputText" type="checkbox" value="thuresday" id="">
+                                    <input class="inputText" type="checkbox" name="workingDays[]" value="thuresday" id="">
 
                                     <span class="floating-label">Thuresday</span>
                                 </div>
                                 <div class="user-input-wrp">
-                                    <input class="inputText" type="checkbox" value="friday" id="">
+                                    <input class="inputText" type="checkbox" name="workingDays[]" value="friday" id="">
 
                                     <span class="floating-label">Firday</span>
                                 </div>
                                 <div class="user-input-wrp">
-                                    <input class="inputText" type="checkbox" value="saturday" id="">
+                                    <input class="inputText" type="checkbox" name="workingDays[]" value="saturday" id="">
 
                                     <span class="floating-label">Saturday</span>
                                 </div>
                                 <div class="user-input-wrp">
-                                    <input class="inputText" type="checkbox" value="sunday" id="">
+                                    <input class="inputText" type="checkbox" name="workingDays[]" value="sunday" id="">
                                     <span class="floating-label">Sunday</span>
                                 </div>
                             </div>
@@ -139,16 +140,16 @@
                         </div>
 
 
-                        <div class="form-group col-12 mt-3 mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="accepts-01">
-                                <label class="form-check-label ps-1" for="accepts-01">You accept our Terms and
-                                    Conditions
-                                    and Privacy Policy</label>
-                            </div>
-                        </div>
+{{--                        <div class="form-group col-12 mt-3 mb-3">--}}
+{{--                            <div class="form-check">--}}
+{{--                                <input class="form-check-input" type="checkbox" value="" id="accepts-01">--}}
+{{--                                <label class="form-check-label ps-1" for="accepts-01">You accept our Terms and--}}
+{{--                                    Conditions--}}
+{{--                                    and Privacy Policy</label>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="col-md-12">
-                            <button class="btn btn-primary" type="submit" id="next">Next</button>
+                            <button class="btn btn-primary" type="button" id="next">Next</button>
                         </div>
                     </div>
 
@@ -178,13 +179,22 @@
     <script>
         $(document).ready(function () {
             $('#next').on('click', function () {
-                let check = $('#step1').valid()
+                let check = $('#form').valid()
                 console.log(check)
                 if (check) {
-                    // $('#packageTabBtn').trigger('click')
+                    $('#packageTabBtn').trigger('click')
                 }
 
             })
+
+            // $('#post').on('click', function () {
+            //     let check = $('#form').valid()
+            //     console.log(check)
+            //     if (check) {
+            //         alert()
+            //     }
+            //
+            // })
             $(".checkBox").rules("add", {
                 required: true,
                 minlength: 3
@@ -195,8 +205,49 @@
                 $('#Job-detail-tab').trigger('click')
             })
 
+                $(document).on('click','#postJob', function (e) {
+                    e.preventDefault();
+                    // check if the input is valid using a 'valid' property
+                    if (!$('#form').valid() ) {
+                        return false;
+                    }
+                    let route = "{{route('jobs.store')}}";
+                    let form = $('#form')
+                    $.ajax({
+                        type: 'POST',
+                        url: route,
+                        data: new FormData(form[0]),
+                        contentType: false,
+                        data_type: 'json',
+                        cache: false,
+                        processData: false,
+                        beforeSend: function () {
+                            loader();
+                        },
+                        success: function (response) {
 
-            $('#step1').validate({
+                            swal.close();
+                            console.log(response)
+                            alertMsg(response.message, response['status']);
+                            if(response['status'] === 'success'){
+                                $('#confirmTabBtn').trigger('click');
+                                $('.tabBtns').hide()
+                            }
+                            // }
+
+
+                        },
+                        error: function (xhr, error, status) {
+                            // console.log(xhr.responseJSON.errors.name[0])
+                            swal.close();
+                            var response = xhr.responseJSON;
+                            // alertMsg(response.message, 'error');
+                            alertMsg(response.message, 'error');
+                        }
+                    });
+                });
+
+            $('#form').validate({
                 rules: {
                     title: {
                         required: true
@@ -234,6 +285,12 @@
                     quantity: {
                         required: true
                     },
+                    experience: {
+                        required: true
+                    },
+                    position: {
+                        required: true
+                    },
                     type: {
                         required: true
                     }
@@ -250,86 +307,13 @@
                     jobStartDate: 'Job Start Date is Required',
                     jobEndDate: 'Job End Date is Required',
                     salary: 'Salary is Required',
-                    quantity: 'quantity is Required',
+                    quantity: 'Quantity is Required',
                     type: 'Type is Required',
+                    experience: 'Experience is Required',
+                    position: 'Position is Required',
                 }
             })
         })
 
-        {{--$(document).ready(function (){--}}
-        {{--    $('#form').validate({--}}
-        {{--        rules: {--}}
-        {{--            name:{--}}
-        {{--                required:true,--}}
-        {{--            },--}}
-        {{--            address:{--}}
-        {{--                required:true,--}}
-        {{--            },--}}
-        {{--            title:{--}}
-        {{--                required:true,--}}
-        {{--            },--}}
-        {{--            jobTitle:{--}}
-        {{--                required:true,--}}
-        {{--            },--}}
-        {{--            phoneNumber:{--}}
-        {{--                required:true,--}}
-        {{--            },--}}
-        {{--            postalCode:{--}}
-        {{--                required:true,--}}
-        {{--                number:true--}}
-        {{--            },--}}
-        {{--            email:{--}}
-        {{--                required:true,--}}
-        {{--            },--}}
-        {{--        },--}}
-        {{--        messages: {--}}
-        {{--            name:'Name is required',--}}
-        {{--            phoneNumber:'Phone Number is required',--}}
-        {{--            address:'Address is required',--}}
-        {{--            postalCode:'Postal Code is required',--}}
-        {{--            email:'Email is required',--}}
-        {{--            title:'Title  is required',--}}
-        {{--            jobTitle:'Job Title  is required',--}}
-        {{--        },--}}
-        {{--    });--}}
-
-        {{--    $('#form').on('submit', function (e) {--}}
-        {{--        e.preventDefault();--}}
-        {{--        // check if the input is valid using a 'valid' property--}}
-        {{--        if (!$('#form').valid() ) {--}}
-        {{--            return false;--}}
-        {{--        }--}}
-        {{--        let route = "{{route('contact-person.store')}}";--}}
-        {{--        console.log(route)--}}
-        {{--        $.ajax({--}}
-        {{--            type: 'POST',--}}
-        {{--            url: route,--}}
-        {{--            data: new FormData(this),--}}
-        {{--            contentType: false,--}}
-        {{--            data_type: 'json',--}}
-        {{--            cache: false,--}}
-        {{--            processData: false,--}}
-        {{--            beforeSend: function () {--}}
-        {{--                loader();--}}
-        {{--            },--}}
-        {{--            success: function (response) {--}}
-
-        {{--                swal.close();--}}
-        {{--                console.log(response)--}}
-        {{--                alertMsg(response.message, response['status']);--}}
-        {{--                // }--}}
-
-
-        {{--            },--}}
-        {{--            error: function (xhr, error, status) {--}}
-        {{--                // console.log(xhr.responseJSON.errors.name[0])--}}
-        {{--                swal.close();--}}
-        {{--                var response = xhr.responseJSON;--}}
-        {{--                // alertMsg(response.message, 'error');--}}
-        {{--                alertMsg(response.message, 'error');--}}
-        {{--            }--}}
-        {{--        });--}}
-        {{--    });--}}
-        {{--})--}}
     </script>
 @endsection

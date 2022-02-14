@@ -15,8 +15,8 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('site_id')->references('id')->on('sites');
-            $table->foreignId('company_id')->references('id')->on('companies');
+            $table->unsignedInteger('site_id');
+            $table->unsignedInteger('company_id');
             $table->string('job_title');
             $table->longText('job_description');
             $table->time('time_in')->nullable();

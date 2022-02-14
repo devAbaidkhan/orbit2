@@ -38,8 +38,8 @@
                 <h6 class="mb-0 text-light">Email support@jobber.com</h6>
             </div>
             <div class="col-12 text-center mt-4 mt-sm-5">
-                <a class="btn btn-outline-primary mb-3 mb-sm-0" href="#">Manage Jobs</a>
-                <a class="btn btn-outline-primary mb-3 mb-sm-0" href="#">View Job</a>
+{{--                <a class="btn btn-outline-primary mb-3 mb-sm-0" href="#">Manage Jobs</a>--}}
+{{--                <a class="btn btn-outline-primary mb-3 mb-sm-0" href="#">View Job</a>--}}
             </div>
         </div>
     </div>

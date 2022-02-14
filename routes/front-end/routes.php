@@ -10,13 +10,10 @@ require __DIR__.'/auth.php';
       Route::resource('contact-person',\App\Http\Controllers\ContactPerson\ContactPersonController::class);
 
     // Job Post Routes
-    Route::resource('job',\App\Http\Controllers\FrontEnd\Job\JobController::class);
+    Route::resource('jobs',\App\Http\Controllers\FrontEnd\Job\JobController::class);
 
     // Documents Routes
     Route::resource('document',\App\Http\Controllers\Document\UserDocumentController::class);
-
-
-
 //========================================= Company Routes =====================================
 Route::group(['prefix' => 'company'], function () {
 

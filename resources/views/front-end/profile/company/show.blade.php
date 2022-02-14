@@ -14,7 +14,7 @@
                             </div>
                             <div class="profile-avatar-info ms-4">
                                 <h3>Felica Queen</h3>
-                                <p style="padding: 10px;">Visit <a href="company-dashboard.php">Dashboard</a> to complete your Profile.</p>
+                                <p style="padding: 10px;">Visit <a href="{{url('company/dashboard')}}">Dashboard</a> to complete your Profile.</p>
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                             <h6 class="candidates-info-title text-white">Total Jobs Posted</h6>
                         </div>
                         <div class="candidates-info-count">
-                            <h3 class="mb-0 text-white">01</h3>
+                            <h3 class="mb-0 text-white">{{count($jobs)}}</h3>
                         </div>
                     </div>
                 </div>
@@ -110,8 +110,13 @@
                         <div class="employers-list-details">
                             <div class="employers-list-info">
                                 <div class="employers-list-title">
-                                    <h5 class="mb-0 ob-company-heading"><a href="employer-detail.html">Electrician
-                                            Officer</a><a href="staff-job-listing.php"><span class="job-listing-link">- 05 Application (view)</span></a>
+                                    <h5 class="mb-0 ob-company-heading">
+                                        <a href="">Electrician
+                                            Officer
+                                        </a>
+                                        <a href="staff-job-listing.php">
+                                            <span class="job-listing-link">- 05 Application (view)</span>
+                                        </a>
                                     </h5>
                                 </div>
                                 <div class="employers-list-option">
@@ -324,6 +329,7 @@
     </div>
 @endsection
 @section('js')
+    <script src="{{asset('plugins/ijaboCropTool/ijaboCropTool.min.js')}}"></script>
     <script>
         $(document).ready(function () {
             $(document).on('click', '#change_picture_btn', function () {

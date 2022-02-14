@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontEnd\Profile;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,8 @@ class CompanyProfileController extends Controller
      */
     public function index()
     {
-        return view('front-end.profile.company.show');
+        $jobs = Auth::user()->jobs;
+        return view('front-end.profile.company.show',get_defined_vars());
     }
 
     /**
