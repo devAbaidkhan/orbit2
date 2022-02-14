@@ -41,7 +41,8 @@
                     <input type="text" class="form-control" id="timepicker" placeholder="In Time"/>
                 </div>
                 <div class="col-md-12 mt-4">
-                    <a class="btn btn-primary" href="#">Post Job</a>
+                    <button class="btn btn-primary" type="button" id="previous">Previous</button>
+                    <button class="btn btn-primary" type="button">Post Job</button>
                 </div>
             </div>
         </div>
