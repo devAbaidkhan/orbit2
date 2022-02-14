@@ -10,7 +10,7 @@
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <label for="add_document_type"></label><select name="add_document_type" id="add_document_type" class="inputText">
-                                        <option value=""  >Select Type</option>
+                                        <option value=""  >Document Type</option>
                                         @foreach($document_names as $document_name)
                                         <option value="{{$document_name->id}}">{{$document_name->name}}</option>
                                         @endforeach
@@ -48,27 +48,23 @@
     {{--Document Person script--}}
     <script>
         $(document).ready(function () {
+
             $('#add_document_form').validate({
                 rules: {
-                    add_document_file_name: {
+                    add_document_type: {
                         required: true,
-                        maxlength: 255,
                     },
-                    add_document_file_path: "required",
+                    add_document_file_path: {
+                        required: true,
+                    },
+
                 },
-                messages: {},
-                errorElement: 'small',
-                errorPlacement: function (error, element) {
-                    error.addClass('invalid-feedback');
-                    element.closest('.form-group').append(error);
+                messages: {
+                    add_document_type: 'Name is required',
+                    add_document_file_path: 'Phone Number is required',
                 },
-                highlight: function (element, errorClass, validClass) {
-                    $(element).addClass('is-invalid');
-                },
-                unhighlight: function (element, errorClass, validClass) {
-                    $(element).removeClass('is-invalid');
-                }
             });
+
             $('#add_document_form').on('submit', function (e) {
                 e.preventDefault();
                 // check if the input is valid using a 'valid' property

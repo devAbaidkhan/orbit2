@@ -246,12 +246,12 @@ header -->
         <div class="row justify-content-center mt-0">
             <div class="col-11 ">
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                    {{--                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
-                    {{--                    <p>Fill all form field to go to next step</p>--}}
+{{--                    <h2><strong>Sign Up Your User Account</strong></h2>--}}
+{{--                    <p>Fill all form field to go to next step</p>--}}
                     <div class="row">
                         <div class="col-md-12 mx-0">
                             <form id="msform">
-                            @csrf
+
                             <!-- progressbar -->
                                 <ul id="progressbar">
                                     <li class="active" id="account"><strong>Account</strong></li>
@@ -273,17 +273,17 @@ header -->
                                             <div class="mb-3 col-12">
                                                 <div class="user-input-wrp">
                                                     <input type="number" class="inputText" name="phoneNumber">
-
                                                     <span class="floating-label">Phone Number</span>
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-12">
                                                 <div class="user-input-wrp">
-                                                    <input id="email" type="text" class="inputText" name="email" onblur="duplicateEmail(this)">
-                                                    <span id="emailValidationError" class="error"></span>
+                                                    <input type="text" class="inputText" name="email">
+
                                                     <span class="floating-label">Email ID</span>
                                                 </div>
                                             </div>
+                                            @csrf
                                             <div class="mb-3 col-12">
                                                 <div class="user-input-wrp">
                                                     <input type="password" class="inputText" id="password"
@@ -302,10 +302,10 @@ header -->
                                             </div>
 
                                         </div>
-                                        {{--                                        <input type="email" name="email" placeholder="Email Id" />--}}
-                                        {{--                                        <input type="text" name="uname" placeholder="UserName" />--}}
-                                        {{--                                        <input type="password" name="pwd" placeholder="Password" />--}}
-                                        {{--                                        <input type="password" name="cpwd" placeholder="Confirm Password" />--}}
+{{--                                        <input type="email" name="email" placeholder="Email Id" />--}}
+{{--                                        <input type="text" name="uname" placeholder="UserName" />--}}
+{{--                                        <input type="password" name="pwd" placeholder="Password" />--}}
+{{--                                        <input type="password" name="cpwd" placeholder="Confirm Password" />--}}
                                     </div>
 
 
@@ -316,7 +316,7 @@ header -->
                                         <h2 class="fs-title">Register as <span id="register_as"></span></h2>
                                         <input type="hidden" id="role" name="role">
                                         <div class="row align-items-center">
-                                            {{--                                            <h2 class="title text-center register-heading">Register as</h2>--}}
+{{--                                            <h2 class="title text-center register-heading">Register as</h2>--}}
 
                                             <div class="col-lg-3 col-md-4 col-6 text-center mb-3 role_div">
                                                 <div class="ans-category-item pt-3">
@@ -363,7 +363,8 @@ header -->
                                     </div>
 
                                     <input type="button" name="previous" class="previous action-button-previous"
-                                           value="Previous"/> <input type="button" name="next" id="next"
+                                           value="Previous"/>
+                                    <input type="button" name="next"
                                                                      class="next action-button" value="Next Step"
                                                                      disabled style="background-color:lightgrey"/>
                                 </fieldset>
@@ -426,13 +427,7 @@ header -->
 @endsection
 @section('js')
     <script>
-
-
         $(document).ready(function () {
-
-
-
-
             $('.ans-category-item').click(function () {
                 $('.ans-category-item.checked').removeClass('checked')
 
@@ -444,7 +439,7 @@ header -->
             })
             $('.ans-category-item').click(function () {
 
-                $('#next').prop('disabled', false)
+                $('.next').prop('disabled', false)
                 $('.next').css({'background-color': 'skyblue'});
             })
 
@@ -460,8 +455,6 @@ header -->
                     },
                     email: {
                         required: true,
-                        email: true,
-
                     },
                     password: {
                         required: true,
@@ -476,23 +469,23 @@ header -->
                 messages: {
                     name: 'Name is required',
                     phoneNumber: 'Phone Number is required',
-                    email: {
-                        required: 'Email is required11',
-                    },
+                    email: 'Email is required',
                     password: 'Password is required',
                 },
             });
 
-            $('#msform').on('submit', function (e) {
+            $(document).on('click','#register', function (e) {
                 e.preventDefault();
                 // check if the input is valid using a 'valid' property
                 if (!$('#msform').valid() || !$('#role').val().trim()) {
                     return false;
                 }
+               let form = $('#msform')
                 $.ajax({
                     type: 'POST',
                     url: '{{route('register.save')}}',
-                    data: new FormData(this),
+                    data: new FormData(form[0]),
+                    // data: $('#msform').serialize(),
                     contentType: false,
                     data_type: 'json',
                     cache: false,
@@ -504,6 +497,12 @@ header -->
                         swal.close();
                         console.log(response)
                         alertMsg(response.message, response['status']);
+
+                        if(response['status'] === 'success'){
+                            $('.next').attr('id','')
+                            $('.next').attr('type','button')
+                            $('.next').trigger('click')
+                        }
                         // if(response.email){
                         {{--window.location.replace("{{url('login')}}");--}}
                         // }
@@ -512,10 +511,8 @@ header -->
                     },
                     error: function (xhr, error, status) {
                         // console.log(xhr.responseJSON.errors.name[0])
-                        //window.location = '/register';
                         swal.close();
                         var response = xhr.responseJSON;
-
                         // alertMsg(response.message, 'error');
                         alertMsg(response.message, 'error');
                     }
@@ -560,7 +557,7 @@ header -->
                     });
                 }
                 setTimeout(function () {
-                    $(this).attr('id', 'register')
+                    $(".next").attr('id', 'register')
                     $(".next").attr('type', 'submit')
                 }, 100)
             });
