@@ -56,6 +56,7 @@
                         </div>
                     </div>
                 </div>
+{{--                @dd($jobs[0]->type,$jobs[0]->site)--}}
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <div class="candidates-feature-info bg-success">
                         <div class="candidates-info-icon text-white">
@@ -106,23 +107,22 @@
                         <div class="job-alert-bt">My Posted Jobs List:</div>
 
                     </div>
+                    @foreach($jobs as $job )
                     <div class="employers-list">
                         <div class="employers-list-details">
                             <div class="employers-list-info">
                                 <div class="employers-list-title">
                                     <h5 class="mb-0 ob-company-heading">
-                                        <a href="">Electrician
-                                            Officer
-                                        </a>
+                                        <a href="">{{$job->job_title}}</a>
                                         <a href="staff-job-listing.php">
-                                            <span class="job-listing-link">- 05 Application (view)</span>
+                                            <span class="job-listing-link"></span>
                                         </a>
                                     </h5>
                                 </div>
                                 <div class="employers-list-option">
                                     <ul class="list-unstyled">
-                                        <li>Corporate</li>
-                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Monday to Friday 0800-1700.
+                                        <li>{{$job->site->name}}</li>
+                                        <li><i class="fas fa-map-marker-alt pe-1"></i>
                                             Officer should be smart, professional and
                                         </li>
                                     </ul>
@@ -130,56 +130,57 @@
                             </div>
                         </div>
                         <div class="employers-list-position">
-                            <a class="btn btn-primary btn-job-font" href="#">17 position</a>
-                            <p>2$/per hour</p>
+                            <a class="btn btn-primary btn-job-font" href="#">{{$job->quantity}} position</a>
+                            <p>Salary: {{$job->salary}}</p>
                         </div>
                     </div>
-                    <div class="employers-list">
-                        <div class="employers-list-details">
-                            <div class="employers-list-info">
-                                <div class="employers-list-title">
-                                    <h5 class="mb-0 ob-company-heading"><a href="employer-detail.html">Officer</a><a
-                                            href="staff-job-listing.php"><span class="job-listing-link">- 05 Application (view)</span></a>
-                                    </h5>
-                                </div>
-                                <div class="employers-list-option">
-                                    <ul class="list-unstyled">
-                                        <li>Corporate</li>
-                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Monday to Friday 0800-1700.
-                                            Officer should be smart, professional and
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="employers-list-position">
-                            <a class="btn btn-primary btn-job-font" href="#">17 position</a>
-                            <p>2$/per hour</p>
-                        </div>
-                    </div>
-                    <div class="employers-list">
-                        <div class="employers-list-details">
-                            <div class="employers-list-info">
-                                <div class="employers-list-title">
-                                    <h5 class="mb-0 ob-company-heading"><a href="employer-detail.html">Protocol
-                                            Officer</a><a href="staff-job-listing.php"><span class="job-listing-link">- 05 Application (view)</span></a>
-                                    </h5>
-                                </div>
-                                <div class="employers-list-option">
-                                    <ul class="list-unstyled">
-                                        <li>Corporate</li>
-                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Monday to Friday 0800-1700.
-                                            Officer should be smart, professional and
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="employers-list-position">
-                            <a class="btn btn-primary btn-job-font" href="#">17 position</a>
-                            <p>2$/per hour</p>
-                        </div>
-                    </div>
+                    @endforeach
+{{--                    <div class="employers-list">--}}
+{{--                        <div class="employers-list-details">--}}
+{{--                            <div class="employers-list-info">--}}
+{{--                                <div class="employers-list-title">--}}
+{{--                                    <h5 class="mb-0 ob-company-heading"><a href="employer-detail.html">Officer</a><a--}}
+{{--                                            href="staff-job-listing.php"><span class="job-listing-link">- 05 Application (view)</span></a>--}}
+{{--                                    </h5>--}}
+{{--                                </div>--}}
+{{--                                <div class="employers-list-option">--}}
+{{--                                    <ul class="list-unstyled">--}}
+{{--                                        <li>Corporate</li>--}}
+{{--                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Monday to Friday 0800-1700.--}}
+{{--                                            Officer should be smart, professional and--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="employers-list-position">--}}
+{{--                            <a class="btn btn-primary btn-job-font" href="#">17 position</a>--}}
+{{--                            <p>2$/per hour</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="employers-list">--}}
+{{--                        <div class="employers-list-details">--}}
+{{--                            <div class="employers-list-info">--}}
+{{--                                <div class="employers-list-title">--}}
+{{--                                    <h5 class="mb-0 ob-company-heading"><a href="employer-detail.html">Protocol--}}
+{{--                                            Officer</a><a href="staff-job-listing.php"><span class="job-listing-link">- 05 Application (view)</span></a>--}}
+{{--                                    </h5>--}}
+{{--                                </div>--}}
+{{--                                <div class="employers-list-option">--}}
+{{--                                    <ul class="list-unstyled">--}}
+{{--                                        <li>Corporate</li>--}}
+{{--                                        <li><i class="fas fa-map-marker-alt pe-1"></i>Monday to Friday 0800-1700.--}}
+{{--                                            Officer should be smart, professional and--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="employers-list-position">--}}
+{{--                            <a class="btn btn-primary btn-job-font" href="#">17 position</a>--}}
+{{--                            <p>2$/per hour</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                 </div>
             </div>
