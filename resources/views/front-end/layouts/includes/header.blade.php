@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <!--<ul class="nav navbar-nav">
+                <ul class="nav navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="/">Home</a>
                     </li>
@@ -65,7 +65,7 @@
                             <li><a class="dropdown-item" href="staff-details-personal.php">Staff Personal Details</a></li>
                         </ul>
                     </li>
-                </ul>-->
+                </ul>
             </div>
             <a class="navbar-brand" href="#">
                 <img class="img-fluid" src="{{asset('images/logo/logo.png')}}" alt="logo" width="200px" height="30px;">

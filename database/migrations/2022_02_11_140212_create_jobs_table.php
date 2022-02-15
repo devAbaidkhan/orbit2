@@ -23,8 +23,8 @@ class CreateJobsTable extends Migration
             $table->time('time_out')->nullable();
             $table->time('break_time_start')->nullable();
             $table->time('break_time_end')->nullable();
-            $table->date('job-start_date')->nullable();
-            $table->date('job-end_date')->nullable();
+            $table->date('job_start_date')->nullable();
+            $table->date('job_end_date')->nullable();
             $table->json('working_days')->nullable();
 
             $table->string('job_type')->nullable();

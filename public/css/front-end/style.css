@@ -8521,7 +8521,7 @@ iframe {
 
 /* When you mouse over the navigation links, change their color */
 .ans-sidenav a:hover {
-    color: #f1f1f1;
+    color: black;
 }
 
 /* Position and style the close button (top right corner) */
@@ -8531,7 +8531,7 @@ iframe {
     right: 10px;
     font-size: 36px;
     margin-left: 50px;
-    color: #fff;
+    color: gray;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -8703,7 +8703,7 @@ iframe {
     position: absolute;
     bottom: 10px;
     padding-left: 20px;
-    color: #fff;
+    color: #ad82bb;
     font-size: 12px;
 }
 
