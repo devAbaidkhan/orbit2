@@ -25,7 +25,7 @@ Route::get('/staff-dashboard', function () {
 });
 
 Route::get('/staff-detail-dashboard', function () {
-    return view('front-end/profile/company/staff/profile-detail');
+    return view('front-end.profile.staff.show');
 });
 
 Route::get('/staff-religion', function () {

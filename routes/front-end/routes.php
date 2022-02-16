@@ -14,6 +14,15 @@ require __DIR__.'/auth.php';
 
     // Documents Routes
     Route::resource('document',\App\Http\Controllers\Document\UserDocumentController::class);
+
+//========================================= Staff Routes =====================================
+Route::group(['prefix' => 'staff'], function () {
+
+    Route::get('/',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'index']);
+
+});
+//======================================== End ============================================
+
 //========================================= Company Routes =====================================
 Route::group(['prefix' => 'company'], function () {
 

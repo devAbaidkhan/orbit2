@@ -1,17 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\FrontEnd;
+namespace App\Http\Controllers\Frontend\Profile;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class HomeController extends Controller
+class StaffProfileController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -19,15 +15,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        if (Auth::user()->hasRole('company')){
-            return redirect('/company');
-        }elseif (Auth::user()->hasRole('staff')){
-            return redirect('/staff');
-        }elseif (Auth::user()->hasRole('admin')){
-            return redirect('/admin');
-        }
-
+        $jobs = Auth::user()->jobs;
+        return view('front-end.profile.staff.show', get_defined_vars());
     }
 
     /**
@@ -35,9 +24,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function unauthorized()
+    public function create()
     {
-        dd('You are Not authorized to Perform this Action!');
+        //
     }
 
     /**
