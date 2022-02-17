@@ -8,28 +8,28 @@
                     <div class="row">
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="number" class="inputText" value="" name="">
+                                <input type="number" class="inputText" value="" name="bankName">
 
                                 <span class="floating-label">Bank Name</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="text" class="inputText" value="" name="">
+                                <input type="text" class="inputText" value="" name="accountTitle">
 
                                 <span class="floating-label">Account Title</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="number" class="inputText" value="" name="">
+                                <input type="number" class="inputText" value="" name="accountNumber">
 
                                 <span class="floating-label">Account Number</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="number" class="inputText" value="" name="">
+                                <input type="number" class="inputText" value="" name="shortCode">
 
                                 <span class="floating-label">Short Code</span>
                             </div>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 ob-btn-login">
-                            <button class="btn btn-primary " >Save</button>
+                            <button class="btn btn-primary " id="save" >Save</button>
                         </div>
                         @csrf
                     </div>
@@ -50,4 +50,74 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function (){
+            $('#form').validate({
+                rules: {
+                    bankName:{
+                        required:true,
+                    },
+                    accountTitle:{
+                        required:true,
+                    },
+                    accountNumber:{
+                        required:true,
+                    },
+                    shortCode:{
+                        required:true,
+                    },
+
+                },
+                messages: {
+                    bankName:'Bank Name  is required',
+                    accountTitle:'Account Title is required',
+                    accountNumber:'Account Number is required',
+                    shortCode:'Short Code is required',
+                },
+            });
+
+            $('#form').on('submit', function (e) {
+                e.preventDefault();
+                // check if the input is valid using a 'valid' property
+                if (!$('#form').valid() ) {
+                    return false;
+                }
+                let id = "{{auth()->id()}}"
+                let route = "{{route('confidential.update',['id'=>':id'])}}";
+                route = route.replace(':id', id);
+                console.log(route)
+                $.ajax({
+                    type: 'POST',
+                    url: route,
+                    data: new FormData(this),
+                    contentType: false,
+                    data_type: 'json',
+                    cache: false,
+                    processData: false,
+                    beforeSend: function () {
+                        loader();
+                    },
+                    success: function (response) {
+
+                        swal.close();
+                        console.log(response)
+                        alertMsg(response.message, response['status']);
+                        // }
+
+
+                    },
+                    error: function (xhr, error, status) {
+                        // console.log(xhr.responseJSON.errors.name[0])
+                        swal.close();
+                        var response = xhr.responseJSON;
+                        // alertMsg(response.message, 'error');
+                        alertMsg(response.message, 'error');
+                    }
+                });
+            });
+        })
+    </script>
 @endsection

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class CompanyMiddleware
+class StaffMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,7 @@ class CompanyMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-
-        if ($request->user()->hasRole('company')){
+        if ($request->user()->hasRole('staff')){
             return $next($request);
         }
         return redirect('/unauthorized');

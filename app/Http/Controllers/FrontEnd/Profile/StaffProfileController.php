@@ -24,23 +24,13 @@ class StaffProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createReligion()
+    public function createBasicDetails($type)
     {
-        return view('front-end.profile.staff.create-religion');
+        return view('front-end.profile.staff.create-'.$type);
     }
-    public function createBank()
+    public function storeBasicDetails(Request $request)
     {
-        return view('front-end.profile.staff.create-bank');
-    }
-
-    public function createPassport()
-    {
-        return view('front-end.profile.staff.create-passport');
-    }
-
-    public function createEmergency()
-    {
-        return view('front-end.profile.staff.create-emergency');
+        dd($request->all());
     }
 
     /**

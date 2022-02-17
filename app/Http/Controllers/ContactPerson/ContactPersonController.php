@@ -42,12 +42,14 @@ class ContactPersonController extends Controller
 
             $contactPerson->title = $request->title;
             $contactPerson->name = $request->name;
+            $contactPerson->user_id = $request->user()->id;
+            $contactPerson->user_type = $request->user()->role->name;
             $contactPerson->job_title = $request->jobTitle;
             $contactPerson->phone_number = $request->phoneNumber;
             $contactPerson->email = $request->email;
             $contactPerson->address = $request->address;
             $contactPerson->postal_code = $request->postalCode;
-            User::find($request->contactable_id)->contactPerson()->save($contactPerson);
+            $contactPerson->save();
             $response = array('status' => 'success', 'message' => 'Data Inserted Successful');
             return response()->json($response, 200);
 

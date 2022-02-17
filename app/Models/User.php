@@ -53,7 +53,7 @@ class User extends \TCG\Voyager\Models\User
 
     public function contactPerson()
     {
-        return $this->morphMany(ContactPerson::class,'contactable');
+        return $this->hasMany(ContactPerson::class,'user_id','id');
     }
     public function jobs()
     {

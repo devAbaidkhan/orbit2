@@ -16,13 +16,16 @@ require __DIR__.'/auth.php';
     Route::resource('document',\App\Http\Controllers\Document\UserDocumentController::class);
 
 //========================================= Staff Routes =====================================
-Route::group(['prefix' => 'staff'], function () {
+Route::group(['prefix' => 'staff','middleware'=>'staff'], function () {
 
     //create
-    Route::get('/create/religion',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createReligion']);
-    Route::get('/create/bank',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createBank']);
-    Route::get('/create/passport',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createPassport']);
-    Route::get('/create/emergency',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createEmergency']);
+    Route::get('/store/religion',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createReligion']);
+    $routeExpression = 'religion|bank|passport|emergency';
+    Route::get('/create/{type}',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createBasicDetails'])->where('type',$routeExpression);
+    Route::get('/store/{type}',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'storeBasicDetails'])->where('type',$routeExpression);
+//    Route::get('/create/bank',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createBank']);
+//    Route::get('/create/passport',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createPassport']);
+//    Route::get('/create/emergency',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createEmergency']);
 
     //dashboard - profile
     Route::get('/',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'index']);
