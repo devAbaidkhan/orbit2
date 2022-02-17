@@ -157,6 +157,12 @@
                     </div>
                     <a class="btn btn-white btn-md" href="{{route('jobs.create')}}"> <i class="fas fa-plus-circle"></i>Post a job</a>
                 @endif
+                    @if(auth()->user()->hasRole('staff'))
+                        <div class="login d-inline-block me-4">
+                            <a href="{{route('staff.dashboard')}}">Dashboard</a>
+                        </div>
+
+                    @endif
 
             </div>
         </div>

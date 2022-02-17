@@ -13,6 +13,10 @@ class DashboardController extends Controller
     }
     public function staff()
     {
-        return view('front-end.dashboard.company');
+        return view('front-end.dashboard.staff');
+    }
+    public function staffBasic()
+    {
+        return view('front-end.dashboard.staff-basic');
     }
 }

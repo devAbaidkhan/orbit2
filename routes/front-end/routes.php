@@ -10,7 +10,7 @@ require __DIR__.'/auth.php';
       Route::resource('contact-person',\App\Http\Controllers\ContactPerson\ContactPersonController::class);
 
     // Job Post Routes
-    Route::resource('jobs',\App\Http\Controllers\FrontEnd\Job\JobController::class);
+    Route::resource('jobs',\App\Http\Controllers\FrontEnd\Job\JobController::class)->middleware('company');
 
     // Documents Routes
     Route::resource('document',\App\Http\Controllers\Document\UserDocumentController::class);
@@ -18,13 +18,22 @@ require __DIR__.'/auth.php';
 //========================================= Staff Routes =====================================
 Route::group(['prefix' => 'staff'], function () {
 
+    //create
+    Route::get('/create/religion',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createReligion']);
+    Route::get('/create/bank',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createBank']);
+    Route::get('/create/passport',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createPassport']);
+    Route::get('/create/emergency',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createEmergency']);
+
+    //dashboard - profile
     Route::get('/',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'index']);
+    Route::get('dashboard',[\App\Http\Controllers\FrontEnd\Dashboard\DashboardController::class,'staff'])->name('staff.dashboard');
+    Route::get('dashboard/basic',[\App\Http\Controllers\FrontEnd\Dashboard\DashboardController::class,'staffBasic']);
 
 });
 //======================================== End ============================================
 
 //========================================= Company Routes =====================================
-Route::group(['prefix' => 'company'], function () {
+Route::group(['prefix' => 'company','middleware'=>'company'], function () {
 
     // site routes
     Route::get('sites/create',[\App\Http\Controllers\FrontEnd\Site\SiteController::class,'create']);

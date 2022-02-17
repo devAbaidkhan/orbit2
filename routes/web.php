@@ -21,11 +21,12 @@ require __DIR__.'/front-end/routes.php';
 Route::get('/', [\App\Http\Controllers\FrontEnd\HomeController::class,'index']);
 
 Route::get('/staff-dashboard', function () {
-    return view('front-end/dashboard/staff');
+    return view('front-end.dashboard.staff');
 });
 
 Route::get('/staff-detail-dashboard', function () {
-    return view('front-end.profile.staff.show');
+
+    return view('front-end.dashboard.profile-detail');
 });
 
 Route::get('/staff-religion', function () {
