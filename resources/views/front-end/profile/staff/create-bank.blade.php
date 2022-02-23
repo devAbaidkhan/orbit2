@@ -36,6 +36,7 @@
                         </div>
 
                     </div>
+                    <input type="hidden" name="userId" value="{{auth()->id()}}">
                     <div class="row">
                         <div class="col-md-12 ob-btn-login">
                             <button class="btn btn-primary " id="save" >Save</button>
@@ -85,10 +86,7 @@
                 if (!$('#form').valid() ) {
                     return false;
                 }
-                let id = "{{auth()->id()}}"
-                let route = "{{route('confidential.update',['id'=>':id'])}}";
-                route = route.replace(':id', id);
-                console.log(route)
+                let route = "{{url('staff/bank/store')}}";
                 $.ajax({
                     type: 'POST',
                     url: route,

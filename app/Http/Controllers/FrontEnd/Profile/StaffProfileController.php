@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Profile;
 
 use App\Http\Controllers\Controller;
+use App\Models\UserBankDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,7 +31,30 @@ class StaffProfileController extends Controller
     }
     public function storeBasicDetails(Request $request)
     {
-        dd($request->all());
+
+        if ($request->urlType == 'bank'){
+         $response =   $this->storeBank($request);
+        }
+        dd($response);
+    }
+
+    public function storeBank($request)
+    {
+
+        try {
+
+            $detail = UserBankDetail::firstOrCreate(['id'=>$request['id']]);
+            $detail->bank_name = $request->bankName;
+            $detail->account_title = $request->accountTitle;
+            $detail->account_number = $request->accountNumber;
+            $detail->short_code = $request->shortCode;
+            $detail->user_id = $request->userId;
+            $detail->save();
+            return ['message'=>'Saved Successfully','status'=>'success'];
+        }catch (\Exception $exception){
+            return ['message'=>$exception->getMessage(),'status'=>'error'];
+        }
+
     }
 
     /**
