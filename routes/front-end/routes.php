@@ -38,9 +38,11 @@ Route::group(['prefix' => 'staff','middleware'=>'staff'], function () {
 Route::group(['prefix' => 'company','middleware'=>'company'], function () {
 
     // site routes
-    Route::get('sites/create',[\App\Http\Controllers\FrontEnd\Site\SiteController::class,'create']);
-    Route::post('sites/store',[\App\Http\Controllers\FrontEnd\Site\SiteController::class,'store']);
-    Route::get('sites/show',[\App\Http\Controllers\FrontEnd\Site\SiteController::class,'show']);
+    Route::resource('sites',\App\Http\Controllers\FrontEnd\Site\SiteController::class);
+    // site routes
+//    Route::get('sites/create',[\App\Http\Controllers\FrontEnd\Site\SiteController::class,'create']);
+//    Route::post('sites/store',[\App\Http\Controllers\FrontEnd\Site\SiteController::class,'store']);
+//    Route::get('sites/show',[\App\Http\Controllers\FrontEnd\Site\SiteController::class,'show']);
 
     // company confidential
     Route::get('/confidential/create',[\App\Http\Controllers\FrontEnd\Profile\CompanyProfileController::class,'createConfidential'])->name('confidential.create');
