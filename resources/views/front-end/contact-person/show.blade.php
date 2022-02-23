@@ -61,9 +61,9 @@ job-grid -->
                                         </div>
                                     </div>
                                     <div class="job-list-favourite-time">
-                                        <a class="job-list-favourite order-2" href="#"><i class="far fa-eye"></i></a>
-                                        <a class="job-list-favourite order-2" href="{{route('contact-person.edit/{contact_person}')}}"><i class="far fa-edit"></i></a>
-                                        <a class="job-list-favourite order-2" href="#"><i class="far fa-trash-alt"></i></a>
+                                        <a class="job-list-favourite order-2" href="{{url('contact-person/'.$contactPerson->id.'/view')}}"><i class="far fa-eye"></i></a>
+                                        <a class="job-list-favourite order-2" href="{{url('contact-person/'.$contactPerson->id.'/edit')}}"><i class="far fa-edit"></i></a>
+                                        <a class="job-list-favourite order-2" href=""><i class="far fa-trash-alt"></i></a>
                                     </div>
                                 </div>
                             </div>

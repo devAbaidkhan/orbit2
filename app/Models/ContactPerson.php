@@ -9,4 +9,6 @@ class ContactPerson extends Model
 {
     protected $table = 'contact_people';
     use HasFactory;
+    protected $guarded = [];
+
 }

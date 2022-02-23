@@ -14,26 +14,29 @@ Signin -->
     </div>
   </div>
 </section>
+
 <section class="space-ptb">
     <div class="container">
         <div class="tab-content">
             <div class="tab-pane active" id="candidate" role="tabpanel">
                 <form class="mt-4" id="form">
+                    @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="mb-3 col-3">
                             <div class="user-input-wrp">
                                 <select name="title" id="title" class="inputText">
                                     <option value=""  >select title</option>
                                     <option value="Mr">Mr</option>
-                                    <option value="Mrs">Mrs</option>
-                                    <option value="Miss">Miss</option>
-                                    <option value="Ms">Ms</option>
+                                    <option value="Mrs" >Mrs</option>
+                                    <option value="Miss" >Miss</option>
+                                    <option value="Ms" >Ms</option>
                                 </select>
                             </div>
                         </div>
                         <div class="mb-3 col-9">
                             <div class="user-input-wrp">
-                                <input type="text" class="inputText" name="name">
+                                <input   type="text" class="inputText" name="name">
 
                                 <span class="floating-label">Name</span>
                             </div>
@@ -41,7 +44,7 @@ Signin -->
 
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="email" class="inputText" name="email">
+                                <input readonly  type="email" class="inputText" name="email" >
 
                                 <span class="floating-label">Email</span>
                             </div>
@@ -49,33 +52,33 @@ Signin -->
 
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="text" class="inputText" name="jobTitle">
+                                <input readonly  type="text" class="inputText" name="jobTitle" >
 
                                 <span class="floating-label">Job Title</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="number" class="inputText" name="phoneNumber">
+                                <input readonly  type="number" class="inputText" name="phoneNumber" >
 
                                 <span class="floating-label">Phone Number</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="text" class="inputText" name="address">
+                                <input readonly  type="text" class="inputText" name="address" >
 
                                 <span class="floating-label">Address</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="number" class="inputText" name="postalCode">
+                                <input readonly  type="number" class="inputText" name="postalCode" >
 
                                 <span class="floating-label">Site Postal Zip/Code</span>
                             </div>
                         </div>
-                        <input type="hidden" name="contactable_id" value="{{auth()->id()}}">
+                        <input type="hidden" name="contactable_id" id="contactable_id" value="{{auth()->id()}}">
                     </div>
                     <div class="row">
                         <div class="col-md-12 ob-btn-login">
@@ -172,6 +175,7 @@ Signin -->
                     }
                 });
             });
+
         })
     </script>
 @endsection

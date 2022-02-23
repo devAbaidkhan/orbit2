@@ -8,6 +8,7 @@ require __DIR__.'/auth.php';
 //contact person
 //Route::resource('contact-person',[])
       Route::resource('contact-person',\App\Http\Controllers\ContactPerson\ContactPersonController::class);
+      Route::get('contact-person/{contact_person}/view',[\App\Http\Controllers\ContactPerson\ContactPersonController::class,'view'])->name("contact-person.view");
     // Job Post Routes
     Route::resource('jobs',\App\Http\Controllers\FrontEnd\Job\JobController::class)->middleware('company');
 

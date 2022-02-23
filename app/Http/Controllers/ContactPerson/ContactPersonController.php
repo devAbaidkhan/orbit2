@@ -20,6 +20,12 @@ class ContactPersonController extends Controller
         //
     }
 
+    public function view($id)
+    {
+        $contactPerson = ContactPerson::find($id);
+        return view('front-end.contact-person.view', compact('contactPerson'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -77,11 +83,12 @@ class ContactPersonController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $contactPerson = ContactPerson::find($id);
+        return view('front-end.contact-person.edit', compact('contactPerson'));
     }
 
     /**
@@ -89,11 +96,29 @@ class ContactPersonController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ContactPerson $contactPerson )
     {
-        //
+        try {
+            $contactPerson->title = $request->title;
+            $contactPerson->name = $request->name;
+            $contactPerson->user_id = $request->user()->id;
+            $contactPerson->user_type = $request->user()->role->name;
+            $contactPerson->job_title = $request->jobTitle;
+            $contactPerson->phone_number = $request->phoneNumber;
+            $contactPerson->email = $request->email;
+            $contactPerson->address = $request->address;
+            $contactPerson->postal_code = $request->postalCode;
+            $contactPerson->save();
+            $response = array('status' => 'success', 'message' => 'Data Inserted Successful');
+            return response()->json($response, 200);
+
+        } catch (\Exception $exception) {
+
+            $response = array('status' => 'error', 'message' => $exception->getMessage());
+            return response()->json($response,500);
+        }
     }
 
     /**
