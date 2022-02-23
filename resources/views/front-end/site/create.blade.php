@@ -18,10 +18,6 @@ Signin -->
     <div class="container">
         <div class="tab-content">
             <div class="row">
-                <div class="col-md-12 ob-btn-login">
-                    <button class="btn btn-success " ><a href="{{url('company/sites/show')}}">Site List</a></button>
-                </div>
-
             </div>
             <div class="tab-pane active" id="candidate" role="tabpanel">
                 <form class="mt-4" id="form">

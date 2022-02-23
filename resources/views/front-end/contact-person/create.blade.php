@@ -17,9 +17,6 @@ Signin -->
 <section class="space-ptb">
     <div class="container">
         <div class="tab-content">
-            <div class="col-md-12 ob-btn-login">
-                <button class="btn btn-success " ><a href="{{url('contact-person/show')}}">Site List</a></button>
-            </div>
             <div class="tab-pane active" id="candidate" role="tabpanel">
                 <form class="mt-4" id="form">
                     <div class="row">

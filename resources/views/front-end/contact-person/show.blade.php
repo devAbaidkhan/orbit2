@@ -35,7 +35,7 @@ job-grid -->
 
                         </div>
                         <div class="job-shortby ms-sm-auto d-flex align-items-center">
-                            <div class="filter-btn ms-sm-3" style="width:100%"> <a class="btn btn-outline-primary" style="width:100%">Add new Site</a>
+                            <div class="filter-btn ms-sm-3" style="width:100%"> <a href="{{route('contact-person.create')}}" class="btn btn-outline-primary" style="width:100%">Add new Site</a>
                             </div>
                         </div>
                     </div>
