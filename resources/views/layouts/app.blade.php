@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }} || @yield('title')</title>
     @include('layouts.css')
     <link rel="stylesheet" href="{{ asset('css/front-end/style.css') }}" type="text/css" sizes="16x16">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @stack('css')

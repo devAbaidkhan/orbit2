@@ -11,7 +11,7 @@ job-grid -->
                     right-sidebar -->
                     <div class="row mb-4">
                         <div class="col-12 hmz-site-heading">
-                            <h6 class="mb-0 ">Working Sites</h6>
+                            <h6 class="mb-0 ">Contect Person List</h6>
                         </div>
                     </div>
                     <div class="job-filter mb-4 d-sm-flex align-items-center">
@@ -24,7 +24,7 @@ job-grid -->
                                                 <div class="user-input-wrp">
                                                     <br/>
                                                     <input type="text" class="inputText" required/>
-                                                    <span class="floating-label">Your email address</span>
+                                                    <span class="floating-label">Search</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -62,7 +62,7 @@ job-grid -->
                                     </div>
                                     <div class="job-list-favourite-time">
                                         <a class="job-list-favourite order-2" href="#"><i class="far fa-eye"></i></a>
-                                        <a class="job-list-favourite order-2" href="#"><i class="far fa-edit"></i></a>
+                                        <a class="job-list-favourite order-2" href="{{route('contact-person.edit/{contact_person}')}}"><i class="far fa-edit"></i></a>
                                         <a class="job-list-favourite order-2" href="#"><i class="far fa-trash-alt"></i></a>
                                     </div>
                                 </div>

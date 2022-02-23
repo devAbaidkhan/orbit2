@@ -3,9 +3,6 @@
     <section class="space-ptb">
         <div class="container">
             <div class="tab-content">
-                <div class="col-md-12 ob-btn-login">
-                    <button class="btn btn-success " ><a href="{{url('document/show')}}">Site List</a></button>
-                </div>
                 <div class="tab-pane active" id="candidate" role="tabpanel">
                     <form  method="post" class="mt-4" id="add_document_form">
                         @csrf
