@@ -5,37 +5,71 @@
         <div class="tab-content">
             <div class="tab-pane active" id="candidate" role="tabpanel">
                 <form class="mt-4" id="form">
+                    @if($bankDetail)
                     <div class="row">
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="number" class="inputText" value="" name="bankName">
+                                <input type="number" class="inputText" value="{{$bankDetail->bank_name}}" name="bankName">
 
                                 <span class="floating-label">Bank Name</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="text" class="inputText" value="" name="accountTitle">
+                                <input type="text" class="inputText" value="{{$bankDetail->account_title}}" name="accountTitle">
 
                                 <span class="floating-label">Account Title</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="number" class="inputText" value="" name="accountNumber">
+                                <input type="number" class="inputText" value="{{$bankDetail->account_number}}" name="accountNumber">
 
                                 <span class="floating-label">Account Number</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="number" class="inputText" value="" name="shortCode">
+                                <input type="number" class="inputText" value="{{$bankDetail->short_code}}" name="shortCode">
 
                                 <span class="floating-label">Short Code</span>
                             </div>
                         </div>
 
                     </div>
+                    @else
+                        <div class="row">
+                            <div class="mb-3 col-12">
+                                <div class="user-input-wrp">
+                                    <input type="number" class="inputText" value="" name="bankName">
+
+                                    <span class="floating-label">Bank Name</span>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-12">
+                                <div class="user-input-wrp">
+                                    <input type="text" class="inputText" value="" name="accountTitle">
+
+                                    <span class="floating-label">Account Title</span>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-12">
+                                <div class="user-input-wrp">
+                                    <input type="number" class="inputText" value="" name="accountNumber">
+
+                                    <span class="floating-label">Account Number</span>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-12">
+                                <div class="user-input-wrp">
+                                    <input type="number" class="inputText" value="" name="shortCode">
+
+                                    <span class="floating-label">Short Code</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        @endif
                     <input type="hidden" name="userId" value="{{auth()->id()}}">
                     <div class="row">
                         <div class="col-md-12 ob-btn-login">

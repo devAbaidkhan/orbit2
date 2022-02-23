@@ -60,4 +60,17 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany(Job::class,'company_id','id');
     }
 
+    public function bankDetail()
+    {
+        return $this->hasOne(UserBankDetail::class,'user_id','id');
+    }
+    public function passportDetail()
+    {
+        return $this->hasOne(UserPassportDetail::class,'user_id','id');
+    }
+    public function confidentialDetail()
+    {
+        return $this->hasOne(UserConfidentialDetail::class,'user_id','id');
+    }
+
 }
