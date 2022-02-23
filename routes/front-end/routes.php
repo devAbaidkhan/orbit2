@@ -5,9 +5,11 @@ require __DIR__.'/auth.php';
 
 
 
-//contact person
-//Route::resource('contact-person',[])
-      Route::resource('contact-person',\App\Http\Controllers\ContactPerson\ContactPersonController::class);
+
+
+    //contact person
+    Route::resource('contact-person',\App\Http\Controllers\ContactPerson\ContactPersonController::class);
+
     // Job Post Routes
     Route::resource('jobs',\App\Http\Controllers\FrontEnd\Job\JobController::class)->middleware('company');
 
@@ -19,7 +21,7 @@ Route::group(['prefix' => 'staff','middleware'=>'staff'], function () {
 
     //create
     Route::get('/store/religion',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createReligion']);
-    $routeExpression = 'religion|bank|passport|emergency';
+    $routeExpression = 'religion|bank|passport|basic|confidential|qualification';
     Route::get('/{urlType}/create',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createBasicDetails'])->where('urlType',$routeExpression);
     Route::post('/{urlType}/store',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'storeBasicDetails'])->where('urlType',$routeExpression);
 

@@ -34,7 +34,7 @@ inner banner -->
             <div class="row align-items-center hmz-staff-dashboard-main">
                 <div class="col-lg-3 col-md-4 col-6 text-center mb-3">
                     <div class="ans-category-item pt-3">
-                        <a href="staff-details.php" class="category-item p-0">
+                        <a href="{{url('staff/dashboard/basic')}}" class="category-item p-0">
                             <div class="category-icon mb-3">
                                 <img src="{{asset("images/staff/dashboard/7--Basic-Profile.png")}}" class="img-responsive">
                             </div>
@@ -44,7 +44,7 @@ inner banner -->
                 </div>
                 <div class="col-lg-3 col-md-4 col-6 text-center mb-3">
                     <div class="ans-category-item pt-3">
-                        <a href="#" class="category-item p-0">
+                        <a href="{{url('staff/confidential/create')}}"  class="category-item p-0">
                             <div class="category-icon mb-3">
                                 <img src="{{asset("images/staff/dashboard/8--Confidential-Info.png")}}" class="img-responsive">
                             </div>
@@ -64,7 +64,7 @@ inner banner -->
                 </div>
                 <div class="col-lg-3 col-md-4 col-6 text-center mb-3">
                     <div class="ans-category-item pt-3">
-                        <a href="#" class="category-item p-0">
+                        <a href="{{url('staff/qualification/create')}}" class="category-item p-0">
                             <div class="category-icon mb-3">
                                 <img src="{{asset("images/staff/dashboard/2--Qualifications.png")}}" class="img-responsive">
                             </div>
