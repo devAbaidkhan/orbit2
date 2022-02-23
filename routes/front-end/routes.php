@@ -8,7 +8,6 @@ require __DIR__.'/auth.php';
 //contact person
 //Route::resource('contact-person',[])
       Route::resource('contact-person',\App\Http\Controllers\ContactPerson\ContactPersonController::class);
-
     // Job Post Routes
     Route::resource('jobs',\App\Http\Controllers\FrontEnd\Job\JobController::class)->middleware('company');
 
@@ -41,6 +40,7 @@ Route::group(['prefix' => 'company','middleware'=>'company'], function () {
     // site routes
     Route::get('sites/create',[\App\Http\Controllers\FrontEnd\Site\SiteController::class,'create']);
     Route::post('sites/store',[\App\Http\Controllers\FrontEnd\Site\SiteController::class,'store']);
+    Route::get('sites/show',[\App\Http\Controllers\FrontEnd\Site\SiteController::class,'show']);
 
     // company confidential
     Route::get('/confidential/create',[\App\Http\Controllers\FrontEnd\Profile\CompanyProfileController::class,'createConfidential'])->name('confidential.create');
