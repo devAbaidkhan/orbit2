@@ -35,7 +35,7 @@ class StaffProfileController extends Controller
         if ($request->urlType == 'bank'){
          $response =   $this->storeBank($request);
         }
-        dd($response);
+        return $response;
     }
 
     public function storeBank($request)
@@ -43,7 +43,11 @@ class StaffProfileController extends Controller
 
         try {
 
-            $detail = UserBankDetail::firstOrCreate(['id'=>$request['id']]);
+            $detail = UserBankDetail::where('user_id',$request->userId)->first();
+            if(!$detail){
+                $detail = new UserBankDetail();
+            }
+
             $detail->bank_name = $request->bankName;
             $detail->account_title = $request->accountTitle;
             $detail->account_number = $request->accountNumber;

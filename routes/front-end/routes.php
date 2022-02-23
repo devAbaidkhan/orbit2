@@ -20,11 +20,8 @@ Route::group(['prefix' => 'staff','middleware'=>'staff'], function () {
     //create
     Route::get('/store/religion',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createReligion']);
     $routeExpression = 'religion|bank|passport|emergency';
-    Route::get('/create/{type}',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createBasicDetails'])->where('type',$routeExpression);
-    Route::get('/store/{type}',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'storeBasicDetails'])->where('type',$routeExpression);
-//    Route::get('/create/bank',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createBank']);
-//    Route::get('/create/passport',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createPassport']);
-//    Route::get('/create/emergency',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createEmergency']);
+    Route::get('/{urlType}/create',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createBasicDetails'])->where('urlType',$routeExpression);
+    Route::post('/{urlType}/store',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'storeBasicDetails'])->where('urlType',$routeExpression);
 
     //dashboard - profile
     Route::get('/',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'index']);
