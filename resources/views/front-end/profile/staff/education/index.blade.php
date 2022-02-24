@@ -70,7 +70,7 @@ job-grid -->
         </div>
         <div class="job-filter mb-4 d-sm-flex align-items-center">
           <div class="job-shortby ms-sm-auto d-flex align-items-center">
-            <div class="filter-btn ms-sm-3" style="width:100%"> <a class="btn btn-outline-primary ans-add-new-btn" style="width:100%">Add new Site</a>
+            <div class="filter-btn ms-sm-3" style="width:100%"> <a class="btn btn-outline-primary ans-add-new-btn" href="{{route('education.create')}}" style="width:100%">Add New</a>
            </div>
           </div>
         </div>

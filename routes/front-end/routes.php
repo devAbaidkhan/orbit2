@@ -18,9 +18,11 @@ require __DIR__.'/auth.php';
 //========================================= Staff Routes =====================================
 Route::group(['prefix' => 'staff','middleware'=>'staff'], function () {
 
+    Route::resource('education',\App\Http\Controllers\Frontend\Profile\StaffEducationController::class);
+
     //create
     Route::get('/store/religion',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createReligion']);
-    $routeExpression = 'religion|bank|passport|emergency';
+    $routeExpression = 'religion|bank|passport|basic|confidential';
     Route::get('/{urlType}/create',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createBasicDetails'])->where('urlType',$routeExpression);
     Route::post('/{urlType}/store',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'storeBasicDetails'])->where('urlType',$routeExpression);
 

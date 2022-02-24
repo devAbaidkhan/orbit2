@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Profile;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 use App\Models\User;
 use App\Models\UserBankDetail;
 use App\Models\UserConfidentialDetail;
@@ -19,7 +20,7 @@ class StaffProfileController extends Controller
      */
     public function index()
     {
-        $jobs = Auth::user()->jobs;
+        $jobs = Job::all();
         return view('front-end.profile.staff.show', get_defined_vars());
     }
 
