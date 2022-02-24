@@ -4,6 +4,7 @@ namespace App\Http\Controllers\FrontEnd\Job;
 
 use App\Http\Controllers\Controller;
 use App\Models\Job;
+use App\Models\JobApplication;
 use App\Models\JobType;
 use App\Models\Site;
 use Illuminate\Http\Request;
@@ -138,5 +139,20 @@ class JobController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function jobApply(Request $request)
+    {
+        try {
+            $application = new JobApplication();
+            $application->job_id = $request->jobId;
+            $application->staff_id = $request->staffId;
+            $application->save();
+
+            return response(['status' => 'success', 'message' => 'Applied Successfully']);
+
+        } catch (\Exception $exception) {
+            return response(['status' => 'error', 'message' => $exception->getMessage()]);
+        }
     }
 }

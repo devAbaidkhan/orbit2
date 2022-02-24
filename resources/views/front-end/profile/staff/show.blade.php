@@ -164,26 +164,32 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Job Description</h4>
-                            <textarea name="description" readonly id="jobDescription" rows="4" class="form-control"></textarea>
+                    <form action="" id="form">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="hidden" name="jobId" id="jobId">
+                                <input type="hidden" name="staffId" value="{{auth()->id()}}">
+                                <h4>Job Description</h4>
+                                <textarea readonly id="jobDescription" rows="4" class="form-control"></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">Start Date</label>
+                                <input type="text" id="startDate"  readonly class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="" >End Date</label>
+                                <input type="text" id="endDate" readonly class="form-control">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="">Salary</label>
+                                <input type="text" id="salary"  readonly class="form-control">
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn btn-primary">Apply</button></div>
                         </div>
-                        <div class="col-md-6">
-                            <label for="">Start Date</label>
-                            <input type="text" id="startDate" name="input[]" readonly class="form-control">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="" >End Date</label>
-                            <input type="text" id="endDate" name="input[]" readonly class="form-control">
-                        </div>
-                        <div class="col-md-12">
-                            <label for="">Salary</label>
-                            <input type="text" id="salary" name="input[]" readonly class="form-control">
-                        </div>
-                        <div class="col-md-12">
-                            <button class="btn btn-primary">Apply</button></div>
-                    </div>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -202,6 +208,7 @@
                 $('#startDate').val(details.job_start_date)
                 $('#endDate').val(details.job_end_date)
                 $('#salary').val(details.salary)
+                $('#jobId').val(details.id)
             })
 
             $(document).on('click', '#change_picture_btn', function () {
@@ -223,6 +230,44 @@
                 onError:function(message, element, status){
                     alert(message);
                 }
+            });
+
+            $('#form').on('submit', function (e) {
+                e.preventDefault();
+                // check if the input is valid using a 'valid' property
+                if (!$('#form').valid() ) {
+                    return false;
+                }
+                $('#exampleModalCenter').modal('hide')
+                let route = "{{url('staff/job/apply')}}";
+                $.ajax({
+                    type: 'POST',
+                    url: route,
+                    data: new FormData(this),
+                    contentType: false,
+                    data_type: 'json',
+                    cache: false,
+                    processData: false,
+                    beforeSend: function () {
+                        loader();
+                    },
+                    success: function (response) {
+
+                        swal.close();
+                        console.log(response)
+                        alertMsg(response.message, response['status']);
+                        // }
+
+
+                    },
+                    error: function (xhr, error, status) {
+                        // console.log(xhr.responseJSON.errors.name[0])
+                        swal.close();
+                        var response = xhr.responseJSON;
+                        // alertMsg(response.message, 'error');
+                        alertMsg(response.message, 'error');
+                    }
+                });
             });
 
         });

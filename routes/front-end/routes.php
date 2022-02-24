@@ -20,6 +20,9 @@ Route::group(['prefix' => 'staff','middleware'=>'staff'], function () {
 
     Route::resource('education',\App\Http\Controllers\Frontend\Profile\StaffEducationController::class);
 
+    Route::post('job/apply',[\App\Http\Controllers\FrontEnd\Job\JobController::class,'jobApply']);
+
+
     //create
     Route::get('/store/religion',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'createReligion']);
     $routeExpression = 'religion|bank|passport|basic|confidential';
