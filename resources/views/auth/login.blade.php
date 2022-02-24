@@ -10,7 +10,7 @@ Signin -->
                     <div class="login-register">
                         <div class="section-title ob-login-main-heading">
                             <img src="images/logo/WorkOrBit-Logo-500.png" width="220px" class="img-responsive section-title-image">
-                            <h4 class="text-center ob-login-main-heading">Welcome Back</h4>
+                            <h4 class="text-center ob-login-main-heading">Welcome Backs</h4>
                         </div>
 
                         <div class="tab-content">
