@@ -63,7 +63,12 @@ job-grid -->
                                     <div class="job-list-favourite-time">
                                         <a class="job-list-favourite order-2" href="{{url('contact-person/'.$contactPerson->id.'/view')}}"><i class="far fa-eye"></i></a>
                                         <a class="job-list-favourite order-2" href="{{url('contact-person/'.$contactPerson->id.'/edit')}}"><i class="far fa-edit"></i></a>
-                                        <a class="job-list-favourite order-2" href=""><i class="far fa-trash-alt"></i></a>
+                                        <form action="{{url('contact-person/'.$contactPerson->id)}}" method="post" class='delete_form'>
+                                            @csrf
+                                            @method("DELETE")
+                                            <a class="job-list-favourite order-2" id="a-submit"><button type="submit"><i class="far fa-trash-alt"></i></button></a>
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>
@@ -93,6 +98,50 @@ job-grid -->
 @endsection
 @section('js')
     <script>
-
+        $(document).on('submit', '.delete_form', function (e) {
+            e.preventDefault();
+            var route = $(this).attr('action');
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You will not be able to recover this data!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, keep it'
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        type: 'POST',
+                        url: route,
+                        data: new FormData(this),
+                        contentType: false,
+                        data_type: 'json',
+                        cache: false,
+                        processData: false,
+                        beforeSend: function () {
+                            loader();
+                        },
+                        success: function (response) {
+                            swal.close();
+                            console.log(response)
+                            alertMsg(response.message, response['status']);
+                        },
+                        error: function (xhr, error, status) {
+                            // console.log(xhr.responseJSON.errors.name[0])
+                            swal.close();
+                            var response = xhr.responseJSON;
+                            // alertMsg(response.message, 'error');
+                            alertMsg(response.message, 'error');
+                        }
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire(
+                        'Cancelled',
+                        'Your Data is safe :)',
+                        'error'
+                    )
+                }
+            })
+        });
     </script>
 @endsection

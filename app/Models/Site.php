@@ -9,7 +9,9 @@ class Site extends Model
 {
     use HasFactory;
 
+    protected $table = 'sites';
     protected $fillable = ['company_id'];
+
 
     public function document()
     {

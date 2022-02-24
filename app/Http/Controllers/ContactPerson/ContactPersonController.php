@@ -111,7 +111,7 @@ class ContactPersonController extends Controller
             $contactPerson->address = $request->address;
             $contactPerson->postal_code = $request->postalCode;
             $contactPerson->save();
-            $response = array('status' => 'success', 'message' => 'Data Inserted Successful');
+            $response = array('status' => 'success', 'message' => 'Data Updatad Successful');
             return response()->json($response, 200);
 
         } catch (\Exception $exception) {
@@ -125,10 +125,22 @@ class ContactPersonController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(ContactPerson $contactPerson)
     {
-        //
+        try {
+            if ($contactPerson->delete()) {
+                $response = array('status' => 'success', 'message' => 'Data Deleted Successful');
+                return response()->json($response, 200);
+            }
+
+            $response = array('status' => 'error', 'message' => 'Data Not Deleted Successful');
+            return response()->json($response, 403);
+
+        } catch (\Exception  $th) {
+            $response = array('status' => 'error', 'message' => $th->getMessage());
+            return response()->json($response, 403);
+        }
     }
 }

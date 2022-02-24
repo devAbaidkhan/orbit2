@@ -34,6 +34,8 @@
 
 <script src="{{asset('plugins/ijaboCropTool/ijaboCropTool.min.js')}}"></script>
 <script src="{{asset('js/custom.js')}}"></script>
+
+
 <script>
     $(document).ready(function () {
         /** add active class and stay opened when selected */

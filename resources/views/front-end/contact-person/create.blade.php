@@ -21,7 +21,6 @@ Signin -->
             <div class="tab-pane active" id="candidate" role="tabpanel">
                 <form class="mt-4" id="form">
                     @csrf
-                    @method('PUT')
                     <div class="row">
                         <div class="mb-3 col-3">
                             <div class="user-input-wrp">
@@ -44,7 +43,7 @@ Signin -->
 
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input readonly  type="email" class="inputText" name="email" >
+                                <input   type="email" class="inputText" name="email" >
 
                                 <span class="floating-label">Email</span>
                             </div>
@@ -52,28 +51,28 @@ Signin -->
 
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input readonly  type="text" class="inputText" name="jobTitle" >
+                                <input   type="text" class="inputText" name="jobTitle" >
 
                                 <span class="floating-label">Job Title</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input readonly  type="number" class="inputText" name="phoneNumber" >
+                                <input   type="number" class="inputText" name="phoneNumber" >
 
                                 <span class="floating-label">Phone Number</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input readonly  type="text" class="inputText" name="address" >
+                                <input   type="text" class="inputText" name="address" >
 
                                 <span class="floating-label">Address</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input readonly  type="number" class="inputText" name="postalCode" >
+                                <input  type="number" class="inputText" name="postalCode" >
 
                                 <span class="floating-label">Site Postal Zip/Code</span>
                             </div>

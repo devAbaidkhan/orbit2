@@ -152,9 +152,11 @@ Signin -->
                 if (!$('#form').valid() ) {
                     return false;
                 }
+                let route = "{{route('sites.store')}}";
+                console.log(route)
                 $.ajax({
                     type: 'POST',
-                    url: "{{url('company/sites/store')}}",
+                    url: route,
                     data: new FormData(this),
                     contentType: false,
                     data_type: 'json',

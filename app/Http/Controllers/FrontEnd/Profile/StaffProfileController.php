@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Profile;
+namespace App\Http\Controllers\FrontEnd\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Models\Job;

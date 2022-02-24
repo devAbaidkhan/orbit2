@@ -18,6 +18,12 @@ class SiteController extends Controller
 
     }
 
+    public function view($id)
+    {
+        $sites = Site::find($id);
+        return view('front-end.site.view', compact('sites'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +38,7 @@ class SiteController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -83,11 +89,12 @@ class SiteController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $sites = Site::find($id);
+        return view('front-end.site.edit', compact('sites'));
     }
 
     /**
@@ -95,11 +102,40 @@ class SiteController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Site $site)
     {
-        //
+
+        try {
+            $exists = Site::where('name', $request->name)
+                ->where('company_id', $request->user()->id)
+                ->exists();
+
+            if ($exists) {
+                $response = array('status' => 'error', 'message' => 'Site Already exists');
+                return response()->json($response, 403);
+            }
+
+            $site->company_id = $request->user()->id;
+            $site->name = $request->name;
+            $site->address = $request->address;
+            $site->postal_code = $request->postalCode;
+            $site->city = $request->city;
+            $site->start_date = $request->startDate;
+            $site->finish_date = $request->finishDate;
+            $site->longitude = $request->longitude;
+            $site->latitude = $request->latitude;
+            $site->save();
+
+            $response = array('status' => 'success', 'message' => 'Data Inserted Successful');
+            return response()->json($response, 200);
+        }catch (\Exception $exception){
+
+            $response = array('status' => 'error', 'message' => $exception->getMessage());
+        }
+
+        return response()->json($response, 403);
     }
 
     /**
@@ -108,8 +144,20 @@ class SiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Site $site)
     {
-        //
+        try {
+            if ($site->delete()) {
+                $response = array('status' => 'success', 'message' => 'Data Deleted Successful');
+                return response()->json($response, 200);
+            }
+
+            $response = array('status' => 'error', 'message' => 'Data Not Deleted Successful');
+            return response()->json($response, 403);
+
+        } catch (\Exception  $th) {
+            $response = array('status' => 'error', 'message' => $th->getMessage());
+            return response()->json($response, 403);
+        }
     }
 }

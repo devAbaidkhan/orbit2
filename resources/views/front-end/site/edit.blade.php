@@ -8,7 +8,7 @@ Signin -->
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="section-title text-center">
-                        <h2 style="color:#8b4e9f">Contact Person</h2>
+                        <h2 style="color:#8b4e9f">Site Detail</h2>
                     </div>
                 </div>
             </div>
@@ -18,74 +18,78 @@ Signin -->
     <section class="space-ptb">
         <div class="container">
             <div class="tab-content">
+                <div class="row">
+                </div>
                 <div class="tab-pane active" id="candidate" role="tabpanel">
                     <form class="mt-4" id="form">
                         @csrf
                         @method('PUT')
                         <div class="row">
-                            <div class="mb-3 col-3">
-                                <div class="user-input-wrp">
-                                    <select name="title" id="title" class="inputText">
-                                        <option value=""  >select title</option>
-                                        <option value="Mr" {{old('gender',$contactPerson->title) == 'Mr' ? 'selected': ''}}>Mr</option>
-                                        <option value="Mrs" {{old('gender',$contactPerson->title) == 'Mrs' ? 'selected': ''}}>Mrs</option>
-                                        <option value="Miss" {{old('gender',$contactPerson->title) == 'Miss' ? 'selected': ''}}>Miss</option>
-                                        <option value="Ms" {{old('gender',$contactPerson->title) == 'Ms' ? 'selected': ''}}>Ms</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mb-3 col-9">
-                                <div class="user-input-wrp">
-                                    <input   type="text" class="inputText" name="name" value="{{ old('name', $contactPerson->name) }}">
-
-                                    <span class="floating-label">Name</span>
-                                </div>
-                            </div>
-
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
-                                    <input   type="email" class="inputText" name="email" value="{{ old('name', $contactPerson->email) }}">
+                                    <input type="text" class="inputText" name="name" value="{{ old('name', $sites->name) }}">
 
-                                    <span class="floating-label">Email</span>
-                                </div>
-                            </div>
-
-                            <div class="mb-3 col-12">
-                                <div class="user-input-wrp">
-                                    <input   type="text" class="inputText" name="jobTitle" value="{{ old('name', $contactPerson->job_title) }}">
-
-                                    <span class="floating-label">Job Title</span>
+                                    <span class="floating-label">Site Name</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
-                                    <input   type="number" class="inputText" name="phoneNumber" value="{{ old('name', $contactPerson->phone_number) }}">
+                                    <input type="text" class="inputText" name="address" value="{{ old('address', $sites->address) }}">
 
-                                    <span class="floating-label">Phone Number</span>
+                                    <span class="floating-label">Site Address</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
-                                    <input   type="text" class="inputText" name="address" value="{{ old('name', $contactPerson->address) }}">
-
-                                    <span class="floating-label">Address</span>
-                                </div>
-                            </div>
-                            <div class="mb-3 col-12">
-                                <div class="user-input-wrp">
-                                    <input   type="number" class="inputText" name="postalCode" value="{{ old('name', $contactPerson->postal_code) }}">
+                                    <input  type="number" class="inputText" name="postalCode" value="{{ old('postal_code', $sites->postal_code) }}">
 
                                     <span class="floating-label">Site Postal Zip/Code</span>
                                 </div>
                             </div>
-                            <input type="hidden" name="contactable_id" id="contactable_id" value="{{ old('id', $contactPerson->id) }}">
+                            <div class="mb-3 col-12">
+                                <div class="user-input-wrp">
+                                    <input  type="text" class="inputText" name="city" value="{{ old('city', $sites->city) }}">
+
+                                    <span class="floating-label">City</span>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <div class="user-input-wrp">
+                                    <input  type="number" class="inputText" name="longitude" value="{{ old('longitude', $sites->longitude) }}">
+
+                                    <span class="floating-label">Site Latitude</span>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <div class="user-input-wrp">
+                                    <input  type="number" class="inputText" name="latitude" value="{{ old('latitude', $sites->latitude) }}">
+
+                                    <span class="floating-label">Site longitude</span>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <div class="user-input-wrp">
+                                    <input  type="date" name="startDate" class="inputText" value="{{ old('start_date', $sites->start_date) }}">
+
+                                    <span class="floating-label">Start Date</span>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <div class="user-input-wrp">
+                                    <input  type="date" class="inputText" name="finishDate" value="{{ old('start_date', $sites->finish_date) }}">
+
+                                    <span class="floating-label">Finish Date</span>
+                                </div>
+                            </div>
+                            <input type="hidden" name="contactable_id" id="contactable_id" value="{{ old('id', $sites->id) }}">
                         </div>
                         <div class="row">
                             <div class="col-md-12 ob-btn-login">
                                 <button class="btn btn-primary">Save</button>
                             </div>
-                            @csrf
+
                         </div>
+
                     </form>
 
                     <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">
@@ -96,48 +100,53 @@ Signin -->
         </div>
     </section>
 
+    <!--=================================
+    Signin -->
 
 @endsection
-
 @section('js')
     <script>
-        $(document).ready(function (){
+        $(document).ready(function () {
             $('#form').validate({
                 rules: {
-                    name:{
-                        required:true,
+                    name: {
+                        required: true,
                     },
-                    address:{
-                        required:true,
+                    address: {
+                        required: true,
                     },
-                    title:{
-                        required:true,
+                    city: {
+                        required: true,
                     },
-                    jobTitle:{
-                        required:true,
+                    startDate: {
+                        required: true,
                     },
-                    phoneNumber:{
-                        required:true,
+                    finishDate: {
+                        required: true,
                     },
-                    postalCode:{
-                        required:true,
-                        number:true
+                    postalCode: {
+                        required: true,
+                        number: true
                     },
-                    email:{
-                        required:true,
+                    longitude: {
+                        required: true,
+                        number: true
+                    },
+                    latitude: {
+                        required: true,
+                        number: true
                     },
                 },
                 messages: {
-                    name:'Name is required',
-                    phoneNumber:'Phone Number is required',
-                    address:'Address is required',
-                    postalCode:'Postal Code is required',
-                    email:'Email is required',
-                    title:'Title  is required',
-                    jobTitle:'Job Title  is required',
+                    name: 'Name is required',
+                    phoneNumber: 'Phone Number is required',
+                    password: 'Password is required',
+                    address: 'Address is required',
+                    country: 'Country is required',
+                    city: 'City is required',
+                    postalCode: 'Postal Code is required',
                 },
             });
-
             $('#form').on('submit', function (e) {
                 e.preventDefault();
                 // check if the input is valid using a 'valid' property
@@ -145,8 +154,9 @@ Signin -->
                     return false;
                 }
                 var id = $('#contactable_id').val();
-                var route = "{{route('contact-person.update',['contact_person'=>':contact_person'])}}";
-                route = route.replace(':contact_person', id);
+                var route = "{{route('sites.update',['site'=>':site'])}}";
+                route = route.replace(':site', id);
+                console.log(route);
                 $.ajax({
                     type: 'POST',
                     url: route,
@@ -159,6 +169,7 @@ Signin -->
                         loader();
                     },
                     success: function (response) {
+                        window.location.reload();
                         swal.close();
                         console.log(response)
                         alertMsg(response.message, response['status']);
