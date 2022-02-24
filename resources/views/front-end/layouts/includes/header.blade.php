@@ -1,5 +1,5 @@
-<header class="header bg-dark">
-    <nav class="navbar navbar-static-top navbar-expand-lg header-sticky">
+<header class="header bg-dark ans-header">
+    <nav class="navbar navbar-static-top navbar-expand-lg header-sticky ans-navbar">
         <div class="container-fluid">
             <button onclick="openNav()" id="nav-icon4" type="button" class="navbar-toggler">
                 <span></span>

@@ -8,9 +8,9 @@ Signin -->
             <div class="row justify-content-center">
                 <div class="col-xl-8 col-lg-10 col-md-12">
                     <div class="login-register">
-                        <div class="section-title ob-login-main-heading">
+                        <div class="section-title">
                             <img src="images/logo/WorkOrBit-Logo-500.png" width="220px" class="img-responsive section-title-image">
-                            <h4 class="text-center ob-login-main-heading">Welcome Backs</h4>
+                            <h4 class="text-center login-text ob-login-main-heading">Welcome Back</h4>
                         </div>
 
                         <div class="tab-content">
@@ -35,16 +35,21 @@ Signin -->
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12 ob-btn-login">
-
-                                            <button class="btn btn-primary " type="submit" >Log In</button>
-                                        </div>
                                         <div class="col-md-12">
-                                            <div class="mt-3 mt-md-0 forgot-pass login-link-href">
+                                            <div class="mt-md-0 forgot-pass login-link-href">
                                                 <a href="forgot-password.php" class="">Forgot Password  ?</a>
                                             </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 ob-btn-login">
+                                            <button class="btn btn-primary ob-btn" type="submit" >Log In</button>
+                                        </div>
+                                        <div class="col-md-12">
+
                                             <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">
-                                                <p class="mt-1">Don't have account? <a href="{{route('register')}}">Sign Up here</a></p>
+                                                <p class="mt-1">Don't have Account? <a href="{{route('register')}}">Sign Up here</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -61,14 +66,7 @@ Signin -->
     <!--=================================
     Signin -->
 
-    <!--=================================
-    feature-info-->
 
-    <!--=================================
-    Back To Top-->
-    <div id="back-to-top" class="back-to-top">
-        <i class="fas fa-angle-up"></i>
-    </div>
 @endsection
 
 

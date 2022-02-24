@@ -90,7 +90,7 @@ NOTE: This file contains all scripts for the actual Template.
 	*************************/
 	POTENZA.isSticky = function () {
 		$(window).scroll( function(){
-			if ($(this).scrollTop() > 150) {
+			if ($(this).scrollTop() > 500000) {
 				$('.header-sticky').addClass('is-sticky');
 			} else {
 				$('.header-sticky').removeClass('is-sticky');
@@ -453,14 +453,14 @@ NOTE: This file contains all scripts for the actual Template.
 	});
 })(jQuery);
 
- // used for small navbar 
+ // used for small navbar
       /* Set the width of the side navigation to 250px */
      function openNav() {
        document.getElementById("ans-mySidenav").style.width = "280px";
      }
- 
+
      /* Set the width of the side navigation to 0 */
      function closeNav() {
        document.getElementById("ans-mySidenav").style.width = "0";
      }
-  // end of small navbar 
+  // end of small navbar
