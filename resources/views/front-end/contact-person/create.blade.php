@@ -35,7 +35,7 @@ Signin -->
                         </div>
                         <div class="mb-3 col-9">
                             <div class="user-input-wrp">
-                                <input   type="text" class="inputText" name="name">
+                                <input maxlength="31"  type="text" class="inputText entertxtOnly" name="name">
 
                                 <span class="floating-label">Name</span>
                             </div>
@@ -51,28 +51,28 @@ Signin -->
 
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input   type="text" class="inputText" name="jobTitle" >
+                                <input  maxlength="31" type="text" class="inputText entertxtOnly" name="jobTitle" >
 
                                 <span class="floating-label">Job Title</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input   type="number" class="inputText" name="phoneNumber" >
+                                <input  maxlength="31" type="text" class="inputText EnterOnlyNumber" name="phoneNumber" >
 
                                 <span class="floating-label">Phone Number</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input   type="text" class="inputText" name="address" >
+                                <input maxlength="101"  type="text" class="inputText" name="address" >
 
                                 <span class="floating-label">Address</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input  type="number" class="inputText" name="postalCode" >
+                                <input maxlength="31" type="number" class="inputText EnterOnlyNumber" name="postalCode" >
 
                                 <span class="floating-label">Site Postal Zip/Code</span>
                             </div>
@@ -105,35 +105,58 @@ Signin -->
                 rules: {
                     name:{
                         required:true,
+                        maxlength: 30,
                     },
                     address:{
                         required:true,
+                        maxlength: 100,
                     },
                     title:{
                         required:true,
+                        maxlength: 30,
                     },
                     jobTitle:{
                         required:true,
+                        maxlength: 30,
                     },
                     phoneNumber:{
                         required:true,
+                        maxlength: 30,
                     },
                     postalCode:{
                         required:true,
-                        number:true
+                        maxlength: 30,
                     },
                     email:{
                         required:true,
                     },
                 },
                 messages: {
-                    name:'Name is required',
-                    phoneNumber:'Phone Number is required',
-                    address:'Address is required',
-                    postalCode:'Postal Code is required',
+                    name:{
+                        required:'Name is required',
+                        maxlength: "Name must be less than 30 characters"
+                    },
+                    phoneNumber:{
+                        required:'Phone Number is required',
+                        maxlength: "Phone Number must be less than 30 characters"
+                    },
+                    address:{
+                        required:'Address is required',
+                        maxlength: "Address must be less than 100 characters"
+                    },
+                    postalCode:{
+                        required:'Postal Code is required',
+                        maxlength: "Postal Code must be less than 30 characters"
+                    },
                     email:'Email is required',
-                    title:'Title  is required',
-                    jobTitle:'Job Title  is required',
+                    title:{
+                        required:'Title  is required',
+                        maxlength: "Title must be less than 30 characters"
+                    },
+                    jobTitle:{
+                        required:'Job Title  is required',
+                        maxlength: "Job Title must be less than 30 characters"
+                    },
                 },
             });
 
@@ -176,5 +199,25 @@ Signin -->
             });
 
         })
+        ///////////// Enter Only text //////////////
+        $(document).ready(function (){
+            $(".entertxtOnly").keypress(function (e) {
+                var k;
+                document.all ? k = e.keyCode : k = e.which;
+                return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32);
+            });
+        });
+        ///////////// Enter Only Number //////////////
+        $(document).ready(function () {
+            //called when key is pressed in textbox
+            $(".EnterOnlyNumber").keypress(function (e) {
+                //if the letter is not digit then display error and don't type anything
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    //display error message
+                    $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                    return false;
+                }
+            });
+        });
     </script>
 @endsection

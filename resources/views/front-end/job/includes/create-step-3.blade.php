@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group col-md-6 select-border mb-3">
                     <label class="mb-2">Experience *(Years)</label>
-                    <input type="number" class="form-control" name="experience" id=""/>
+                    <input maxlength="31" type="text" class="form-control EnterOnlyNumber" name="experience" id=""/>
                 </div>
                 <div class="form-group col-md-6 select-border mb-3">
                     <label class="mb-2">Gender *</label>
@@ -40,11 +40,11 @@
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label class="mb-2">Enter Salary *</label>
-                    <input type="number" class="form-control" name="salary" />
+                    <input maxlength="31" type="text" class="form-control EnterOnlyNumber" name="salary" />
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label class="mb-2">Enter Quantity *</label>
-                    <input type="number" class="form-control" name="quantity" id=""/>
+                    <input maxlength="31" type="text" class="form-control EnterOnlyNumber" name="quantity" id=""/>
                 </div>
                 <div class="col-md-12 mt-4">
                     <button class="btn btn-dark" type="button" id="previous">Previous</button>

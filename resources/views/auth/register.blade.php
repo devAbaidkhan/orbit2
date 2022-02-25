@@ -20,14 +20,14 @@ header -->
                                         <div class="row">
                                             <div class="mb-3 col-12">
                                                 <div class="user-input-wrp">
-                                                    <input type="text" class="inputText" name="name">
+                                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="name">
                                                     <span class="floating-label">Name</span>
 
                                                 </div>
                                             </div>
                                             <div class="mb-3 col-12">
                                                 <div class="user-input-wrp">
-                                                    <input type="number" class="inputText" name="phoneNumber">
+                                                    <input maxlength="31" type="number" class="inputText EnterOnlyNumber" name="phoneNumber">
                                                     <span class="floating-label">Phone Number</span>
                                                 </div>
                                             </div>
@@ -179,6 +179,7 @@ header -->
                 rules: {
                     name: {
                         required: true,
+                        maxlength: 30,
                     },
                     phoneNumber: {
                         required: true,
@@ -198,7 +199,10 @@ header -->
 
                 },
                 messages: {
-                    name: 'Name is required',
+                    name:{
+                        required:'Name is required',
+                        maxlength: "Name must be less than 30 characters"
+                    },
                     phoneNumber: 'Phone Number is required',
                     email: 'Email is required',
                     password: 'Password is required',
@@ -330,6 +334,29 @@ header -->
             $(".submit").click(function () {
                 return false;
             })
+
+            ///////////// Enter Only text //////////////
+            $(document).ready(function (){
+                $(".entertxtOnly").keypress(function (e) {
+                    var k;
+                    document.all ? k = e.keyCode : k = e.which;
+                    return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32);
+                });
+            });
+
+            ///////////// Enter Only Number //////////////
+            $(document).ready(function () {
+                //called when key is pressed in textbox
+                $(".EnterOnlyNumber").keypress(function (e) {
+                    //if the letter is not digit then display error and don't type anything
+                    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                        //display error message
+                        $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                        return false;
+                    }
+                });
+            });
+
 
         });
 

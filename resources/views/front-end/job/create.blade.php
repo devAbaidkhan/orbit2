@@ -55,7 +55,7 @@
                                 {{csrf_field()}}
                                 <div class="user-input-wrp">
                                     <label class="mb-2">Job Title *</label>
-                                    <input type="text" class="form-control" id="title" name="title"
+                                    <input maxlength="31" type="text" class="form-control entertxtOnly" id="title" name="title"
                                            placeholder="Enter a Title">
                                 </div>
                                 <div class="user-input-wrp">
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="user-input-wrp">
                                     <label class="mb-2">Description *</label>
-                                    <textarea class="form-control" name="description" rows="4"></textarea>
+                                    <textarea maxlength="251" class="form-control" name="description" rows="4"></textarea>
                                 </div>
                                 <div class="user-input-wrp">
                                     <label class="mb-2">Time In *</label>
@@ -250,13 +250,15 @@
             $('#form').validate({
                 rules: {
                     title: {
-                        required: true
+                        required: true,
+                        maxlength: 30,
                     },
                     site: {
                         required: true
                     },
                     description: {
-                        required: true
+                        required: true,
+                        maxlength: 100,
                     },
                     inTime: {
                         required: true
@@ -280,13 +282,16 @@
                         required: true
                     },
                     salary: {
-                        required: true
+                        required: true,
+                        maxlength: 30,
                     },
                     quantity: {
-                        required: true
+                        required: true,
+                        maxlength: 30,
                     },
                     experience: {
-                        required: true
+                        required: true,
+                        maxlength: 30,
                     },
                     position: {
                         required: true
@@ -297,23 +302,57 @@
 
                 },
                 messages: {
-                    title: 'Title is Required',
+                    title: {
+                        required:'Title is Required',
+                        maxlength: "Title must be less than 30 characters"
+                    },
                     site: 'Site is Required',
-                    description: 'Description is Required',
+                    description:{
+                        required:'Description is Required',
+                        maxlength: "Description must be less than 250 characters"
+                    },
                     inTime: 'In Time is Required',
                     outTime: 'Out Time is Required',
                     breakTimeStart: 'Break Time Start is Required',
                     breakTimeEnd: 'Break Time End is Required',
                     jobStartDate: 'Job Start Date is Required',
                     jobEndDate: 'Job End Date is Required',
-                    salary: 'Salary is Required',
-                    quantity: 'Quantity is Required',
+                    salary: {
+                        required:'Salary is Required',
+                        maxlength: "Salary must be less than 30 characters"
+                    },
+                    quantity: {
+                        required:'Quantity is Required',
+                        maxlength: "Quantity must be less than 30 characters"
+                    },
                     type: 'Type is Required',
-                    experience: 'Experience is Required',
+                    experience: {
+                        required:'Experience is Required',
+                        maxlength: "Experience must be less than 30 characters"
+                    },
                     position: 'Position is Required',
                 }
             })
         })
-
+        ///////////// Enter Only text //////////////
+        $(document).ready(function (){
+            $(".entertxtOnly").keypress(function (e) {
+                var k;
+                document.all ? k = e.keyCode : k = e.which;
+                return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32);
+            });
+        });
+        ///////////// Enter Only Number //////////////
+        $(document).ready(function () {
+            //called when key is pressed in textbox
+            $(".EnterOnlyNumber").keypress(function (e) {
+                //if the letter is not digit then display error and don't type anything
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    //display error message
+                    $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                    return false;
+                }
+            });
+        });
     </script>
 @endsection

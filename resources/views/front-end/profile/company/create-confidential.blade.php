@@ -8,14 +8,14 @@
                     <div class="row">
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="number" class="inputText" value="{{$user->registration_no}}" name="registrationNo">
+                                <input maxlength="31" type="text" class="inputText EnterOnlyNumber" value="{{$user->registration_no}}" name="registrationNo">
 
                                 <span class="floating-label">Registration No</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="number" class="inputText" value="{{$user->vat_no}}" name="vatNo">
+                                <input maxlength="31" type="text" class="inputText EnterOnlyNumber" value="{{$user->vat_no}}" name="vatNo">
 
                                 <span class="floating-label">VAT Number</span>
                             </div>
@@ -45,14 +45,22 @@
                 rules: {
                     registrationNo:{
                         required:true,
+                        maxlength: 30,
                     },
                     vatNo:{
                         required:true,
+                        maxlength: 30,
                     },
                 },
                 messages: {
-                    registrationNo:'Registration No is required',
-                    vatNo:'Vat No Number is required',
+                    registrationNo:{
+                        required: 'Registration No is required',
+                        maxlength: "Registration No must be less than 30 characters"
+                    },
+                    vatNo:{
+                        required:'Vat No Number is required',
+                        maxlength: "Vat No Number must be less than 30 characters"
+                    },
                 },
             });
 
@@ -96,5 +104,18 @@
                 });
             });
         })
+
+        ///////////// Enter Only Number //////////////
+        $(document).ready(function () {
+            //called when key is pressed in textbox
+            $(".EnterOnlyNumber").keypress(function (e) {
+                //if the letter is not digit then display error and don't type anything
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    //display error message
+                    $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                    return false;
+                }
+            });
+        });
     </script>
 @endsection

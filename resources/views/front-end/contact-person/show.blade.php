@@ -14,6 +14,7 @@ job-grid -->
                             <h6 class="mb-0 ">Contect Person List</h6>
                         </div>
                     </div>
+
                     <div class="job-filter mb-4 d-sm-flex align-items-center">
                         <div class="job-alert-bt">
                             <div class="tab-content">
@@ -54,7 +55,7 @@ job-grid -->
                                                     <li> <span>Title</span> <a href="employer-detail.html">{{$contactPerson->title}}</a> </li>
                                                     <li><i class="fas fa-map-marker-alt pe-1"></i>{{$contactPerson->address}}</li>
                                                     <li><i class="fas fa-filter pe-1"></i>Accountancy</li>
-                                                    <li><a class="freelance" href="#"><i class="fas fa-suitcase pe-1"></i>Freelance</a></li>
+                                                    <li><a class="freelance" href="#"><i class="fas fa-suitcase pe-1"></i>{{$contactPerson->user_type}}</a></li>
                                                 </ul>
                                             </div>
 

@@ -75,6 +75,8 @@ class ContactPersonController extends Controller
      */
     public function show()
     {
+
+
         $contactPersons = ContactPerson::all();
         return view('front-end.contact-person.show', compact('contactPersons'));
     }

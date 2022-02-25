@@ -27,28 +27,28 @@ Signin -->
                         <div class="row">
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
-                                    <input type="text" class="inputText" name="name" value="{{ old('name', $sites->name) }}">
+                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="name" value="{{ old('name', $sites->name) }}">
 
                                     <span class="floating-label">Site Name</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
-                                    <input type="text" class="inputText" name="address" value="{{ old('address', $sites->address) }}">
+                                    <input maxlength="101" type="text" class="inputText entertxtOnly" name="address" value="{{ old('address', $sites->address) }}">
 
                                     <span class="floating-label">Site Address</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
-                                    <input  type="number" class="inputText" name="postalCode" value="{{ old('postal_code', $sites->postal_code) }}">
+                                    <input maxlength="31"  type="text" class="inputText EnterOnlyNumber" name="postalCode" value="{{ old('postal_code', $sites->postal_code) }}">
 
                                     <span class="floating-label">Site Postal Zip/Code</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
-                                    <input  type="text" class="inputText" name="city" value="{{ old('city', $sites->city) }}">
+                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="city" value="{{ old('city', $sites->city) }}">
 
                                     <span class="floating-label">City</span>
                                 </div>
@@ -109,42 +109,61 @@ Signin -->
         $(document).ready(function () {
             $('#form').validate({
                 rules: {
-                    name: {
-                        required: true,
+                    name:{
+                        required:true,
+                        maxlength: 30,
                     },
-                    address: {
-                        required: true,
+                    address:{
+                        required:true,
+                        maxlength: 100,
                     },
-                    city: {
-                        required: true,
+                    city:{
+                        required:true,
+                        maxlength: 30,
                     },
-                    startDate: {
-                        required: true,
+                    startDate:{
+                        required:true,
                     },
-                    finishDate: {
-                        required: true,
+                    finishDate:{
+                        required:true,
                     },
-                    postalCode: {
-                        required: true,
-                        number: true
+                    postalCode:{
+                        required:true,
+                        maxlength: 30,
                     },
-                    longitude: {
-                        required: true,
-                        number: true
+                    longitude:{
+                        required:true,
+                        number:true
                     },
-                    latitude: {
-                        required: true,
-                        number: true
+                    latitude:{
+                        required:true,
+                        number:true
                     },
                 },
                 messages: {
-                    name: 'Name is required',
-                    phoneNumber: 'Phone Number is required',
-                    password: 'Password is required',
-                    address: 'Address is required',
-                    country: 'Country is required',
-                    city: 'City is required',
-                    postalCode: 'Postal Code is required',
+                    name:{
+                        required:'Name is required',
+                    },
+                    phoneNumber:{
+                        required:'Phone Number is required',
+                    },
+                    password:'Password is required',
+                    address:{
+                        required:'Address is required',
+                        maxlength: "Address must be less than 100 characters"
+                    },
+                    country:{
+                        required:'Country is required',
+                        maxlength: "Country must be less than 30 characters"
+                    },
+                    city:{
+                        required:'City is required',
+                        maxlength: "City must be less than 30 characters"
+                    },
+                    postalCode:{
+                        required: 'Postal Code is required',
+                        maxlength: "Postal Code must be less than 30 characters"
+                    },
                 },
             });
             $('#form').on('submit', function (e) {
@@ -184,5 +203,25 @@ Signin -->
                 });
             });
         })
+        ///////////// Enter Only text //////////////
+        $(document).ready(function (){
+            $(".entertxtOnly").keypress(function (e) {
+                var k;
+                document.all ? k = e.keyCode : k = e.which;
+                return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32);
+            });
+        });
+        ///////////// Enter Only Number //////////////
+        $(document).ready(function () {
+            //called when key is pressed in textbox
+            $(".EnterOnlyNumber").keypress(function (e) {
+                //if the letter is not digit then display error and don't type anything
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    //display error message
+                    $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                    return false;
+                }
+            });
+        });
     </script>
 @endsection
