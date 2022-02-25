@@ -10,62 +10,51 @@
                 <div class="ans-sidebar-logo-section">
                     <div class="">
                         <img src="{{asset('images/logo/logo.png')}}" width="150px" alt="aaa" class="ans-sidebar-logo">
-                        <span class="ans-sidebar-logo-tagline">Have a nice day!</span>
+                        <span class="ans-sidebar-logo-tagline-name">Hello <b>Hamza Azmat</b></span><br><span class="ans-sidebar-logo-tagline">Have a nice day!</span>
                     </div>
                 </div>
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <ul class="nav navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" href="{{url('/')}}">Home</a>
                     </li>
-                    <li class="dropdown nav-item active">
-                        <a href="properties.html" class="nav-link" data-bs-toggle="dropdown">Pages<i class="fas fa-chevron-down fa-xs"></i></a>
-                        <ul class="dropdown-menu megamenu dropdown-menu-lg">
-                            <li>
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h6 class="mb-3 nav-title">Pages</h6>
-                                        <ul class="list-unstyled mt-lg-3">
-                                            <li><a href="about.php">About</a></li>
-                                            <li><a href="contact-us.php">Contact Us</a></li>
-                                            <li class="active"><a href="login.php">Login</a></li>
-                                            <li><a href="signup.php">Register</a></li>
-                                            <li><a href="coming-soon.php">Coming soon</a></li>
-                                            <li><a href="forget-password.php">Forget Password</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Company <i class="fas fa-chevron-down fa-xs"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="company-dashboard.php">Company Dashboard</a></li>
-                            <li><a class="dropdown-item" href="company-basic-profile.php">Company Profile</a></li>
-                            <li><a class="dropdown-item" href="company-confidential.php">Company confidential</a></li>
-                            <li><a class="dropdown-item" href="company-job.php">Post a Job</a></li>
-                            <li><a class="dropdown-item" href="company-profile-dashboard.php">Company Profile Dashboard</a></li>
-                            <li><a class="dropdown-item" href="company-staff-detail.php">Company Staff Detial</a></li>
-                            <li><a class="dropdown-item" href="staff-job-listing.php">Company Staff Job Listing</a></li>
-                            <li><a class="dropdown-item" href="company-sites.php">Company Sites</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Staff <i class="fas fa-chevron-down fa-xs"></i>
-                        </a>
-                        <ul class="dropdown-menu">
+                    @if(@auth()->user()->hasRole('company'))
 
-                            <li><a class="dropdown-item" href="staff-dashboard.php">Staff Dashboard</a></li>
-                            <li><a class="dropdown-item" href="staff-profile-dashboard.php">Staff Profile</a></li>
-                            <li><a class="dropdown-item" href="staff-details.php">Staff Details</a></li>
-                            <li><a class="dropdown-item" href="staff-details-personal.php">Staff Personal Details</a></li>
-                        </ul>
+                    @endif
+
+                    <li class="nav-item dropdown">
+                        @if(auth()->user()->hasRole('company'))
+                        <a href="{{route('company.dashboard')}}" class="nav-link">Dashboard</a>
+                        <a class="btn btn-white btn-md nav-link" href="{{route('jobs.create')}}">Post a job</a>
+                    @endif
+                        @if(auth()->user()->hasRole('staff'))
+                                <a href="{{route('staff.dashboard')}}" class="nav-link">Dashboard</a>
+                        @endif
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">About Us</a>
+                      </li>
+                      <li class="nav-item ">
+                        <a class="nav-link" href="">Terms & Conditions</a>
+                      </li>
+                      <li class="nav-item ">
+                        <a class="nav-link" href="">Privacy Policy</a>
+                      </li>
+                      <li class="nav-item ">
+                        <a class="nav-link" href="">Contact Us</a>
+                      </li>
+                    <li class="nav-item">
+                        <form action="{{route('logout')}}" method="POST" id="logout_form">
+                            @csrf
+                            <button class="dropdown-item" type="submit" id="logout">Logout</button>
+                        </form>
                     </li>
                 </ul>
+                <div class="ans-sidebar-orbit-logo-sec">
+                    <img src="images/logo/WorkOrBit-icon.png" class="ans-sidebar-orbit-logo">
+                    <p>Help Us to Complete your Profile</p>
+                    <a href="#">15% remaining</a>
+                </div>
             </div>
             <a class="navbar-brand" href="#">
                 <img class="img-fluid" src="{{asset('images/logo/logo.png')}}" alt="logo" width="200px" height="30px;">
@@ -81,74 +70,30 @@
 
             <!--/* lad-->
             <div class="navbar-collapse collapse justify-content-end nav-d-none-small">
-           <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="{{url('/')}}">Home</a>
+                        </li>
+                        @if(@auth()->user()->hasRole('company'))
+
+                        @endif
+
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="{{url('/')}}">Home</a>
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            More <i class="fas fa-chevron-down fa-xs"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item" >
+                                <form action="{{route('logout')}}" method="POST" id="logout_form">
+                                        @csrf
+                                    <button class="dropdown-item" type="submit" id="logout">Logout</button>
+                                </form>
+                            </li>
+
+                        </ul>
                     </li>
-{{--                    <li class="dropdown nav-item active">--}}
-{{--                        <a href="#" class="nav-link" data-bs-toggle="dropdown">Pages<i class="fas fa-chevron-down fa-xs"></i></a>--}}
-{{--                        <ul class="dropdown-menu megamenu dropdown-menu-lg">--}}
-{{--                            <li>--}}
-{{--                                <div class="row">--}}
-{{--                                    <div class="col-sm-8">--}}
-{{--                                        <h6 class="mb-3 nav-title">Pages</h6>--}}
-{{--                                        <ul class="list-unstyled mt-lg-3">--}}
-{{--                                            <li><a href="about.php">About</a></li>--}}
-{{--                                            <li><a href="contact-us.php">Contact Us</a></li>--}}
-{{--                                            <li class="active"><a href="login.php">Login</a></li>--}}
-{{--                                            <li><a href="signup.php">Register</a></li>--}}
-{{--                                            <li><a href="coming-soon.php">Coming soon</a></li>--}}
-{{--                                            <li><a href="forget-password.php">Forget Password</a></li>--}}
-{{--                                        </ul>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
-                    @if(@auth()->user()->hasRole('company'))
-{{--                <li class="nav-item dropdown">--}}
-{{--                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                        Company <i class="fas fa-chevron-down fa-xs"></i>--}}
-{{--                    </a>--}}
-{{--                    <ul class="dropdown-menu">--}}
-{{--                        <li><a class="dropdown-item" href="company-dashboard.php">Company Dashboard</a></li>--}}
-{{--                        <li><a class="dropdown-item" href="company-basic-profile.php">Company Profile</a></li>--}}
-{{--                        <li><a class="dropdown-item" href="company-confidential.php">Company confidential</a></li>--}}
-{{--                        <li><a class="dropdown-item" href="company-post-job.php">Post a Job</a></li>--}}
-{{--                        <li><a class="dropdown-item" href="company-profile-dashboard.php">Company Profile Dashboard</a></li>--}}
-{{--                        <li><a class="dropdown-item" href="company-staff-detail.php">Company Staff Detial</a></li>--}}
-{{--                        <li><a class="dropdown-item" href="staff-job-listing.php">Company Staff Job Listing</a></li>--}}
-{{--                        <li><a class="dropdown-item" href="company-sites.php">Company Sites</a></li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
-@endif
-{{--                <li class="nav-item dropdown">--}}
-{{--                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                        Staff <i class="fas fa-chevron-down fa-xs"></i>--}}
-{{--                    </a>--}}
-{{--                    <ul class="dropdown-menu">--}}
-{{--                        <li><a class="dropdown-item" href="staff-dashboard.php">Staff Dashboard</a></li>--}}
-{{--                        <li><a class="dropdown-item" href="staff-profile-dashboard.php">Staff Profile</a></li>--}}
-{{--                        <li><a class="dropdown-item" href="staff-details.php">Staff Details</a></li>--}}
-{{--                        <li><a class="dropdown-item" href="staff-details-personal.php">Staff Personal Details</a></li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        More <i class="fas fa-chevron-down fa-xs"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item" >
-                            <form action="{{route('logout')}}" method="POST" id="logout_form">
-                                    @csrf
-                            <button class="dropdown-item" type="submit" id="logout">Logout</button>
-            </form>
-        </li>
-
-    </ul>
-</li>
-</ul>
+                </ul>
             </div>
             <div class="add-listing">
                 @if(auth()->user()->hasRole('company'))

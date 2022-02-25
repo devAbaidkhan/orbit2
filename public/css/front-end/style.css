@@ -8538,12 +8538,12 @@ iframe {
 /* Position and style the close button (top right corner) */
 .ans-sidenav .closebtn {
     position: absolute;
-    top: 0;
+    top: -6px;
     right: 10px;
     font-size: 36px;
     margin-left: 50px;
-    color: gray;
-}
+    color: #8B4D9F;
+  }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
@@ -8622,13 +8622,6 @@ iframe {
     color: #fff;
 }
 
-.ans-sidebar-logo-section {
-    background-image: url("../images/bg/small-bg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 150px;
-    position: relative;
-}
 
 .ans-sidebar-logo {
     padding-left: 20px;
@@ -8697,7 +8690,7 @@ iframe {
 }
 
 .ans-sidebar-logo-section {
-    background-image: url("../images/bg/small-bg.jpg");
+    background-image: url("../../images/bg/small-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 150px;
@@ -8964,3 +8957,34 @@ select.list-dt:focus {
 {
     margin-bottom: 78px;
 }
+
+.ans-sidebar-orbit-logo-sec{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
+.ans-sidebar-orbit-logo-sec img{
+    filter: grayscale(1);
+}
+.ans-sidebar-orbit-logo-sec p{
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.ans-sidebar-orbit-logo-sec a{
+    color: #8B4D9F;
+    padding: 0px;
+    padding-bottom: 15px;
+    font-size: 16px;
+}
+.ans-sidebar-orbit-logo{
+    width: 40px;
+}
+.ans-sidebar-logo-tagline-name{
+    display: block;
+    position: absolute;
+    bottom: 26px;
+    padding-left: 20px;
+    color: #000;
+    font-size: 12px;
+  }
