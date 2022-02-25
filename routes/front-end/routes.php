@@ -42,6 +42,7 @@ Route::group(['prefix' => 'company','middleware'=>'company'], function () {
 
     // site routes
     Route::resource('sites',\App\Http\Controllers\FrontEnd\Site\SiteController::class);
+    Route::get('job/{jobId}/applications',[\App\Http\Controllers\FrontEnd\Job\JobController::class,'jobApplications']);
     // site routes
 //    Route::get('sites/create',[\App\Http\Controllers\FrontEnd\Site\SiteController::class,'create']);
 //    Route::post('sites/store',[\App\Http\Controllers\FrontEnd\Site\SiteController::class,'store']);

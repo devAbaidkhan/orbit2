@@ -14,37 +14,8 @@ use TCG\Voyager\Voyager;
 |
 */
 
-
-
-
 require __DIR__.'/front-end/routes.php';
 Route::get('/', [\App\Http\Controllers\FrontEnd\HomeController::class,'index']);
-
-Route::get('/staff-dashboard', function () {
-    return view('front-end.dashboard.staff');
-});
-
-Route::get('/staff-detail-dashboard', function () {
-
-    return view('front-end.dashboard.profile-detail');
-});
-
-Route::get('/staff-religion', function () {
-    return view('front-end/profile/company/staff/profile-dashboard/religion-detail');
-});
-
-Route::get('/staff-bank', function () {
-    return view('front-end/profile/company/staff/profile-dashboard/bank-detail');
-});
-
-Route::get('/staff-passport', function () {
-    return view('front-end/profile/company/staff/profile-dashboard/passport-detail');
-});
-
-Route::get('/staff-emergency', function () {
-    return view('front-end/profile/company/staff/profile-dashboard/emergency-detail');
-});
-
 
 
 // User Routes

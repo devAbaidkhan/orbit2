@@ -4,6 +4,7 @@ namespace App\Http\Controllers\FrontEnd\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Models\Job;
+use App\Models\JobApplication;
 use App\Models\User;
 use App\Models\UserBankDetail;
 use App\Models\UserConfidentialDetail;
@@ -20,7 +21,12 @@ class StaffProfileController extends Controller
      */
     public function index()
     {
-        $jobs = Job::all();
+//        dd(\auth()->user()->jobApplications->count());
+//        $users = User::with('jobApplications')->get();
+//        dd($users->pluck('jobApplications')[8]);
+        $appliedJobs = JobApplication::where('staff_id',Auth::id())->get()->pluck('job_id')->toArray();
+
+        $jobs = Job::with('applications')->get();
         return view('front-end.profile.staff.show', get_defined_vars());
     }
 

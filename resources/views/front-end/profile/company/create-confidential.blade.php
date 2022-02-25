@@ -26,7 +26,7 @@
                         <div class="col-md-12 ob-btn-login">
                             <button class="btn btn-primary " >Save</button>
                         </div>
-                        @csrf
+@csrf
                     </div>
                 </form>
                 <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">

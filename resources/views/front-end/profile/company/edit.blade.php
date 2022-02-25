@@ -17,7 +17,7 @@
             <div class="tab-pane active" id="candidate" role="tabpanel">
                 <form class="mt-4" id="form" >
                     <div class="row">
-                        <div class="mb-3 col-12">
+                    <div class="mb-3 col-12">
 
                             <div class="user-input-wrp">
                                 <input type="text" class="inputText" name="name" value="{{$user->name}}">
@@ -39,7 +39,7 @@
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input type="text" class="inputText" name="email" value="{{$user->email}}">
+                                <input type="text" class="inputText" name="email" disabled value="{{$user->email}}">
 
                                 <span class="floating-label">Email</span>
                             </div>

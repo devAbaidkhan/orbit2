@@ -141,6 +141,7 @@ class JobController extends Controller
         //
     }
 
+    // staff apply
     public function jobApply(Request $request)
     {
         try {
@@ -154,5 +155,12 @@ class JobController extends Controller
         } catch (\Exception $exception) {
             return response(['status' => 'error', 'message' => $exception->getMessage()]);
         }
+    }
+
+    // to show company
+    public function jobApplications($jobId)
+    {
+        $job = Job::with('applications')->find($jobId);
+        return view('front-end.job.show-applications',get_defined_vars());
     }
 }

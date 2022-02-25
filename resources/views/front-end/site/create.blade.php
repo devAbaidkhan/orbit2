@@ -87,7 +87,6 @@ Signin -->
                         </div>
 
                     </div>
-
                 </form>
 
                 <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">
@@ -102,6 +101,7 @@ Signin -->
 Signin -->
 
 @endsection
+
 @section('js')
     <script>
         $(document).ready(function (){

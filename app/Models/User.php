@@ -73,4 +73,9 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasOne(UserConfidentialDetail::class,'user_id','id');
     }
 
+    public function jobApplications()
+    {
+        return $this->hasMany(JobApplication::class,'staff_id','id');
+    }
+
 }

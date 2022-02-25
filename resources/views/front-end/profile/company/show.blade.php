@@ -121,12 +121,19 @@
                                 </div>
                                 <div class="employers-list-option">
                                     <ul class="list-unstyled">
-                                        <li>{{$job->site->name}}</li>
+                                        <li>{{$job->site_name}}</li>
                                         <li><i class="fas fa-map-marker-alt pe-1"></i>
                                             Officer should be smart, professional and
                                         </li>
+                                        <li>
+
+                                        </li>
                                     </ul>
                                 </div>
+                                <a href="{{url('company/job/'.$job->id.'/applications')}}">
+                                    <div class="badge badge-warning">{{($job->applications ? 'Applications: '.$job->applications->count() : 'No Applications' )}}</div>
+                                </a>
+
                             </div>
                         </div>
                         <div class="employers-list-position">

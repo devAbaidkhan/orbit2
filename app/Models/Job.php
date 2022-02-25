@@ -18,4 +18,15 @@ class Job extends Model
     {
         return $this->hasOne(Site::class,'id','site_id');
     }
+
+    public function company()
+    {
+        return $this->belongsTo(User::class,'company_id','id');
+    }
+
+    public function applications()
+    {
+        return $this->hasMany(JobApplication::class,'job_id','id');
+    }
+
 }

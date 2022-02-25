@@ -31,7 +31,6 @@
                         <div class="candidates-skills-info">
                             <h3 class="text-primary">85%</h3>
                         </div>
-
                     </div>
                 </div>
 
@@ -109,6 +108,7 @@
 
                     </div>
                     @foreach($jobs as $job )
+                        @php($job->applied_status = (in_array($job->id,$appliedJobs) ? 'yes' : 'no'))
                     <div class="employers-list">
                         <div class="employers-list-details">
                             <div class="employers-list-info">
@@ -133,7 +133,11 @@
                         <div class="employers-list-position">
                             <a class="btn btn-primary btn-job-font" href="#">{{$job->quantity}} position</a>
                             <p>Salary: {{$job->salary}}</p>
-                            <button class="btn btn-primary apply" details="{{$job}}"> Apply</button>
+                            @if($job->applied_status == 'yes')
+                            <button class="btn btn-success applied" details="{{$job}}"> Applied</button>
+                            @else
+                                <button class="btn btn-primary apply" details="{{$job}}"> Apply</button>
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -154,6 +158,42 @@
 
     <!--=================================
     Signin Modal Popup -->
+    <div class="modal fade" id="exampleModalApplied" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-white bg-success p-4">
+                    <h3 class="mb-0 text-center">Job Details</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Job Description</h4>
+                                <textarea readonly id="jobDescription1" rows="4" class="form-control"></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">Start Date</label>
+                                <input type="text" id="startDate1"  readonly class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="" >End Date</label>
+                                <input type="text" id="endDate1" readonly class="form-control">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="">Salary</label>
+                                <input type="text" id="salary1"  readonly class="form-control">
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn btn-success">Applied</button></div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
@@ -209,6 +249,16 @@
                 $('#endDate').val(details.job_end_date)
                 $('#salary').val(details.salary)
                 $('#jobId').val(details.id)
+            })
+
+            $(document).on('click','.applied',function (){
+                $('#exampleModalApplied').modal('show')
+                let details = $(this).attr('details')
+                details = JSON.parse(details)
+                $('#jobDescription1').text(details.job_description)
+                $('#startDate1').val(details.job_start_date)
+                $('#endDate1').val(details.job_end_date)
+                $('#salary1').val(details.salary)
             })
 
             $(document).on('click', '#change_picture_btn', function () {

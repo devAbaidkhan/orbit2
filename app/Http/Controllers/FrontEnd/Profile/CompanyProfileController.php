@@ -24,7 +24,10 @@ class CompanyProfileController extends Controller
      */
     public function index()
     {
-        $jobs = Auth::user()->jobs;
+
+        $users = User::with('jobApplications')->get();
+        $jobs = Job::with('applications')->where('company_id',\auth()->id())->get();
+
         return view('front-end.profile.company.show',get_defined_vars());
     }
 
@@ -109,10 +112,6 @@ class CompanyProfileController extends Controller
     {
         try {
 
-            $duplicate = User::where('email',$request->email)->first();
-            if($duplicate){
-                return  response(['message'=>'User Already Exist','status'=>'error']);
-            }
             $user = User::find($id);
             $user->name = $request->name;
             $user->phone_number = $request->phoneNumber;

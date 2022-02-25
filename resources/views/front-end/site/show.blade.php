@@ -24,7 +24,7 @@ job-grid -->
                                                 <div class="user-input-wrp">
                                                     <br/>
                                                     <input type="text" class="inputText" required/>
-                                                    <span class="floating-label">Your email address</span>
+                                                    <span class="floating-label">Search</span>
                                                 </div>
                                             </div>
                                         </div>
