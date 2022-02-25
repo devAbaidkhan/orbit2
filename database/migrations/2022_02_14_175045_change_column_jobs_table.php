@@ -14,8 +14,8 @@ class ChangeColumnJobsTable extends Migration
     public function up()
     {
         Schema::table('jobs', function (Blueprint $table) {
-            $table->renameColumn('`job-start_date`','job_start_date');
-            $table->renameColumn('`job-end_date`','job_end_date');
+            $table->renameColumn('`job_start_date`','job_start_date');
+            $table->renameColumn('`job_end_date`','job_end_date');
         });
     }
 
