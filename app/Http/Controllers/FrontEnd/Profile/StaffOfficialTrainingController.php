@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\ContactPerson;
+namespace App\Http\Controllers\FrontEnd\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Models\ContactPerson;
-use App\Models\User;
+use App\Models\StaffOfficialTraining;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class ContactPersonController extends Controller
+class StaffOfficialTrainingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,12 +18,6 @@ class ContactPersonController extends Controller
         //
     }
 
-    public function view($id)
-    {
-        $contactPerson = ContactPerson::find($id);
-        return view('front-end.contact-person.view', compact('contactPerson'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -33,7 +25,7 @@ class ContactPersonController extends Controller
      */
     public function create()
     {
-        return view('front-end.contact-person.create');
+        return view('front-end.profile.staff.official-training.create');
     }
 
     /**
@@ -42,20 +34,17 @@ class ContactPersonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request,ContactPerson $contactPerson)
+    public function store(Request $request, StaffOfficialTraining $staffOfficialTraining)
     {
         try {
 
-            $contactPerson->title = $request->title;
-            $contactPerson->name = $request->name;
-            $contactPerson->user_id = $request->user()->id;
-            $contactPerson->user_type = $request->user()->role->name;
-            $contactPerson->job_title = $request->jobTitle;
-            $contactPerson->phone_number = $request->phoneNumber;
-            $contactPerson->email = $request->email;
-            $contactPerson->address = $request->address;
-            $contactPerson->postal_code = $request->postalCode;
-            $contactPerson->save();
+            $staffOfficialTraining->courseName = $request->courseName;
+            $staffOfficialTraining->certificateObtained = $request->certificateObtained;
+            $staffOfficialTraining->user_id = $request->user()->id;
+            $staffOfficialTraining->providerName = $request->providerName;
+            $staffOfficialTraining->trainingStartDate = $request->trainingStartDate;
+            $staffOfficialTraining->trainingEndDate = $request->trainingEndDate;
+            $staffOfficialTraining->save();
             $response = array('status' => 'success', 'message' => 'Data Inserted Successful');
             return response()->json($response, 200);
 
@@ -64,7 +53,6 @@ class ContactPersonController extends Controller
             $response = array('status' => 'error', 'message' => $exception->getMessage());
             return response()->json($response,500);
         }
-
     }
 
     /**
@@ -75,17 +63,8 @@ class ContactPersonController extends Controller
      */
     public function show()
     {
-//        $user = User::find(Auth::user()->id);
-//        dd($user);
-//        $posts = ContactPerson::whereBelongsTo($user)->get();
-//        dd($posts);
-//        $user = Auth::user();
-//        //$id = Auth::id();
-//        dd($user);
-//        dd(Auth::login($user));
-
-        $contactPersons = ContactPerson::all();
-        return view('front-end.contact-person.show', compact('contactPersons'));
+         $staffOfficialTrainings = StaffOfficialTraining::all();
+        return view('front-end.profile.staff.official-training.show', compact('staffOfficialTrainings'));
     }
 
     /**
@@ -96,8 +75,8 @@ class ContactPersonController extends Controller
      */
     public function edit($id)
     {
-        $contactPerson = ContactPerson::find($id);
-        return view('front-end.contact-person.edit', compact('contactPerson'));
+        $staffOfficialTrainings = StaffOfficialTraining::find($id);
+        return view('front-end.profile.staff.official-training.edit', compact('staffOfficialTrainings'));
     }
 
     /**
@@ -107,19 +86,16 @@ class ContactPersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, ContactPerson $contactPerson )
+    public function update(Request $request,StaffOfficialTraining $staffOfficialTraining, $id)
     {
         try {
-            $contactPerson->title = $request->title;
-            $contactPerson->name = $request->name;
-            $contactPerson->user_id = $request->user()->id;
-            $contactPerson->user_type = $request->user()->role->name;
-            $contactPerson->job_title = $request->jobTitle;
-            $contactPerson->phone_number = $request->phoneNumber;
-            $contactPerson->email = $request->email;
-            $contactPerson->address = $request->address;
-            $contactPerson->postal_code = $request->postalCode;
-            $contactPerson->save();
+            $staffOfficialTraining->courseName = $request->courseName;
+            $staffOfficialTraining->certificateObtained = $request->certificateObtained;
+            $staffOfficialTraining->user_id = $request->user()->id;
+            $staffOfficialTraining->providerName = $request->providerName;
+            $staffOfficialTraining->trainingStartDate = $request->trainingStartDate;
+            $staffOfficialTraining->trainingEndDate = $request->trainingEndDate;
+            $staffOfficialTraining->save();
             $response = array('status' => 'success', 'message' => 'Data Updatad Successful');
             return response()->json($response, 200);
 
@@ -136,10 +112,10 @@ class ContactPersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(ContactPerson $contactPerson)
+    public function destroy(StaffOfficialTraining $staffOfficialTraining)
     {
         try {
-            if ($contactPerson->delete()) {
+            if ($staffOfficialTraining->delete()) {
                 $response = array('status' => 'success', 'message' => 'Data Deleted Successful');
                 return response()->json($response, 200);
             }

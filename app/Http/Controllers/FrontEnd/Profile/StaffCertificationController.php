@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\ContactPerson;
+namespace App\Http\Controllers\FrontEnd\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactPerson;
-use App\Models\User;
+use App\Models\StaffCertification;
+use App\Models\StaffOfficialTraining;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class ContactPersonController extends Controller
+class StaffCertificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,12 +20,6 @@ class ContactPersonController extends Controller
         //
     }
 
-    public function view($id)
-    {
-        $contactPerson = ContactPerson::find($id);
-        return view('front-end.contact-person.view', compact('contactPerson'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -33,7 +27,7 @@ class ContactPersonController extends Controller
      */
     public function create()
     {
-        return view('front-end.contact-person.create');
+        return view('front-end.profile.staff.certification.create');
     }
 
     /**
@@ -42,20 +36,14 @@ class ContactPersonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request,ContactPerson $contactPerson)
+    public function store(Request $request, StaffCertification $staffCertification)
     {
         try {
-
-            $contactPerson->title = $request->title;
-            $contactPerson->name = $request->name;
-            $contactPerson->user_id = $request->user()->id;
-            $contactPerson->user_type = $request->user()->role->name;
-            $contactPerson->job_title = $request->jobTitle;
-            $contactPerson->phone_number = $request->phoneNumber;
-            $contactPerson->email = $request->email;
-            $contactPerson->address = $request->address;
-            $contactPerson->postal_code = $request->postalCode;
-            $contactPerson->save();
+            $staffCertification->cert_name = $request->cert_name;
+            $staffCertification->cert_no = $request->cert_no;
+            $staffCertification->cert_issue = $request->cert_issue;
+            $staffCertification->cert_expiry = $request->cert_expiry;
+            $staffCertification->save();
             $response = array('status' => 'success', 'message' => 'Data Inserted Successful');
             return response()->json($response, 200);
 
@@ -64,7 +52,6 @@ class ContactPersonController extends Controller
             $response = array('status' => 'error', 'message' => $exception->getMessage());
             return response()->json($response,500);
         }
-
     }
 
     /**
@@ -75,17 +62,8 @@ class ContactPersonController extends Controller
      */
     public function show()
     {
-//        $user = User::find(Auth::user()->id);
-//        dd($user);
-//        $posts = ContactPerson::whereBelongsTo($user)->get();
-//        dd($posts);
-//        $user = Auth::user();
-//        //$id = Auth::id();
-//        dd($user);
-//        dd(Auth::login($user));
-
-        $contactPersons = ContactPerson::all();
-        return view('front-end.contact-person.show', compact('contactPersons'));
+        $staffCertification = StaffCertification::all();
+        return view('front-end.profile.staff.certification.show', compact('staffCertification'));
     }
 
     /**
@@ -96,8 +74,8 @@ class ContactPersonController extends Controller
      */
     public function edit($id)
     {
-        $contactPerson = ContactPerson::find($id);
-        return view('front-end.contact-person.edit', compact('contactPerson'));
+        $staffCertification = StaffCertification::find($id);
+        return view('front-end.profile.staff.certification.edit', compact('staffCertification'));
     }
 
     /**
@@ -107,20 +85,15 @@ class ContactPersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, ContactPerson $contactPerson )
+    public function update(Request $request, StaffCertification $staffCertification)
     {
         try {
-            $contactPerson->title = $request->title;
-            $contactPerson->name = $request->name;
-            $contactPerson->user_id = $request->user()->id;
-            $contactPerson->user_type = $request->user()->role->name;
-            $contactPerson->job_title = $request->jobTitle;
-            $contactPerson->phone_number = $request->phoneNumber;
-            $contactPerson->email = $request->email;
-            $contactPerson->address = $request->address;
-            $contactPerson->postal_code = $request->postalCode;
-            $contactPerson->save();
-            $response = array('status' => 'success', 'message' => 'Data Updatad Successful');
+            $staffCertification->cert_name = $request->cert_name;
+            $staffCertification->cert_no = $request->cert_no;
+            $staffCertification->cert_issue = $request->cert_issue;
+            $staffCertification->cert_expiry = $request->cert_expiry;
+            $staffCertification->save();
+            $response = array('status' => 'success', 'message' => 'Data Updated Successful');
             return response()->json($response, 200);
 
         } catch (\Exception $exception) {
@@ -134,12 +107,12 @@ class ContactPersonController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Response
      */
-    public function destroy(ContactPerson $contactPerson)
+    public function destroy(StaffCertification $staffCertification)
     {
         try {
-            if ($contactPerson->delete()) {
+            if ($staffCertification->delete()) {
                 $response = array('status' => 'success', 'message' => 'Data Deleted Successful');
                 return response()->json($response, 200);
             }

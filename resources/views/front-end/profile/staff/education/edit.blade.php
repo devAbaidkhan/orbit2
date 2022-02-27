@@ -1,125 +1,60 @@
 @extends('front-end.layouts.app')
 @section('content')
-    <style>
-        .ans-flex-between{
-            display: flex;
-            justify-content: space-between;
-        }
-        .ans-course-id{
-            font-size: 15px;
-            margin-bottom: 5px;
-        }
-        .ans-course-duration{
-            font-size: 15px;
-            margin-bottom: 5px;
-        }
-        .ans-institution-name{
-            font-size: 15px;
-            margin-bottom: 0px;
-            text-align: left;
-        }
-        .ans-flex-justify-center{
-            display: flex;
-            justify-content: center;
-            border-top: 1px solid #eeeeee;
-            margin-top: 10px;
-            padding: 10px 0;
-        }
-        .ans-flex-justify-center a{
-            font-size: 15px;
-            display: inline-block;
-            position: relative;
-            height: 40px;
-            width: 40px;
-            line-height: 40px;
-            border: 1px solid #eeeeee;
-            border-radius: 100%;
-            text-align: center;
-            -webkit-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
-            font-size: 16px;
-            color: #ffffffbd;
-            margin: 0px 20px;
-            background: #8B4D9F;
-        }
-        .ans-add-new-btn{
-            width: 100%;
-            background: #ffffff;
-            color: #ff8a00;
-            border: 2px solid #8B4D9F;
-            color: #777;
-        }
-        .space-ptb{
-            background: #f7f7f7;
-        }
-        .text-left{
-            text-align: left;
-        }
-        .ans-form-dropdown{
-            margin-top: 25px;
-            border: none;
-            border-bottom: solid medium #999;
-            color: #999;
-            background-color: #fafafa;
-        }
-        .ans-form-submit-btn{
-            background-image: linear-gradient(to right, #B074C4, #8B4D9F);
-            padding: 8px 40px;
-            border: 0px;
-            color: #fff;
-            font-size: 20px;
-            margin-top: 40px;
-        }
-    </style>
 
     <!--=================================
-job-grid -->
+Signin -->
+    <section class="space-ptb bg-light" style="padding:40px 0px">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h2 style="color:#8b4e9f">Contact Person</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="space-ptb">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <!--=================================
-                    right-sidebar -->
-                    <div class="row mb-4">
-                        <div class="col-12 hmz-site-heading">
-                            <h6 class="mb-0 mt-5">Educataional History</h6>
-                        </div>
-                    </div>
-                    <form class="mt-4" id="form" >
+            <div class="tab-content">
+                <div class="tab-pane active" id="candidate" role="tabpanel">
+                    <form class="mt-4" id="form">
                         @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="institutionName" required/>
+                                    <input type="text" class="inputText" name="institutionName" value="{{ old('institutionName', $staffEducations->institutionName) }}"/>
                                     <span class="floating-label">Institution Name</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="degreeObtained" required/>
+                                    <input type="text" class="inputText" name="degreeObtained" value="{{ old('degreeObtained', $staffEducations->degreeObtained) }}"/>
                                     <span class="floating-label">Degree Obtained</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="speciality" required/>
+                                    <input type="text" class="inputText" name="speciality" value="{{ old('speciality', $staffEducations->speciality) }}"/>
                                     <span class="floating-label">Speciality</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="date" class="inputText place" name="startDate" required/>
+                                    <input type="date" class="inputText place" name="startDate" value="{{ old('startDate', $staffEducations->startDate) }}"/>
                                     <span class="floating-label">Degree Start Date</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="date" class="inputText place" name="endDate" required/>
+                                    <input type="date" class="inputText place" name="endDate" value="{{ old('endDate', $staffEducations->endDate) }}"/>
                                     <span class="floating-label">Degree End Date</span>
                                 </div>
                             </div>
@@ -148,62 +83,89 @@ job-grid -->
                             @csrf
                         </div>
                     </form>
+
+                    <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">
+                        <p class="mt-1"><i class="fa fa-arrow-left"></i><a onclick="location.replace(document.referrer);"> Back</a></p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--=================================
-    job-grid -->
-@endsection
 
+
+@endsection
 
 @section('js')
     <script>
         $(document).ready(function (){
             $('#form').validate({
                 rules: {
-                    instituteName: {
-                        required: true,
+                    name:{
+                        required:true,
+                        maxlength: 30,
                     },
-                    degreeObtained: {
-                        required: true,
+                    address:{
+                        required:true,
+                        maxlength: 100,
                     },
-                    speciality: {
-                        required: true,
+                    title:{
+                        required:true,
+                        maxlength: 30,
                     },
-                    startDate: {
-                        required: true,
+                    jobTitle:{
+                        required:true,
+                        maxlength: 30,
                     },
-                    endDate: {
-                        required: true,
+                    phoneNumber:{
+                        required:true,
+                        maxlength: 30,
                     },
-                    country: {
-                        required: true,
+                    postalCode:{
+                        required:true,
+                        maxlength: 30,
                     },
-                    city: {
-                        required: true,
+                    email:{
+                        required:true,
                     },
-
                 },
                 messages: {
-                    instituteName:'Institute Name  is required',
-                    degreeObtained:'Degree Obtained is required',
-                    speciality:'Speciality is required',
-                    startDate:'Start Date is required',
-                    endDate:'End Date is required',
-                    country:'Country is required',
-                    city:'City is required',
+                    name:{
+                        required:'Name is required',
+                        maxlength: "Name must be less than 30 characters"
+                    },
+                    phoneNumber:{
+                        required:'Phone Number is required',
+                        maxlength: "Phone Number must be less than 30 characters"
+                    },
+                    address:{
+                        required:'Address is required',
+                        maxlength: "Address must be less than 100 characters"
+                    },
+                    postalCode:{
+                        required:'Postal Code is required',
+                        maxlength: "Postal Code must be less than 30 characters"
+                    },
+                    email:'Email is required',
+                    title:{
+                        required:'Title  is required',
+                        maxlength: "Title must be less than 30 characters"
+                    },
+                    jobTitle:{
+                        required:'Job Title  is required',
+                        maxlength: "Job Title must be less than 30 characters"
+                    },
                 },
             });
 
             $('#form').on('submit', function (e) {
                 e.preventDefault();
                 // check if the input is valid using a 'valid' property
-                if (!$('#form').valid() ) {
+                if (!$('#form').valid()) {
                     return false;
                 }
-                let route = "{{route('education.store')}}";
-                console.log(route)
+                var id = $('#contactable_id').val();
+                var route = "{{route('contact-person.update',['contact_person'=>':contact_person'])}}";
+                route = route.replace(':contact_person', id);
                 $.ajax({
                     type: 'POST',
                     url: route,
@@ -216,13 +178,9 @@ job-grid -->
                         loader();
                     },
                     success: function (response) {
-
                         swal.close();
                         console.log(response)
                         alertMsg(response.message, response['status']);
-                        // }
-
-
                     },
                     error: function (xhr, error, status) {
                         // console.log(xhr.responseJSON.errors.name[0])
@@ -234,5 +192,25 @@ job-grid -->
                 });
             });
         })
+        ///////////// Enter Only text //////////////
+        $(document).ready(function (){
+            $(".entertxtOnly").keypress(function (e) {
+                var k;
+                document.all ? k = e.keyCode : k = e.which;
+                return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32);
+            });
+        });
+        ///////////// Enter Only Number //////////////
+        $(document).ready(function () {
+            //called when key is pressed in textbox
+            $(".EnterOnlyNumber").keypress(function (e) {
+                //if the letter is not digit then display error and don't type anything
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    //display error message
+                    $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                    return false;
+                }
+            });
+        });
     </script>
 @endsection

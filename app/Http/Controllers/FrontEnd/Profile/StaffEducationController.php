@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Profile;
+namespace App\Http\Controllers\FrontEnd\Profile;
 
 use App\Http\Controllers\Controller;
+use App\Models\StaffEducation;
 use Illuminate\Http\Request;
 
 class StaffEducationController extends Controller
@@ -14,13 +15,13 @@ class StaffEducationController extends Controller
      */
     public function index()
     {
-        return view('front-end.profile.staff.education.index');
+        //return view('front-end.profile.staff.education.index');
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
@@ -31,33 +32,52 @@ class StaffEducationController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request, StaffEducation $staffEducation): \Illuminate\Http\JsonResponse
     {
-        //
+        try {
+            $staffEducation->institutionName = $request->institutionName;
+            $staffEducation->user_id = $request->user()->id;
+            $staffEducation->degreeObtained = $request->degreeObtained;
+            $staffEducation->speciality = $request->speciality;
+            $staffEducation->institutionCountry = $request->institutionCountry;
+            $staffEducation->institutionCity = $request->institutionCity;
+            $staffEducation->startDate = $request->startDate;
+            $staffEducation->endDate = $request->endDate;
+            $staffEducation->save();
+            $response = array('status' => 'success', 'message' => 'Data Inserted Successful');
+            return response()->json($response, 200);
+
+        } catch (\Exception $exception) {
+
+            $response = array('status' => 'error', 'message' => $exception->getMessage());
+            return response()->json($response,500);
+        }
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+         $staffEdcuation = StaffEducation::all();
+        return view('front-end.profile.staff.education.show', compact('staffEdcuation'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $staffEducations = StaffEducation::find($id);
+        return view('front-end.profile.staff.education.edit', compact('staffEducations'));
     }
 
     /**

@@ -58,7 +58,7 @@
         </div>
         <div class="col-lg-3 col-md-4 col-6 text-center mb-3">
             <div class="ans-category-item pt-3">
-                <a href="#" class="category-item p-0">
+                <a href="{{url('staff/dashboard/qualification')}}" class="category-item p-0">
                     <div class="category-icon mb-3">
                     <i class="flaticon-worker"></i>
                     </div>

@@ -67,7 +67,6 @@
                                     <span class="floating-label">Short Code</span>
                                 </div>
                             </div>
-
                         </div>
                         @endif
                     <input type="hidden" name="userId" value="{{auth()->id()}}">

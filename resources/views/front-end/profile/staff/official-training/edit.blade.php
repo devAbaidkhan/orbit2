@@ -1,5 +1,6 @@
 @extends('front-end.layouts.app')
 @section('content')
+
     <style>
         .ans-flex-between{
             display: flex;
@@ -71,7 +72,6 @@
             margin-top: 40px;
         }
     </style>
-
     <!--=================================
 job-grid -->
     <section class="space-ptb">
@@ -82,64 +82,48 @@ job-grid -->
                     right-sidebar -->
                     <div class="row mb-4">
                         <div class="col-12 hmz-site-heading">
-                            <h6 class="mb-0 mt-5">Educataional History</h6>
+                            <h6 class="mb-0 mt-5">Add New Training</h6>
                         </div>
                     </div>
-                    <form class="mt-4" id="form" >
+                    <form class="mt-4" id="form">
                         @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="institutionName" required/>
-                                    <span class="floating-label">Institution Name</span>
+                                    <input type="text" class="inputText" name="courseName" value="{{ old('courseName', $staffOfficialTrainings->courseName) }}"/>
+                                    <span class="floating-label">Course Name</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="degreeObtained" required/>
-                                    <span class="floating-label">Degree Obtained</span>
+                                    <input type="text" class="inputText" name="certificateObtained" value="{{ old('certificateObtained', $staffOfficialTrainings->certificateObtained) }}"/>
+                                    <span class="floating-label">Certificate Obtained</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="speciality" required/>
-                                    <span class="floating-label">Speciality</span>
+                                    <input type="text" class="inputText" name="providerName" value="{{ old('providerName', $staffOfficialTrainings->providerName) }}"/>
+                                    <span class="floating-label">Provider Name</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="date" class="inputText place" name="startDate" required/>
-                                    <span class="floating-label">Degree Start Date</span>
+                                    <input type="date" class="inputText place" name="trainingStartDate" value="{{ old('trainingStartDate', $staffOfficialTrainings->trainingStartDate) }}"/>
+                                    <span class="floating-label">Training Start Date</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="date" class="inputText place" name="endDate" required/>
-                                    <span class="floating-label">Degree End Date</span>
+                                    <input type="date" class="inputText place" name="trainingEndDate" value="{{ old('trainingEndDate', $staffOfficialTrainings->trainingEndDate) }}"/>
+                                    <span class="floating-label">Training End Date</span>
                                 </div>
                             </div>
-                            <div class="mb-3 col-12">
-                                <select class="form-select ans-form-dropdown" name="institutionCountry" aria-label="Default select example">
-                                    <option selected>Institution Country</option>
-                                    <option value="1">Pakistan</option>
-                                    <option value="2">Turkey</option>
-                                    <option value="3">Afghanitan</option>
-                                </select>
-                            </div>
-                            <div class="mb-3 col-12">
-                                <select class="form-select ans-form-dropdown" name="institutionCity" aria-label="Default select example">
-                                    <option selected>Institution City</option>
-                                    <option value="1">Lahore</option>
-                                    <option value="2">Karachi</option>
-                                    <option value="3">Islamabad</option>
-                                </select>
-                            </div>
-                            <input type="hidden" name="contactable_id" id="contactable_id" value="{{auth()->id()}}">
                         </div>
                         <div class="row">
                             <div class="col-md-12 ob-btn-login">
@@ -154,56 +138,44 @@ job-grid -->
     </section>
     <!--=================================
     job-grid -->
+
 @endsection
-
-
 @section('js')
     <script>
         $(document).ready(function (){
             $('#form').validate({
                 rules: {
-                    instituteName: {
-                        required: true,
+                    cert_name:{
+                        required:true,
+                        maxlength: 30,
                     },
-                    degreeObtained: {
-                        required: true,
-                    },
-                    speciality: {
-                        required: true,
-                    },
-                    startDate: {
-                        required: true,
-                    },
-                    endDate: {
-                        required: true,
-                    },
-                    country: {
-                        required: true,
-                    },
-                    city: {
-                        required: true,
-                    },
-
+                    cert_no:{
+                        required:true,
+                        maxlength: 100,
+                    }
                 },
                 messages: {
-                    instituteName:'Institute Name  is required',
-                    degreeObtained:'Degree Obtained is required',
-                    speciality:'Speciality is required',
-                    startDate:'Start Date is required',
-                    endDate:'End Date is required',
-                    country:'Country is required',
-                    city:'City is required',
+                    cert_name:{
+                        required:'Certification Name is required',
+                        maxlength: "Name must be less than 30 characters"
+                    },
+                    cert_no:{
+                        required:'Certification Number is required',
+                        maxlength: "Phone Number must be less than 30 characters"
+                    },
                 },
             });
 
             $('#form').on('submit', function (e) {
                 e.preventDefault();
                 // check if the input is valid using a 'valid' property
-                if (!$('#form').valid() ) {
+                if (!$('#form').valid()) {
                     return false;
                 }
-                let route = "{{route('education.store')}}";
-                console.log(route)
+                var id = $('#contactable_id').val();
+                var route = "{{route('official-training.update',['official_training'=>':official_training'])}}";
+                route = route.replace(':official_training', id);
+                console.log(route);
                 $.ajax({
                     type: 'POST',
                     url: route,
@@ -216,13 +188,9 @@ job-grid -->
                         loader();
                     },
                     success: function (response) {
-
                         swal.close();
                         console.log(response)
                         alertMsg(response.message, response['status']);
-                        // }
-
-
                     },
                     error: function (xhr, error, status) {
                         // console.log(xhr.responseJSON.errors.name[0])

@@ -19,4 +19,8 @@ class DashboardController extends Controller
     {
         return view('front-end.dashboard.staff-basic');
     }
+    public function staffQualification()
+    {
+        return view('front-end.dashboard.staff-qualification');
+    }
 }

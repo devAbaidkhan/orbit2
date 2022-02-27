@@ -52,7 +52,7 @@ job-grid -->
                                             </div>
                                             <div class="job-list-option">
                                                 <ul class="list-unstyled">
-                                                    <li> <span>Title</span> <a href="employer-detail.html">{{$contactPerson->title}}</a> </li>
+                                                    <li> <span>Title</span> <a href="#">{{$contactPerson->title}}</a> </li>
                                                     <li><i class="fas fa-map-marker-alt pe-1"></i>{{$contactPerson->address}}</li>
                                                     <li><i class="fas fa-filter pe-1"></i>Accountancy</li>
                                                     <li><a class="freelance" href="#"><i class="fas fa-suitcase pe-1"></i>{{$contactPerson->user_type}}</a></li>
@@ -69,7 +69,6 @@ job-grid -->
                                             @method("DELETE")
                                             <a class="job-list-favourite order-2" id="a-submit"><button type="submit"><i class="far fa-trash-alt"></i></button></a>
                                         </form>
-
                                     </div>
                                 </div>
                             </div>

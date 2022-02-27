@@ -20,6 +20,10 @@ Route::group(['prefix' => 'staff','middleware'=>'staff'], function () {
 
     Route::resource('education',\App\Http\Controllers\Frontend\Profile\StaffEducationController::class);
 
+    Route::resource('certification',\App\Http\Controllers\Frontend\Profile\StaffCertificationController::class);
+
+    Route::resource('official-training',\App\Http\Controllers\Frontend\Profile\StaffOfficialTrainingController::class);
+
     Route::post('job/apply',[\App\Http\Controllers\FrontEnd\Job\JobController::class,'jobApply']);
 
 
@@ -33,6 +37,7 @@ Route::group(['prefix' => 'staff','middleware'=>'staff'], function () {
     Route::get('/',[\App\Http\Controllers\FrontEnd\Profile\StaffProfileController::class,'index']);
     Route::get('dashboard',[\App\Http\Controllers\FrontEnd\Dashboard\DashboardController::class,'staff'])->name('staff.dashboard');
     Route::get('dashboard/basic',[\App\Http\Controllers\FrontEnd\Dashboard\DashboardController::class,'staffBasic']);
+    Route::get('dashboard/qualification',[\App\Http\Controllers\FrontEnd\Dashboard\DashboardController::class,'staffQualification']);
 
 });
 //======================================== End ============================================
