@@ -85,22 +85,57 @@ class StaffEducationController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, StaffEducation $staffEducation, $id)
     {
-        print_r($id);
-        exit();
+//        print_r($id);
+//        exit();
+        try {
+            $staffEducation = StaffEducation::find($id);
+            $staffEducation->institutionName = $request->institutionName;
+            $staffEducation->user_id = $request->user()->id;
+            $staffEducation->degreeObtained = $request->degreeObtained;
+            $staffEducation->speciality = $request->speciality;
+            $staffEducation->institutionCountry = $request->institutionCountry;
+            $staffEducation->institutionCity = $request->institutionCity;
+            $staffEducation->startDate = $request->startDate;
+            $staffEducation->endDate = $request->endDate;
+            $staffEducation->save();
+            $response = array('status' => 'success', 'message' => 'Data Inserted Successful');
+            return response()->json($response, 200);
+
+        } catch (\Exception $exception) {
+
+            $response = array('status' => 'error', 'message' => $exception->getMessage());
+            return response()->json($response,500);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(StaffEducation $staffEducation,$id)
     {
-        //
+        //dd(StaffEducation::find($id));
+        //dd($staffEducation->delete());
+
+        try {
+            $staffEducation_delete = StaffEducation::find($id);
+            if ($staffEducation_delete->delete()) {
+                $response = array('status' => 'success', 'message' => 'Data Deleted Successful');
+                return response()->json($response, 200);
+            }
+
+            $response = array('status' => 'error', 'message' => 'Data Not Deleted Successful');
+            return response()->json($response, 403);
+
+        } catch (\Exception  $th) {
+            $response = array('status' => 'error', 'message' => $th->getMessage());
+            return response()->json($response, 403);
+        }
     }
 }

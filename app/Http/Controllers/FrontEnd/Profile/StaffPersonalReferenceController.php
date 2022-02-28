@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\FrontEnd\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Models\StaffOfficialTraining;
+use App\Models\StaffPersonalReference;
 use Illuminate\Http\Request;
 
-class StaffOfficialTrainingController extends Controller
+class StaffPersonalReferenceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,6 +18,12 @@ class StaffOfficialTrainingController extends Controller
         //
     }
 
+    public function view($id)
+    {
+        $personalReference = StaffPersonalReference::find($id);
+        return view('front-end.profile.staff.personal-reference.view', compact('personalReference'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +31,7 @@ class StaffOfficialTrainingController extends Controller
      */
     public function create()
     {
-        return view('front-end.profile.staff.official-training.create');
+        return view('front-end.profile.staff.personal-reference.create');
     }
 
     /**
@@ -34,17 +40,19 @@ class StaffOfficialTrainingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request, StaffOfficialTraining $staffOfficialTraining)
+    public function store(Request $request, StaffPersonalReference $personalReference)
     {
         try {
-
-            $staffOfficialTraining->courseName = $request->courseName;
-            $staffOfficialTraining->certificateObtained = $request->certificateObtained;
-            $staffOfficialTraining->user_id = $request->user()->id;
-            $staffOfficialTraining->providerName = $request->providerName;
-            $staffOfficialTraining->trainingStartDate = $request->trainingStartDate;
-            $staffOfficialTraining->trainingEndDate = $request->trainingEndDate;
-            $staffOfficialTraining->save();
+            $personalReference->user_id = $request->user()->id;
+            $personalReference->ref_name = $request->ref_name;
+            $personalReference->ref_num = $request->ref_num;
+            $personalReference->ref_email = $request->ref_email;
+            $personalReference->ref_rel = $request->ref_rel;
+            $personalReference->ref_occup = $request->ref_occup;
+            $personalReference->ref_long = $request->ref_long;
+            $personalReference->ref_postal = $request->ref_postal;
+            $personalReference->ref_address = $request->ref_address;
+            $personalReference->save();
             $response = array('status' => 'success', 'message' => 'Data Inserted Successful');
             return response()->json($response, 200);
 
@@ -63,8 +71,8 @@ class StaffOfficialTrainingController extends Controller
      */
     public function show()
     {
-         $staffOfficialTrainings = StaffOfficialTraining::all();
-        return view('front-end.profile.staff.official-training.show', compact('staffOfficialTrainings'));
+        $personalReference = StaffPersonalReference::all();
+        return view('front-end.profile.staff.personal-reference.show', compact('personalReference'));
     }
 
     /**
@@ -75,8 +83,8 @@ class StaffOfficialTrainingController extends Controller
      */
     public function edit($id)
     {
-        $staffOfficialTrainings = StaffOfficialTraining::find($id);
-        return view('front-end.profile.staff.official-training.edit', compact('staffOfficialTrainings'));
+        $personalReference = StaffPersonalReference::find($id);
+        return view('front-end.profile.staff.personal-reference.edit', compact('personalReference'));
     }
 
     /**
@@ -86,18 +94,21 @@ class StaffOfficialTrainingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request,StaffOfficialTraining $staffOfficialTraining, $id)
+    public function update(Request $request, $id)
     {
         try {
-            $staffOfficialTraining = StaffOfficialTraining::find($id);
-            $staffOfficialTraining->courseName = $request->courseName;
-            $staffOfficialTraining->certificateObtained = $request->certificateObtained;
-            $staffOfficialTraining->user_id = $request->user()->id;
-            $staffOfficialTraining->providerName = $request->providerName;
-            $staffOfficialTraining->trainingStartDate = $request->trainingStartDate;
-            $staffOfficialTraining->trainingEndDate = $request->trainingEndDate;
-            $staffOfficialTraining->save();
-            $response = array('status' => 'success', 'message' => 'Data Updatad Successful');
+            $personalReference = StaffPersonalReference::find($id);
+            $personalReference->user_id = $request->user()->id;
+            $personalReference->ref_name = $request->ref_name;
+            $personalReference->ref_num = $request->ref_num;
+            $personalReference->ref_email = $request->ref_email;
+            $personalReference->ref_rel = $request->ref_rel;
+            $personalReference->ref_occup = $request->ref_occup;
+            $personalReference->ref_long = $request->ref_long;
+            $personalReference->ref_postal = $request->ref_postal;
+            $personalReference->ref_address = $request->ref_address;
+            $personalReference->save();
+            $response = array('status' => 'success', 'message' => 'Data Inserted Successful');
             return response()->json($response, 200);
 
         } catch (\Exception $exception) {
@@ -113,11 +124,11 @@ class StaffOfficialTrainingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(StaffOfficialTraining $staffOfficialTraining, $id)
+    public function destroy($id)
     {
         try {
-            $staffOfficialTraining = StaffOfficialTraining::find($id);
-            if ($staffOfficialTraining->delete()) {
+            $personalReference = StaffPersonalReference::find($id);
+            if ($personalReference->delete()) {
                 $response = array('status' => 'success', 'message' => 'Data Deleted Successful');
                 return response()->json($response, 200);
             }

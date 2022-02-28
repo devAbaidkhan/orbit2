@@ -26,21 +26,21 @@ Signin -->
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="institutionName" value="{{ old('institutionName', $staffEducations->institutionName) }}"/>
+                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="institutionName" value="{{ old('institutionName', $staffEducations->institutionName) }}"/>
                                     <span class="floating-label">Institution Name</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="degreeObtained" value="{{ old('degreeObtained', $staffEducations->degreeObtained) }}"/>
+                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="degreeObtained" value="{{ old('degreeObtained', $staffEducations->degreeObtained) }}"/>
                                     <span class="floating-label">Degree Obtained</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="speciality" value="{{ old('speciality', $staffEducations->speciality) }}"/>
+                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="speciality" value="{{ old('speciality', $staffEducations->speciality) }}"/>
                                     <span class="floating-label">Speciality</span>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@ Signin -->
                                     <option value="3">Islamabad</option>
                                 </select>
                             </div>
-                            <input type="hidden" name="contactable_id" id="contactable_id" value="{{auth()->id()}}">
+                            <input type="hidden" name="contactable_id" id="contactable_id" value="{{ old('id', $staffEducations->id) }}">
                         </div>
                         <div class="row">
                             <div class="col-md-12 ob-btn-login">
@@ -100,60 +100,49 @@ Signin -->
         $(document).ready(function (){
             $('#form').validate({
                 rules: {
-                    name:{
-                        required:true,
+                    instituteName: {
+                        required: true,
                         maxlength: 30,
                     },
-                    address:{
-                        required:true,
-                        maxlength: 100,
-                    },
-                    title:{
-                        required:true,
+                    degreeObtained: {
+                        required: true,
                         maxlength: 30,
                     },
-                    jobTitle:{
-                        required:true,
+                    speciality: {
+                        required: true,
                         maxlength: 30,
                     },
-                    phoneNumber:{
-                        required:true,
-                        maxlength: 30,
+                    startDate: {
+                        required: true,
                     },
-                    postalCode:{
-                        required:true,
-                        maxlength: 30,
+                    endDate: {
+                        required: true,
                     },
-                    email:{
-                        required:true,
+                    country: {
+                        required: true,
                     },
+                    city: {
+                        required: true,
+                    },
+
                 },
                 messages: {
-                    name:{
-                        required:'Name is required',
-                        maxlength: "Name must be less than 30 characters"
+                    instituteName:{
+                        required:'Institute Name  is required',
+                        maxlength: "Institute Name must be less than 30 characters"
                     },
-                    phoneNumber:{
-                        required:'Phone Number is required',
-                        maxlength: "Phone Number must be less than 30 characters"
+                    degreeObtained:{
+                        required:'Degree Obtained is required',
+                        maxlength: "Degree Obtained must be less than 30 characters"
                     },
-                    address:{
-                        required:'Address is required',
-                        maxlength: "Address must be less than 100 characters"
+                    speciality:{
+                        required:'Speciality is required',
+                        maxlength: "Speciality must be less than 30 characters"
                     },
-                    postalCode:{
-                        required:'Postal Code is required',
-                        maxlength: "Postal Code must be less than 30 characters"
-                    },
-                    email:'Email is required',
-                    title:{
-                        required:'Title  is required',
-                        maxlength: "Title must be less than 30 characters"
-                    },
-                    jobTitle:{
-                        required:'Job Title  is required',
-                        maxlength: "Job Title must be less than 30 characters"
-                    },
+                    startDate:'Start Date is required',
+                    endDate:'End Date is required',
+                    country:'Country is required',
+                    city:'City is required',
                 },
             });
 
@@ -164,8 +153,8 @@ Signin -->
                     return false;
                 }
                 var id = $('#contactable_id').val();
-                var route = "{{route('contact-person.update',['contact_person'=>':contact_person'])}}";
-                route = route.replace(':contact_person', id);
+                var route = "{{route('education.update',['education'=>':education'])}}";
+                route = route.replace(':education', id);
                 $.ajax({
                     type: 'POST',
                     url: route,

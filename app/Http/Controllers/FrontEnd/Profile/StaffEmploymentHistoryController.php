@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\FrontEnd\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Models\ContactPerson;
-use App\Models\StaffCertification;
-use App\Models\StaffOfficialTraining;
+use App\Models\StaffEmploymentHistory;
 use Illuminate\Http\Request;
 
-class StaffCertificationController extends Controller
+class StaffEmploymentHistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,6 +18,12 @@ class StaffCertificationController extends Controller
         //
     }
 
+    public function view($id)
+    {
+        $employmentHistory = StaffEmploymentHistory::find($id);
+        return view('front-end.profile.staff.employment-history.view', compact('employmentHistory'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +31,7 @@ class StaffCertificationController extends Controller
      */
     public function create()
     {
-        return view('front-end.profile.staff.certification.create');
+        return view('front-end.profile.staff.employment-history.create');
     }
 
     /**
@@ -36,14 +40,21 @@ class StaffCertificationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request, StaffCertification $staffCertification)
+    public function store(Request $request, StaffEmploymentHistory $employmentHistory)
     {
         try {
-            $staffCertification->cert_name = $request->cert_name;
-            $staffCertification->cert_no = $request->cert_no;
-            $staffCertification->cert_issue = $request->cert_issue;
-            $staffCertification->cert_expiry = $request->cert_expiry;
-            $staffCertification->save();
+            $employmentHistory->emp_title = $request->emp_title;
+            $employmentHistory->user_id = $request->user()->id;
+            $employmentHistory->emp_com_name = $request->emp_com_name;
+            $employmentHistory->emp_reason = $request->emp_reason;
+            $employmentHistory->emp_postal = $request->emp_postal;
+            $employmentHistory->emp_comp_address = $request->emp_comp_address;
+            $employmentHistory->emp_contact_name = $request->emp_contact_name;
+            $employmentHistory->email = $request->email;
+            $employmentHistory->phone_number = $request->phone_number;
+            $employmentHistory->emp_join = $request->emp_join;
+            $employmentHistory->emp_ending = $request->emp_ending;
+            $employmentHistory->save();
             $response = array('status' => 'success', 'message' => 'Data Inserted Successful');
             return response()->json($response, 200);
 
@@ -62,8 +73,8 @@ class StaffCertificationController extends Controller
      */
     public function show()
     {
-        $staffCertification = StaffCertification::all();
-        return view('front-end.profile.staff.certification.show', compact('staffCertification'));
+        $employmentHistory = StaffEmploymentHistory::all();
+        return view('front-end.profile.staff.employment-history.show', compact('employmentHistory'));
     }
 
     /**
@@ -74,8 +85,8 @@ class StaffCertificationController extends Controller
      */
     public function edit($id)
     {
-        $staffCertification = StaffCertification::find($id);
-        return view('front-end.profile.staff.certification.edit', compact('staffCertification'));
+        $employmentHistory = StaffEmploymentHistory::find($id);
+        return view('front-end.profile.staff.employment-history.edit', compact('employmentHistory'));
     }
 
     /**
@@ -83,18 +94,24 @@ class StaffCertificationController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StaffCertification $staffCertification,$id)
+    public function update(Request $request, StaffEmploymentHistory $employmentHistory)
     {
         try {
-            $staffCertification = StaffCertification::find($id);
-            $staffCertification->cert_name = $request->cert_name;
-            $staffCertification->cert_no = $request->cert_no;
-            $staffCertification->cert_issue = $request->cert_issue;
-            $staffCertification->cert_expiry = $request->cert_expiry;
-            $staffCertification->save();
-            $response = array('status' => 'success', 'message' => 'Data Updated Successful');
+            $employmentHistory->emp_title = $request->emp_title;
+            $employmentHistory->user_id = $request->user()->id;
+            $employmentHistory->emp_com_name = $request->emp_com_name;
+            $employmentHistory->emp_reason = $request->emp_reason;
+            $employmentHistory->emp_postal = $request->emp_postal;
+            $employmentHistory->emp_comp_address = $request->emp_comp_address;
+            $employmentHistory->emp_contact_name = $request->emp_contact_name;
+            $employmentHistory->email = $request->email;
+            $employmentHistory->phone_number = $request->phone_number;
+            $employmentHistory->emp_join = $request->emp_join;
+            $employmentHistory->emp_ending = $request->emp_ending;
+            $employmentHistory->save();
+            $response = array('status' => 'success', 'message' => 'Data Inserted Successful');
             return response()->json($response, 200);
 
         } catch (\Exception $exception) {
@@ -110,11 +127,11 @@ class StaffCertificationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StaffCertification $staffCertification,$id)
+    public function destroy($id)
     {
+        $staffEmployment_delete = StaffEmploymentHistory::find($id);
         try {
-            $staffCertification = StaffCertification::find($id);
-            if ($staffCertification->delete()) {
+            if ($staffEmployment_delete->delete()) {
                 $response = array('status' => 'success', 'message' => 'Data Deleted Successful');
                 return response()->json($response, 200);
             }

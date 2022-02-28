@@ -100,7 +100,11 @@ job-grid -->
                                 </div>
                                 <div class="ans-flex-justify-center">
                                     <a class="ans-education-dept-icons" href="{{url('staff/education/'.$education->id.'/edit')}}"><i class="far fa-edit"></i></a>
-                                    <a class="ans-education-dept-icons" href="#"><i class="far fa-trash-alt"></i></a>
+                                    <form action="{{url('staff/education/'.$education->id)}}" method="post" class='delete_form'>
+                                        @csrf
+                                        @method("DELETE")
+                                        <a class="" id="a-submit"><button type="submit" class="btn-site-delete"><i class="far fa-trash-alt"></i></button></a>
+                                    </form>
                                 </div>
                             </div>
                         </div>

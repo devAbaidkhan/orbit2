@@ -9,7 +9,7 @@ job-grid -->
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <div class="section-title text-center">
-                            <h2>Add New Certificate</h2>
+                            <h2>Add New Personal Reference</h2>
                         </div>
                     </div>
                 </div>
@@ -24,35 +24,58 @@ job-grid -->
                             <div class="row">
                                 <div class="mb-3 col-12">
                                     <div class="user-input-wrp">
-                                        <input maxlength="31" type="text" class="inputText entertxtOnly" name="cert_name">
-                                        <span class="floating-label">Certificate Name</span>
+                                        <input maxlength="31" type="text" class="inputText entertxtOnly" name="ref_name">
+                                        <span class="floating-label">Enter Person's Name</span>
                                     </div>
                                 </div>
                                 <div class="mb-3 col-12">
                                     <div class="user-input-wrp">
-                                        <input maxlength="31" type="text" class="inputText EnterOnlyNumber" name="cert_no">
-                                        <span class="floating-label">Certificate Number</span>
+                                        <input maxlength="31" type="text" class="inputText EnterOnlyNumber" name="ref_num">
+                                        <span class="floating-label">Mobile Number</span>
                                     </div>
                                 </div>
                                 <div class="mb-3 col-12">
                                     <div class="user-input-wrp">
-                                        <input type="date" class="inputText" name="cert_issue">
-                                        <span class="floating-label">Issue Date</span>
+                                        <input type="email" class="inputText" name="ref_email">
+                                        <span class="floating-label">Email Address</span>
                                     </div>
                                 </div>
                                 <div class="mb-3 col-12">
                                     <div class="user-input-wrp">
-                                        <input type="date" class="inputText" name="cert_expiry">
-                                        <span class="floating-label">Expiry Date</span>
+                                        <input maxlength="31" type="text" class="inputText entertxtOnly" name="ref_rel">
+                                        <span class="floating-label">Relation</span>
                                     </div>
                                 </div>
-                                <input type="hidden" name="contactable_id" id="contactable_id" value="{{auth()->id()}}">
+                                <div class="mb-3 col-12">
+                                    <div class="user-input-wrp">
+                                        <input maxlength="31" type="text" class="inputText entertxtOnly" name="ref_occup">
+                                        <span class="floating-label">Occupation</span>
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-12">
+                                    <div class="user-input-wrp">
+                                        <input maxlength="31" type="text" class="inputText entertxtOnly" name="ref_long">
+                                        <span class="floating-label">How Long you Know</span>
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-12">
+                                    <div class="user-input-wrp">
+                                        <input maxlength="31" type="text" class="inputText EnterOnlyNumber" name="ref_postal">
+                                        <span class="floating-label">Postal Code</span>
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-12">
+                                    <div class="user-input-wrp">
+                                        <input maxlength="101" type="text" class="inputText" name="ref_address">
+                                        <span class="floating-label">Enter Address</span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 ob-btn-login">
-                                    <button class="btn btn-primary">Save</button>
+                                   <button class="btn btn-primary">Save</button>
                                 </div>
-                                @csrf
+
                             </div>
                         </form>
                         <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">
@@ -72,23 +95,71 @@ job-grid -->
         $(document).ready(function (){
             $('#form').validate({
                 rules: {
-                    cert_name:{
+                    ref_name:{
                         required:true,
                         maxlength: 30,
                     },
-                    cert_no:{
+                    ref_num:{
+                        required:true,
+                        maxlength: 30,
+                    },
+                    ref_email:{
+                        required:true
+                    },
+                    ref_rel:{
+                        required:true,
+                        maxlength: 30,
+                    },
+                    ref_occup:{
+                        required:true,
+                        maxlength: 30,
+                    },
+                    ref_long:{
+                        required:true,
+                        maxlength: 30,
+                    },
+                    ref_postal:{
+                        required:true,
+                        maxlength: 30,
+                    },
+                    ref_address:{
                         required:true,
                         maxlength: 100,
-                    }
+                    },
+
                 },
                 messages: {
+                    ref_name:{
+                        required:' Name is required',
+                        maxlength: "Name must be less than 30 characters"
+                    },
+                    ref_num:{
+                        required:'Number is required',
+                        maxlength: "Number must be less than 30 characters"
+                    },
                     cert_name:{
+                        required:'Name is required',
+                        maxlength: "Name must be less than 30 characters"
+                    },
+                    ref_rel:{
+                        required:'Relation is required',
+                        maxlength: "Relation must be less than 30 characters"
+                    },
+                    ref_occup:{
+                        required:'Occupation is required',
+                        maxlength: "Occupation must be less than 30 characters"
+                    },
+                    ref_long:{
                         required:'Certification Name is required',
                         maxlength: "Name must be less than 30 characters"
                     },
-                    cert_no:{
-                        required:'Certification Number is required',
-                        maxlength: "Phone Number must be less than 30 characters"
+                    ref_postal:{
+                        required:'postal Code is required',
+                        maxlength: "postal Code must be less than 30 characters"
+                    },
+                    ref_address:{
+                        required:'Address is required',
+                        maxlength: "Address must be less than 100 characters"
                     },
                 },
             });
@@ -99,7 +170,7 @@ job-grid -->
                 if (!$('#form').valid() ) {
                     return false;
                 }
-                let route = "{{route('certification.store')}}";
+                let route = "{{route('personal-reference.store')}}";
                 console.log(route)
                 $.ajax({
                     type: 'POST',

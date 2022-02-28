@@ -2,36 +2,31 @@
 @section('content')
 
     <style>
-        .ans-flex-between {
+        .ans-flex-between{
             display: flex;
             justify-content: space-between;
         }
-
-        .ans-course-id {
+        .ans-course-id{
             font-size: 15px;
             margin-bottom: 5px;
         }
-
-        .ans-course-duration {
+        .ans-course-duration{
             font-size: 15px;
             margin-bottom: 5px;
         }
-
-        .ans-institution-name {
+        .ans-institution-name{
             font-size: 15px;
             margin-bottom: 0px;
             text-align: left;
         }
-
-        .ans-flex-justify-center {
+        .ans-flex-justify-center{
             display: flex;
             justify-content: center;
             border-top: 1px solid #eeeeee;
             margin-top: 10px;
             padding: 10px 0;
         }
-
-        .ans-flex-justify-center a {
+        .ans-flex-justify-center a{
             font-size: 15px;
             display: inline-block;
             position: relative;
@@ -48,19 +43,21 @@
             margin: 0px 20px;
             background: #8B4D9F;
         }
-
-        .ans-add-new-btn {
+        .ans-add-new-btn{
             width: 100%;
             background: #ffffff;
             color: #ff8a00;
             border: 2px solid #8B4D9F;
             color: #777;
         }
-
-        .space-ptb {
+        .space-ptb{
             background: #f7f7f7;
         }
+        .text-left{
+            text-align: left;
+        }
     </style>
+
     <!--=================================
 job-grid -->
     <section class="space-ptb">
@@ -71,63 +68,53 @@ job-grid -->
                     right-sidebar -->
                     <div class="row mb-4">
                         <div class="col-12 hmz-site-heading">
-                            <h6 class="mb-0 mt-5">Certifications</h6>
+                            <h6 class="mb-0 mt-5">Personal References</h6>
                         </div>
                     </div>
-                    <div class="job-filter mb-4 d-sm-flex align-items-center">
-                        <div class="job-shortby ms-sm-auto d-flex align-items-center">
-                            <div class="filter-btn ms-sm-3" style="width:100%"><a
-                                    href="{{url('staff/certification/create')}}"
-                                    class="btn btn-outline-primary ans-add-new-btn" style="width:100%">Add New
-                                    Certification</a>
-                            </div>
-                        </div>
-                    </div>
-
+                    <form class="mt-4" id="loginForm" >
                         <div class="row">
-                            @foreach($staffCertification as $certificat)
-                            <div class="col-md-6 col-lg-4">
-                                <div class="job-list job-grid pt-3">
-                                    <div class="job-list-details pb-0 mb-0">
-                                        <div class="job-list-info">
-                                            <div class="job-list-title">
-                                                <h5 class="mb-0"><a href="job-detail.html">Certification
-                                                        Name: {{$certificat->cert_name}}</a></h5>
-                                            </div>
-                                            <div class="ans-flex-between">
-                                                <div>
-                                                    <p class="ans-course-id">ID: 003</p>
-                                                </div>
-                                                <div>
-                                                    <p class="ans-course-duration">Certification
-                                                        no: {{$certificat->cert_no}}</p>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <p class="ans-institution-name">Issue
-                                                    Date: {{$certificat->cert_issue}}</p>
-                                                <p class="ans-institution-name">Expiry
-                                                    Date: {{$certificat->cert_expiry}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ans-flex-justify-center">
-                                        <a class="ans-education-dept-icons"
-                                           href="{{url('staff/certification/'.$certificat->id.'/edit')}}"><i
-                                                class="far fa-edit"></i></a>
-                                        <form action="{{url('staff/certification/'.$certificat->id)}}" method="post"
-                                              class='delete_form'>
-                                            @csrf
-                                            @method("DELETE")
-                                            <a class="job-list-favourite order-2" id="a-submit">
-                                                <button type="submit"><i class="far fa-trash-alt"></i></button>
-                                            </a>
-                                        </form>
-                                    </div>
+                            <div class="mb-3 col-12">
+                                <div class="user-input-wrp">
+                                    <br/>
+                                    <input type="text" class="inputText" required/>
+                                    <span class="floating-label">Search any Reference</span>
                                 </div>
                             </div>
-                            @endforeach
                         </div>
+                    </form>
+                    <div class="job-filter mb-4 d-sm-flex align-items-center">
+                        <div class="job-shortby ms-sm-auto d-flex align-items-center">
+                            <div class="filter-btn ms-sm-3" style="width:100%"> <a href="{{url('staff/personal-reference/create')}}" class="btn btn-outline-primary ans-add-new-btn" style="width:100%">Add new Reference</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @foreach($personalReference as $personal)
+                        <div class="col-md-6 col-lg-4">
+                            <div class="job-list job-grid pt-3">
+                                <div class="job-list-details pb-0 mb-0">
+                                    <div class="job-list-info">
+                                        <div class="job-list-title">
+                                            <h5 class="mb-0"><a href="#">{{$personal->ref_name}}</a></h5>
+                                        </div>
+                                        <p class="ans-course-id text-left">Phone #: {{$personal->ref_num}}</p>
+                                        <p class="ans-course-duration text-left">Email Address: {{$personal->ref_email}}</p>
+                                        <p class="ans-course-duration text-left">Address: {{$personal->ref_address}}</p>
+                                    </div>
+                                </div>
+                                <div class="ans-flex-justify-center">
+                                    <a class="ans-education-dept-icons" href="{{url('staff/personal-reference/'.$personal->id.'/view')}}"><i class="far fa-eye"></i></a>
+                                    <a class="ans-education-dept-icons" href="{{url('staff/personal-reference/'.$personal->id.'/edit')}}"><i class="far fa-edit"></i></a>
+                                    <form action="{{url('staff/personal-reference/'.$personal->id)}}" method="post" class='delete_form'>
+                                        @csrf
+                                        @method("DELETE")
+                                        <a class="" id="a-submit"><button type="submit" class="btn-site-delete"><i class="far fa-trash-alt"></i></button></a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>

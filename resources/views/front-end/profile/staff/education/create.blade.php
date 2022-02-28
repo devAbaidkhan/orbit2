@@ -91,21 +91,21 @@ job-grid -->
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="institutionName" required/>
+                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="institutionName" required/>
                                     <span class="floating-label">Institution Name</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="degreeObtained" required/>
+                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="degreeObtained" required/>
                                     <span class="floating-label">Degree Obtained</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="speciality" required/>
+                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="speciality" required/>
                                     <span class="floating-label">Speciality</span>
                                 </div>
                             </div>
@@ -148,6 +148,9 @@ job-grid -->
                             @csrf
                         </div>
                     </form>
+                    <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">
+                        <p class="mt-1"><i class="fa fa-arrow-left"></i><a onclick="location.replace(document.referrer);"> Back</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -164,12 +167,15 @@ job-grid -->
                 rules: {
                     instituteName: {
                         required: true,
+                        maxlength: 30,
                     },
                     degreeObtained: {
                         required: true,
+                        maxlength: 30,
                     },
                     speciality: {
                         required: true,
+                        maxlength: 30,
                     },
                     startDate: {
                         required: true,
@@ -186,9 +192,18 @@ job-grid -->
 
                 },
                 messages: {
-                    instituteName:'Institute Name  is required',
-                    degreeObtained:'Degree Obtained is required',
-                    speciality:'Speciality is required',
+                    instituteName:{
+                        required:'Institute Name  is required',
+                        maxlength: "Institute Name must be less than 30 characters"
+                    },
+                    degreeObtained:{
+                        required:'Degree Obtained is required',
+                        maxlength: "Degree Obtained must be less than 30 characters"
+                    },
+                    speciality:{
+                        required:'Speciality is required',
+                        maxlength: "Speciality must be less than 30 characters"
+                    },
                     startDate:'Start Date is required',
                     endDate:'End Date is required',
                     country:'Country is required',
@@ -234,5 +249,26 @@ job-grid -->
                 });
             });
         })
+
+        ///////////// Enter Only text //////////////
+        $(document).ready(function (){
+            $(".entertxtOnly").keypress(function (e) {
+                var k;
+                document.all ? k = e.keyCode : k = e.which;
+                return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32);
+            });
+        });
+        ///////////// Enter Only Number //////////////
+        $(document).ready(function () {
+            //called when key is pressed in textbox
+            $(".EnterOnlyNumber").keypress(function (e) {
+                //if the letter is not digit then display error and don't type anything
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    //display error message
+                    $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                    return false;
+                }
+            });
+        });
     </script>
 @endsection

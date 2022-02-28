@@ -92,21 +92,21 @@ job-grid -->
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="courseName" value="{{ old('courseName', $staffOfficialTrainings->courseName) }}"/>
+                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="courseName" value="{{ old('courseName', $staffOfficialTrainings->courseName) }}"/>
                                     <span class="floating-label">Course Name</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="certificateObtained" value="{{ old('certificateObtained', $staffOfficialTrainings->certificateObtained) }}"/>
+                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="certificateObtained" value="{{ old('certificateObtained', $staffOfficialTrainings->certificateObtained) }}"/>
                                     <span class="floating-label">Certificate Obtained</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="providerName" value="{{ old('providerName', $staffOfficialTrainings->providerName) }}"/>
+                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="providerName" value="{{ old('providerName', $staffOfficialTrainings->providerName) }}"/>
                                     <span class="floating-label">Provider Name</span>
                                 </div>
                             </div>
@@ -124,14 +124,17 @@ job-grid -->
                                     <span class="floating-label">Training End Date</span>
                                 </div>
                             </div>
+                            <input type="hidden" name="contactable_id" id="contactable_id" value="{{ old('id', $staffOfficialTrainings->id) }}">
                         </div>
                         <div class="row">
                             <div class="col-md-12 ob-btn-login">
                                 <button class="btn btn-primary">Save</button>
                             </div>
-                            @csrf
                         </div>
                     </form>
+                    <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">
+                        <p class="mt-1"><i class="fa fa-arrow-left"></i><a onclick="location.replace(document.referrer);"> Back</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -145,24 +148,32 @@ job-grid -->
         $(document).ready(function (){
             $('#form').validate({
                 rules: {
-                    cert_name:{
+                    courseName:{
                         required:true,
                         maxlength: 30,
                     },
-                    cert_no:{
+                    certificateObtained:{
                         required:true,
-                        maxlength: 100,
+                        maxlength: 30,
+                    },
+                    providerName:{
+                        required:true,
+                        maxlength: 30,
                     }
                 },
                 messages: {
-                    cert_name:{
-                        required:'Certification Name is required',
-                        maxlength: "Name must be less than 30 characters"
+                    courseName:{
+                        required:'Name is required',
+                        maxlength: "Course Name must be less than 30 characters"
                     },
-                    cert_no:{
-                        required:'Certification Number is required',
-                        maxlength: "Phone Number must be less than 30 characters"
+                    certificateObtained:{
+                        required:'Phone Number is required',
+                        maxlength: "Certificate Obtained must be less than 30 characters"
                     },
+                    providerName:{
+                        required:'Address is required',
+                        maxlength: "Provider Name must be less than 30 characters"
+                    }
                 },
             });
 
@@ -202,5 +213,26 @@ job-grid -->
                 });
             });
         })
+
+        ///////////// Enter Only text //////////////
+        $(document).ready(function (){
+            $(".entertxtOnly").keypress(function (e) {
+                var k;
+                document.all ? k = e.keyCode : k = e.which;
+                return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32);
+            });
+        });
+        ///////////// Enter Only Number //////////////
+        $(document).ready(function () {
+            //called when key is pressed in textbox
+            $(".EnterOnlyNumber").keypress(function (e) {
+                //if the letter is not digit then display error and don't type anything
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    //display error message
+                    $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                    return false;
+                }
+            });
+        });
     </script>
 @endsection

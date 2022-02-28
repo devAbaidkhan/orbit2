@@ -69,12 +69,13 @@ job-grid -->
                     </div>
                     <div class="job-filter mb-4 d-sm-flex align-items-center">
                         <div class="job-shortby ms-sm-auto d-flex align-items-center">
-                            <div class="filter-btn ms-sm-3" style="width:100%"> <a href="{{route('official-training.create')}}" class="btn btn-outline-primary ans-add-new-btn" style="width:100%">Add new Site</a>
+                            <div class="filter-btn ms-sm-3" style="width:100%"> <a href="{{route('official-training.create')}}" class="btn btn-outline-primary ans-add-new-btn" style="width:100%">Add Officail Training</a>
                             </div>
                         </div>
                     </div>
-                    @foreach($staffOfficialTrainings as $staffOfficialTraining)
+
                     <div class="row">
+                        @foreach($staffOfficialTrainings as $staffOfficialTraining)
                         <div class="col-md-6 col-lg-4">
                             <div class="job-list job-grid pt-3">
                                 <div class="job-list-details pb-0 mb-0">
@@ -106,8 +107,9 @@ job-grid -->
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
+
                 </div>
             </div>
         </div>

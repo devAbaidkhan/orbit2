@@ -78,6 +78,26 @@
         </div>
         <div class="col-lg-3 col-md-4 col-6 text-center mb-3">
             <div class="ans-category-item pt-3">
+                <a href="{{url('staff/employment-history/show')}}" class="category-item p-0">
+                    <div class="category-icon mb-3 text-center">
+                        <i class="flaticon-conversation"></i>
+                    </div>
+                    <h6 class="ans-category-box-heading">Employment History</h6>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 text-center mb-3">
+            <div class="ans-category-item pt-3">
+                <a href="{{url('staff/personal-reference/show')}}" class="category-item p-0">
+                    <div class="category-icon mb-3 text-center">
+                        <i class="flaticon-conversation"></i>
+                    </div>
+                    <h6 class="ans-category-box-heading">Personal References</h6>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6 text-center mb-3">
+            <div class="ans-category-item pt-3">
                 <a href="{{route('document.index')}}" class="category-item p-0">
                     <div class="category-icon mb-3 text-center">
                     <i class="flaticon-suitcase"></i>

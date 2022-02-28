@@ -25,13 +25,13 @@ job-grid -->
                             <div class="row">
                                 <div class="mb-3 col-12">
                                     <div class="user-input-wrp">
-                                        <input type="text" class="inputText" name="cert_name" value="{{ old('cert_name', $staffEducations->cert_name) }}">
+                                        <input maxlength="31" type="text" class="inputText entertxtOnly" name="cert_name" value="{{ old('cert_name', $staffCertification->cert_name) }}">
                                         <span class="floating-label">Certificate Name</span>
                                     </div>
                                 </div>
                                 <div class="mb-3 col-12">
                                     <div class="user-input-wrp">
-                                        <input type="text" class="inputText" name="cert_no" value="{{ old('cert_no', $staffCertification->cert_no) }}">
+                                        <input maxlength="31" type="text" class="inputText EnterOnlyNumber" name="cert_no" value="{{ old('cert_no', $staffCertification->cert_no) }}">
                                         <span class="floating-label">Certificate Number</span>
                                     </div>
                                 </div>
@@ -56,7 +56,9 @@ job-grid -->
                                 @csrf
                             </div>
                         </form>
-
+                        <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">
+                            <p class="mt-1"><i class="fa fa-arrow-left"></i><a onclick="location.replace(document.referrer);"> Back</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -77,7 +79,7 @@ job-grid -->
                     },
                     cert_no:{
                         required:true,
-                        maxlength: 100,
+                        maxlength: 30,
                     }
                 },
                 messages: {
@@ -87,7 +89,7 @@ job-grid -->
                     },
                     cert_no:{
                         required:'Certification Number is required',
-                        maxlength: "Phone Number must be less than 30 characters"
+                        maxlength: "Certification Number must be less than 30 characters"
                     },
                 },
             });
@@ -128,5 +130,26 @@ job-grid -->
                 });
             });
         })
+
+        ///////////// Enter Only text //////////////
+        $(document).ready(function (){
+            $(".entertxtOnly").keypress(function (e) {
+                var k;
+                document.all ? k = e.keyCode : k = e.which;
+                return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32);
+            });
+        });
+        ///////////// Enter Only Number //////////////
+        $(document).ready(function () {
+            //called when key is pressed in textbox
+            $(".EnterOnlyNumber").keypress(function (e) {
+                //if the letter is not digit then display error and don't type anything
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    //display error message
+                    $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                    return false;
+                }
+            });
+        });
     </script>
 @endsection

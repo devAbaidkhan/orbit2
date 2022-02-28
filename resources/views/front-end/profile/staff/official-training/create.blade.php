@@ -91,21 +91,21 @@ job-grid -->
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="courseName" required/>
+                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="courseName"/>
                                     <span class="floating-label">Course Name</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="certificateObtained" required/>
+                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="certificateObtained" required/>
                                     <span class="floating-label">Certificate Obtained</span>
                                 </div>
                             </div>
                             <div class="mb-3 col-12">
                                 <div class="user-input-wrp">
                                     <br/>
-                                    <input type="text" class="inputText" name="providerName" required/>
+                                    <input maxlength="31" type="text" class="inputText entertxtOnly" name="providerName" required/>
                                     <span class="floating-label">Provider Name</span>
                                 </div>
                             </div>
@@ -131,6 +131,9 @@ job-grid -->
                             @csrf
                         </div>
                     </form>
+                    <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">
+                        <p class="mt-1"><i class="fa fa-arrow-left"></i><a onclick="location.replace(document.referrer);"> Back</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -144,60 +147,32 @@ job-grid -->
         $(document).ready(function (){
             $('#form').validate({
                 rules: {
-                    name:{
+                    courseName:{
                         required:true,
                         maxlength: 30,
                     },
-                    address:{
-                        required:true,
-                        maxlength: 100,
-                    },
-                    title:{
+                    certificateObtained:{
                         required:true,
                         maxlength: 30,
                     },
-                    jobTitle:{
+                    providerName:{
                         required:true,
                         maxlength: 30,
-                    },
-                    phoneNumber:{
-                        required:true,
-                        maxlength: 30,
-                    },
-                    postalCode:{
-                        required:true,
-                        maxlength: 30,
-                    },
-                    email:{
-                        required:true,
-                    },
+                    }
                 },
                 messages: {
-                    name:{
+                    courseName:{
                         required:'Name is required',
-                        maxlength: "Name must be less than 30 characters"
+                        maxlength: "Course Name must be less than 30 characters"
                     },
-                    phoneNumber:{
+                    certificateObtained:{
                         required:'Phone Number is required',
-                        maxlength: "Phone Number must be less than 30 characters"
+                        maxlength: "Certificate Obtained must be less than 30 characters"
                     },
-                    address:{
+                    providerName:{
                         required:'Address is required',
-                        maxlength: "Address must be less than 100 characters"
-                    },
-                    postalCode:{
-                        required:'Postal Code is required',
-                        maxlength: "Postal Code must be less than 30 characters"
-                    },
-                    email:'Email is required',
-                    title:{
-                        required:'Title  is required',
-                        maxlength: "Title must be less than 30 characters"
-                    },
-                    jobTitle:{
-                        required:'Job Title  is required',
-                        maxlength: "Job Title must be less than 30 characters"
-                    },
+                        maxlength: "Provider Name must be less than 30 characters"
+                    }
                 },
             });
 

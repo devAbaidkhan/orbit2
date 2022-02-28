@@ -2,36 +2,31 @@
 @section('content')
 
     <style>
-        .ans-flex-between {
+        .ans-flex-between{
             display: flex;
             justify-content: space-between;
         }
-
-        .ans-course-id {
+        .ans-course-id{
             font-size: 15px;
             margin-bottom: 5px;
         }
-
-        .ans-course-duration {
+        .ans-course-duration{
             font-size: 15px;
             margin-bottom: 5px;
         }
-
-        .ans-institution-name {
+        .ans-institution-name{
             font-size: 15px;
             margin-bottom: 0px;
             text-align: left;
         }
-
-        .ans-flex-justify-center {
+        .ans-flex-justify-center{
             display: flex;
             justify-content: center;
             border-top: 1px solid #eeeeee;
             margin-top: 10px;
             padding: 10px 0;
         }
-
-        .ans-flex-justify-center a {
+        .ans-flex-justify-center a{
             font-size: 15px;
             display: inline-block;
             position: relative;
@@ -48,19 +43,18 @@
             margin: 0px 20px;
             background: #8B4D9F;
         }
-
-        .ans-add-new-btn {
+        .ans-add-new-btn{
             width: 100%;
             background: #ffffff;
             color: #ff8a00;
             border: 2px solid #8B4D9F;
             color: #777;
         }
-
-        .space-ptb {
+        .space-ptb{
             background: #f7f7f7;
         }
     </style>
+
     <!--=================================
 job-grid -->
     <section class="space-ptb">
@@ -71,63 +65,54 @@ job-grid -->
                     right-sidebar -->
                     <div class="row mb-4">
                         <div class="col-12 hmz-site-heading">
-                            <h6 class="mb-0 mt-5">Certifications</h6>
+                            <h6 class="mb-0 mt-5">Employment History</h6>
                         </div>
                     </div>
                     <div class="job-filter mb-4 d-sm-flex align-items-center">
                         <div class="job-shortby ms-sm-auto d-flex align-items-center">
-                            <div class="filter-btn ms-sm-3" style="width:100%"><a
-                                    href="{{url('staff/certification/create')}}"
-                                    class="btn btn-outline-primary ans-add-new-btn" style="width:100%">Add New
-                                    Certification</a>
+                            <div class="filter-btn ms-sm-3" style="width:100%"> <a href="{{url('staff/employment-history/create')}}" class="btn btn-outline-primary ans-add-new-btn" style="width:100%">Add Employment</a>
                             </div>
                         </div>
                     </div>
-
-                        <div class="row">
-                            @foreach($staffCertification as $certificat)
-                            <div class="col-md-6 col-lg-4">
-                                <div class="job-list job-grid pt-3">
-                                    <div class="job-list-details pb-0 mb-0">
-                                        <div class="job-list-info">
-                                            <div class="job-list-title">
-                                                <h5 class="mb-0"><a href="job-detail.html">Certification
-                                                        Name: {{$certificat->cert_name}}</a></h5>
-                                            </div>
-                                            <div class="ans-flex-between">
-                                                <div>
-                                                    <p class="ans-course-id">ID: 003</p>
-                                                </div>
-                                                <div>
-                                                    <p class="ans-course-duration">Certification
-                                                        no: {{$certificat->cert_no}}</p>
-                                                </div>
+                    <div class="row">
+                        @foreach($employmentHistory as $employment)
+                        <div class="col-md-6 col-lg-4">
+                            <div class="job-list job-grid pt-3">
+                                <div class="job-list-details pb-0 mb-0">
+                                    <div class="job-list-info">
+                                        <div class="job-list-title">
+                                            <h5 class="mb-0"><a href="">{{$employment->emp_title}}</a></h5>
+                                        </div>
+                                        <div class="ans-flex-between">
+                                            <div>
+                                                <p class="ans-course-id">ID: 003</p>
                                             </div>
                                             <div>
-                                                <p class="ans-institution-name">Issue
-                                                    Date: {{$certificat->cert_issue}}</p>
-                                                <p class="ans-institution-name">Expiry
-                                                    Date: {{$certificat->cert_expiry}}</p>
+                                                <p class="ans-course-duration">{{$employment->emp_join}} - {{$employment->emp_ending}}</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="ans-flex-justify-center">
-                                        <a class="ans-education-dept-icons"
-                                           href="{{url('staff/certification/'.$certificat->id.'/edit')}}"><i
-                                                class="far fa-edit"></i></a>
-                                        <form action="{{url('staff/certification/'.$certificat->id)}}" method="post"
-                                              class='delete_form'>
-                                            @csrf
-                                            @method("DELETE")
-                                            <a class="job-list-favourite order-2" id="a-submit">
-                                                <button type="submit"><i class="far fa-trash-alt"></i></button>
-                                            </a>
-                                        </form>
+                                        <div>
+                                            <p class="ans-institution-name">Company Name: {{$employment->emp_com_name}}</p>
+                                            <p class="ans-institution-name">Reason of Leaving: {{$employment->emp_reason}}</p>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="ans-flex-justify-center">
+                                    <a class="ans-education-dept-icons" href="{{url('staff/employment-history/'.$employment->id.'/view')}}"><i class="far fa-eye"></i></a>
+                                    <a class="ans-education-dept-icons" href="{{url('staff/employment-history/'.$employment->id.'/edit')}}"><i class="far fa-edit"></i></a>
+                                    <form action="{{url('staff/employment-history/'.$employment->id)}}" method="post"
+                                          class='delete_form'>
+                                        @csrf
+                                        @method("DELETE")
+                                        <a class="job-list-favourite order-2" id="a-submit">
+                                            <button type="submit"><i class="far fa-trash-alt"></i></button>
+                                        </a>
+                                    </form>
+                                </div>
                             </div>
-                            @endforeach
                         </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>

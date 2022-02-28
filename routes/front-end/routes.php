@@ -24,6 +24,12 @@ Route::group(['prefix' => 'staff','middleware'=>'staff'], function () {
 
     Route::resource('official-training',\App\Http\Controllers\Frontend\Profile\StaffOfficialTrainingController::class);
 
+    Route::resource('employment-history',\App\Http\Controllers\Frontend\Profile\StaffEmploymentHistoryController::class);
+    Route::get('employment-history/{employment_history}/view',[\App\Http\Controllers\Frontend\Profile\StaffEmploymentHistoryController::class,'view'])->name("employment_history.view");
+
+    Route::resource('personal-reference',\App\Http\Controllers\Frontend\Profile\StaffPersonalReferenceController::class);
+    Route::get('personal-reference/{personal_reference}/view',[\App\Http\Controllers\Frontend\Profile\StaffPersonalReferenceController::class,'view'])->name("personal_reference.view");
+
     Route::post('job/apply',[\App\Http\Controllers\FrontEnd\Job\JobController::class,'jobApply']);
 
 
