@@ -4685,7 +4685,7 @@ iframe {
 
 /* Employer */
 .employers-list {
-    padding: 18px 0px;
+    padding: 15px 10px;
     background: #ffffff;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -7406,7 +7406,7 @@ iframe {
     }
 
     .space-ptb {
-        padding: 40px 0;
+        padding: 20px 20px;
     }
 
     .space-pt {
@@ -9075,3 +9075,7 @@ color: #777;
     padding-right:20px;
 }
 
+.ob-company-heading a
+{
+    text-transform: capitalize;
+}

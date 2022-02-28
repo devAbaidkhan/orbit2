@@ -52,9 +52,7 @@ job-grid -->
                                             <div class="job-list-option">
                                                 <ul class="list-unstyled">
                                                     <li> <span>Type</span> <a href="employer-detail.html">{{$siteDocument->Type}}</a> </li>
-                                                    <li><i class="fas fa-map-marker-alt pe-1"></i>Wellesley Rd, London</li>
-                                                    <li><i class="fas fa-filter pe-1"></i>Accountancy</li>
-                                                    <li><a class="freelance" href="#"><i class="fas fa-suitcase pe-1"></i>Freelance</a></li>
+
                                                 </ul>
                                             </div>
 

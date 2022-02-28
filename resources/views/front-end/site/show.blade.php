@@ -46,7 +46,7 @@ job-grid -->
                             <div class="job-list-details pb-0 mb-0">
                               <div class="job-list-info">
                                 <div class="job-list-title">
-                                  <h5 class="mb-0"><a href="job-detail.html">{{$siteDeail->name}}</a></h5>
+                                  <h5 class="mb-0"><a href="#">{{$siteDeail->name}}</a></h5>
                                 </div>
                                 <div class="ans-flex-between">
                                   <div>

@@ -35,7 +35,7 @@
                 <h1 class="mb-4">Thank You For Submitting</h1>
                 <h6 class="mb-2 text-light">Thank you for submitting, your job has been under review. We
                     will let you know once approved. </h6>
-                <h6 class="mb-0 text-light">Email support@jobber.com</h6>
+                <h6 class="mb-0 text-light">Email support@workorbit.com</h6>
             </div>
             <div class="col-12 text-center mt-4 mt-sm-5">
 {{--                <a class="btn btn-outline-primary mb-3 mb-sm-0" href="#">Manage Jobs</a>--}}

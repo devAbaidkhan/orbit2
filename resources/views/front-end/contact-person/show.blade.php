@@ -43,36 +43,39 @@ job-grid -->
                     @foreach($contactPersons as $contactPerson)
                         <div class="row">
                             <div class="col-md-6 col-lg-4">
-                                <div class="job-list job-grid">
-                                    <div class="job-list-details">
-                                        <div class="job-list-info">
-
-                                            <div class="job-list-title">
-                                                <h5 class="mb-0"><a href="#">{{$contactPerson->name}}</a></h5>
-                                            </div>
-                                            <div class="job-list-option">
-                                                <ul class="list-unstyled">
-                                                    <li> <span>Title</span> <a href="#">{{$contactPerson->title}}</a> </li>
-                                                    <li><i class="fas fa-map-marker-alt pe-1"></i>{{$contactPerson->address}}</li>
-                                                    <li><i class="fas fa-filter pe-1"></i>Accountancy</li>
-                                                    <li><a class="freelance" href="#"><i class="fas fa-suitcase pe-1"></i>{{$contactPerson->user_type}}</a></li>
-                                                </ul>
-                                            </div>
-
-                                        </div>
+                              <div class="job-list job-grid pt-3">
+                                <div class="job-list-details pb-0 mb-0">
+                                  <div class="job-list-info">
+                                    <div class="job-list-title">
+                                      <h5 class="mb-0"><a href="#">{{$contactPerson->title}} {{$contactPerson->name}}</a></h5>
                                     </div>
-                                    <div class="job-list-favourite-time">
-                                        <a class="job-list-favourite order-2" href="{{url('contact-person/'.$contactPerson->id.'/view')}}"><i class="far fa-eye"></i></a>
-                                        <a class="job-list-favourite order-2" href="{{url('contact-person/'.$contactPerson->id.'/edit')}}"><i class="far fa-edit"></i></a>
-                                        <form action="{{url('contact-person/'.$contactPerson->id)}}" method="post" class='delete_form'>
-                                            @csrf
-                                            @method("DELETE")
-                                            <a class="job-list-favourite order-2" id="a-submit"><button type="submit"><i class="far fa-trash-alt"></i></button></a>
-                                        </form>
+                                    <div class="ans-flex-between">
+                                      <div>
+                                          <p class="ans-course-id">ID: {{$contactPerson->user_id}}</p>
+                                      </div>
                                     </div>
+                                    <div>
+                                        <p class="ans-institution-name">Designation: {{$contactPerson->job_title}}</p>
+                                        <p class="ans-institution-name">Address: {{$contactPerson->address}}</p>
+                                        <p class="ans-institution-name">Phone no: {{$contactPerson->phone_number}}</p>
+                                        <p class="ans-institution-name">Email: {{$contactPerson->email}}</p>
+
+                                    </div>
+                                  </div>
                                 </div>
+                                <div class="ans-flex-justify-center">
+                                    <a class="ans-education-dept-icons" href="{{url('contact-person/'.$contactPerson->id.'/edit')}}"><i class="far fa-edit"></i></a>
+                                    <a class="ans-education-dept-icons" href="{{url('contact-person/'.$contactPerson->id.'/view')}}"><i class="far fa-eye"></i></a>
+                                    <form action="{{url('contact-person/'.$contactPerson->id)}}" method="post" class='delete_form'>
+                                        @csrf
+                                        @method("DELETE")
+                                        <a class="" id="a-submit"><button type="submit" class="btn-site-delete"><i class="far fa-trash-alt"></i></button></a>
+                                    </form>
+                                </div>
+                              </div>
                             </div>
                         </div>
+
                     @endforeach
                 </div>
             </div>
