@@ -4,14 +4,14 @@
     <!--=================================
 job-grid -->
     <section class="space-ptb">
-        <div class="container">
+        <div class="container site-main-body">
             <div class="row">
                 <div class="col-md-12">
                     <!--=================================
                     right-sidebar -->
                     <div class="row mb-4">
                         <div class="col-12 hmz-site-heading">
-                            <h6 class="mb-0 ">Working Sites</h6>
+                            <h4 class="mb-0">Sites</h4>
                         </div>
                     </div>
                     <div class="job-filter mb-4 d-sm-flex align-items-center">
@@ -35,57 +35,44 @@ job-grid -->
 
                         </div>
                         <div class="job-shortby ms-sm-auto d-flex align-items-center">
-                            <div class="filter-btn ms-sm-3" style="width:100%"> <a href="{{url('company/sites/create')}}" class="btn btn-outline-primary" style="width:100%">Add new Site</a>
+                            <div class="filter-btn ms-sm-3" style="width:100%"> <a href="{{url('company/sites/create')}}" class="btn btn-outline-primary" style="width:100%">Add New Site</a>
                             </div>
                         </div>
                     </div>
                     @foreach($siteDeails as $siteDeail)
                     <div class="row">
                         <div class="col-md-6 col-lg-4">
-                            <div class="job-list job-grid">
-                                <div class="job-list-details">
-                                    <div class="job-list-info">
-
-                                        <div class="job-list-title">
-                                            <h5 class="mb-0"><a href="#">{{$siteDeail->name}}</a></h5>
-                                        </div>
-                                        <div class="job-list-option">
-                                            <ul class="list-unstyled">
-                                                <li> <span>City</span> <a href="employer-detail.html">{{$siteDeail->city}}</a> </li>
-                                                <li><i class="fas fa-map-marker-alt pe-1"></i>{{$siteDeail->address}}</li>
-                                                <li><i class="fas fa-filter pe-1"></i>Accountancy</li>
-                                                <li><a class="freelance" href="#"><i class="fas fa-suitcase pe-1"></i>Freelance</a></li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
+                          <div class="job-list job-grid pt-3">
+                            <div class="job-list-details pb-0 mb-0">
+                              <div class="job-list-info">
+                                <div class="job-list-title">
+                                  <h5 class="mb-0"><a href="job-detail.html">{{$siteDeail->name}}</a></h5>
                                 </div>
-                                <div class="job-list-favourite-time">
-                                    <a class="job-list-favourite order-2" href="{{url('company/sites/'.$siteDeail->id.'/view')}}"><i class="far fa-eye"></i></a>
-                                    <a class="job-list-favourite order-2" href="{{url('company/sites/'.$siteDeail->id.'/edit')}}"><i class="far fa-edit"></i></a>
-                                    <form action="{{url('company/sites/'.$siteDeail->id)}}" method="post" class='delete_form'>
-                                        @csrf
-                                        @method("DELETE")
-                                        <a class="job-list-favourite order-2" id="a-submit"><button type="submit"><i class="far fa-trash-alt"></i></button></a>
-                                    </form>
+                                <div class="ans-flex-between">
+                                  <div>
+                                      <p class="ans-course-id">ID: {{$siteDeail->company_id}}</p>
+                                  </div>
                                 </div>
+                                <div>
+                                    <p class="ans-institution-name">City: {{$siteDeail->city}}</p>
+                                    <p class="ans-institution-name">Address: {{$siteDeail->address}}</p>
+                                    <p class="ans-institution-name">Postal Code: {{$siteDeail->postal_code}}</p>
+                                </div>
+                              </div>
                             </div>
+                            <div class="ans-flex-justify-center">
+                                <a class="ans-education-dept-icons" href="{{url('company/sites/'.$siteDeail->id.'/edit')}}"><i class="far fa-edit"></i></a>
+                                <a class="ans-education-dept-icons" href="{{url('company/sites/'.$siteDeail->id.'/view')}}"><i class="far fa-eye"></i></a>
+                                <form action="{{url('company/sites/'.$siteDeail->id)}}" method="post" class='delete_form'>
+                                    @csrf
+                                    @method("DELETE")
+                                    <a class="" id="a-submit"><button type="submit" class="btn-site-delete"><i class="far fa-trash-alt"></i></button></a>
+                                </form>
+                            </div>
+                          </div>
                         </div>
                     </div>
                     @endforeach
-                </div>
-                <div class="row">
-                    <div class="col-12 text-center mt-4">
-                        <ul class="pagination justify-content-center mb-0">
-                            <li class="page-item disabled"> <span class="page-link b-radius-none">Prev</span> </li>
-                            <li class="page-item active" aria-current="page"><span class="page-link">1 </span> <span class="sr-only">(current)</span></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">...</a></li>
-                            <li class="page-item"><a class="page-link" href="#">25</a></li>
-                            <li class="page-item"> <a class="page-link" href="#">Next</a> </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>

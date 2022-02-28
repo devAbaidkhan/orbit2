@@ -2594,31 +2594,31 @@ button {
 
 .btn-outline-primary {
     background: #ffffff;
-    color: #ff8a00;
-    border: 2px solid #ff8a00;
+    color: #8b4d9f;
+    border: 2px solid #8b4d9f;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled).active {
-    background: #ff8a00;
-    border-color: #ff8a00;
+    background: #8b4d9f;
+    border-color: #8b4d9f;
     color: #ffffff;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active {
-    background: #ff8a00;
-    border-color: #ff8a00;
+    background: #8b4d9f;
+    border-color: #8b4d9f;
     color: #ffffff;
 }
 
 .btn-outline-primary:hover {
-    background: #ff8a00;
+    background: #b074c4;
     color: #ffffff;
-    border-color: #ff8a00;
+    border-color: #b074c4;
 }
 
 .btn-outline-primary:focus {
-    background: #ff8a00;
-    border-color: #ff8a00;
+    background: #b074c4;
+    border-color: #b074c4;
     color: #ffffff;
     text-decoration: none;
     outline: none;
@@ -2626,9 +2626,9 @@ button {
 
 .btn-white:hover,
 .btn-white:focus {
-    background: #ff8a00 !important;
+    background: #b074c4 !important;
     color: #ffffff !important;
-    border-color: #ff8a00 !important;
+    border-color: #b074c4 !important;
 }
 
 /*****************************
@@ -7406,7 +7406,7 @@ iframe {
     }
 
     .space-ptb {
-        padding: 60px 0;
+        padding: 40px 0;
     }
 
     .space-pt {
@@ -8988,3 +8988,90 @@ select.list-dt:focus {
     color: #000;
     font-size: 12px;
   }
+
+  .ans-flex-between{
+    display: flex;
+    justify-content: space-between;
+}
+.ans-course-id{
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.ans-course-duration{
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.ans-institution-name{
+    font-size: 15px;
+    margin-bottom: 0px;
+    text-align: left;
+}
+.ans-flex-justify-center{
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #eeeeee;
+  margin-top: 10px;
+  padding: 10px 0;
+}
+
+.ans-add-new-btn{
+    width: 100%;
+        background: #ffffff;
+color: #ff8a00;
+border: 2px solid #8B4D9F;
+color: #777;
+}
+.space-ptb{
+    background: #f7f7f7;
+}
+
+.btn-site-delete
+{
+    font-size: 15px;
+    display: inline-block;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    border: 1px solid #eeeeee;
+    border-radius: 100%;
+    text-align: center;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+    color: #ffffff;
+    margin: 0px 20px;
+    background: #8B4D9F;
+}
+
+.ans-flex-justify-center .ans-education-dept-icons{
+    font-size: 15px;
+    display: inline-block;
+  position: relative;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border: 1px solid #eeeeee;
+  border-radius: 100%;
+  text-align: center;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font-size: 16px;
+  color: #ffffff;
+  margin: 0px 20px;
+  background: #8B4D9F;
+}
+
+.hmz-site-heading
+{
+    text-align: center;
+    font-size:24px !important;
+    color:#313131;
+}
+
+.site-main-body
+{
+    padding-left:20px;
+    padding-right:20px;
+}
+
