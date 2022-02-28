@@ -4,6 +4,11 @@
     <div class="container">
         <div class="tab-content">
             <div class="tab-pane active" id="candidate" role="tabpanel">
+                <div class="row mb-4">
+                    <div class="col-12 hmz-site-heading">
+                        <h4 class="mb-0">Confidential Information</h4>
+                    </div>
+                </div>
                 <form class="mt-4" id="form">
                     <div class="row">
                         <div class="mb-3 col-12">
