@@ -45,6 +45,8 @@ Route::group(['prefix' => 'staff','middleware'=>'staff'], function () {
     Route::get('dashboard/basic',[\App\Http\Controllers\FrontEnd\Dashboard\DashboardController::class,'staffBasic']);
     Route::get('dashboard/qualification',[\App\Http\Controllers\FrontEnd\Dashboard\DashboardController::class,'staffQualification']);
 
+    Route::get('dashboard/contact-us',[\App\Http\Controllers\FrontEnd\Dashboard\DashboardController::class,'contactUs']);
+
 });
 //======================================== End ============================================
 

@@ -32,7 +32,7 @@
                         @endif
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">About Us</a>
+                        <a class="nav-link" href="{{url('')}}">About Us</a>
                       </li>
                       <li class="nav-item ">
                         <a class="nav-link" href="">Terms & Conditions</a>
@@ -41,7 +41,7 @@
                         <a class="nav-link" href="">Privacy Policy</a>
                       </li>
                       <li class="nav-item ">
-                        <a class="nav-link" href="">Contact Us</a>
+                        <a class="nav-link" href="{{url('dashboard/contact-us')}}">Contact Us</a>
                       </li>
                     <li class="nav-item">
                         <form action="{{route('logout')}}" method="POST" id="logout_form">

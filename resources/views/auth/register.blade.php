@@ -77,7 +77,7 @@ header -->
                                                 <div class="ans-category-item pt-3">
                                                     <a href="#" class="category-item p-0">
                                                         <div class="category-icon mb-3">
-                                                            <i class="flaticon-account"></i>
+                                                            <img src="{{asset('images/register-images/1--Company.png')}}" width="60px" alt="">
                                                         </div>
                                                         <h6 class="ans-category-box-heading role">Company</h6>
                                                     </a>
@@ -87,7 +87,7 @@ header -->
                                                 <div class="ans-category-item pt-3">
                                                     <a href="#" class="category-item p-0">
                                                         <div class="category-icon mb-3 text-center">
-                                                            <i class="flaticon-conversation"></i>
+                                                            <img src="{{asset('images/register-images/2--Agency.png')}}" width="60px" alt="">
                                                         </div>
                                                         <h6 class="ans-category-box-heading role">Agency</h6>
                                                     </a>
@@ -98,6 +98,7 @@ header -->
                                                     <a href="#" class="category-item p-0">
                                                         <div class="category-icon mb-3">
                                                             <i class="flaticon-money"></i>
+                                                            <img src="{{asset('images/register-images/4--Sub-Contractor.png')}}" width="60px" alt="">
                                                         </div>
                                                         <h6 class="ans-category-box-heading role">Subcontractor</h6>
                                                     </a>
@@ -107,7 +108,7 @@ header -->
                                                 <div class="ans-category-item pt-3">
                                                     <a href="#" class="category-item p-0">
                                                         <div class="category-icon mb-3">
-                                                            <i class="flaticon-mortarboard"></i>
+                                                            <img src="{{asset('images/register-images/3--Staff.png')}}" width="60px" alt="">
                                                         </div>
                                                         <h6 class="ans-category-box-heading role"> Staff</h6>
                                                     </a>

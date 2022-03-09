@@ -23,4 +23,8 @@ class DashboardController extends Controller
     {
         return view('front-end.dashboard.staff-qualification');
     }
+    public function contactUs()
+    {
+        return view('front-end.contact-us');
+    }
 }
