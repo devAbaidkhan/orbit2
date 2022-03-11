@@ -6904,7 +6904,7 @@ iframe {
         position: absolute;
         height: 2px;
         width: 100%;
-        background: white;
+        background: black;
         border-radius: 9px;
         opacity: 1;
         right: 0;
@@ -7406,7 +7406,7 @@ iframe {
     }
 
     .space-ptb {
-        padding: 20px 20px;
+        padding: 02px 20px;
     }
 
     .space-pt {
@@ -8742,7 +8742,7 @@ iframe {
     position: absolute;
     color: #999;
     pointer-events: none;
-    top: 14px;
+    top: 0px;
     left: 0px;
     transition: 0.2s ease all;
 }
@@ -8950,7 +8950,8 @@ select.list-dt:focus {
     top: 0px;
     left: 0px;
     right: 0px;
-    background: rgba(139,78,159,0.8);
+    background: rgba(255,255,255,1);
+    box-shadow: 02px 02px 10px grey;
     z-index: 999;
 }
 .ans-header

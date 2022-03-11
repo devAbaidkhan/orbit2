@@ -11,7 +11,7 @@ job-grid -->
                     right-sidebar -->
                     <div class="row mb-4">
                         <div class="col-12 hmz-site-heading">
-                            <h6 class="mb-0 ">Contect Person List</h6>
+                            <h6 class="mb-0 ">Contact Person List</h6>
                         </div>
                     </div>
 
