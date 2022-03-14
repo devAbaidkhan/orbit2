@@ -108,7 +108,6 @@
 
                     </div>
                     @foreach($jobs as $job )
-                        @php($job->applied_status = (in_array($job->id,$appliedJobs) ? 'yes' : 'no'))
                     <div class="employers-list">
                         <div class="employers-list-details">
                             <div class="employers-list-info">

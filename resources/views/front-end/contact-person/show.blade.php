@@ -40,8 +40,9 @@ job-grid -->
                             </div>
                         </div>
                     </div>
-                    @foreach($contactPersons as $contactPerson)
+
                         <div class="row">
+                            @foreach($contactPersons as $contactPerson)
                             <div class="col-md-6 col-lg-4">
                               <div class="job-list job-grid pt-3">
                                 <div class="job-list-details pb-0 mb-0">
@@ -74,9 +75,10 @@ job-grid -->
                                 </div>
                               </div>
                             </div>
+                            @endforeach
                         </div>
 
-                    @endforeach
+
                 </div>
             </div>
         </div>
