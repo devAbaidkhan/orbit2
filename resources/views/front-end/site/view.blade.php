@@ -22,7 +22,6 @@ Signin -->
                 </div>
                 <div class="tab-pane active" id="candidate" role="tabpanel">
                     <form class="mt-4" id="form">
-
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-12">
@@ -92,7 +91,7 @@ Signin -->
                     </form>
 
                     <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">
-                        <p class="mt-1"><i class="fa fa-arrow-left"></i><a onclick="history.back()"> Back</a></p>
+                        <p class="mt-1"><i class="fa fa-arrow-left"></i><a onclick="location.replace(document.referrer);"> Back</a></p>
                     </div>
                 </div>
             </div>

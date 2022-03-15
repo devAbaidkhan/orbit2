@@ -81,7 +81,7 @@ class SiteController extends Controller
      */
     public function show()
     {
-         $siteDeails = Site::all();
+        $siteDeails = Site::all();
         return view('front-end.site.show', compact('siteDeails'));
     }
 
@@ -108,15 +108,6 @@ class SiteController extends Controller
     {
 
         try {
-            $exists = Site::where('name', $request->name)
-                ->where('company_id', $request->user()->id)
-                ->exists();
-
-            if ($exists) {
-                $response = array('status' => 'error', 'message' => 'Site Already exists');
-                return response()->json($response, 403);
-            }
-
             $site->company_id = $request->user()->id;
             $site->name = $request->name;
             $site->address = $request->address;

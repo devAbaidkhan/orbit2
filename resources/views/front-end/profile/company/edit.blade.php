@@ -26,13 +26,13 @@
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input maxlength="31" type="text" class="inputText EnterOnlyNumber" name="phoneNumber" value="{{$user->phone_number}}">
+                                <input maxlength="31" type="text" class="inputText" name="phoneNumber" value="{{$user->phone_number}}">
                                 <span class="floating-label">Phone Number</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input maxlength="31" type="text" class="inputText EnterOnlyNumber" name="officeNumber" value="{{$user->office_number}}">
+                                <input maxlength="31" type="text" class="inputText" name="officeNumber" value="{{$user->office_number}}">
 
                                 <span class="floating-label">Office Number</span>
                             </div>
@@ -46,28 +46,28 @@
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input maxlength="101"  type="text" class="inputText entertxtOnly" name="address" value="{{$user->address}}">
+                                <input maxlength="101"  type="text" class="inputText" name="address" value="{{$user->address}}">
 
                                 <span class="floating-label">Address</span>
                             </div>
                         </div>
                         <div class="mb-3 col-6">
                             <div class="user-input-wrp">
-                                <input maxlength="31" type="text" class="inputText entertxtOnly" name="country" value="{{$user->country}}">
+                                <input maxlength="31" type="text" class="inputText" name="country" value="{{$user->country}}">
 
                                 <span class="floating-label">Country</span>
                             </div>
                         </div>
                         <div class="mb-3 col-6">
                             <div class="user-input-wrp"  >
-                                <input maxlength="31" type="text" class="inputText entertxtOnly" name="city" value="{{$user->city}}">
+                                <input maxlength="31" type="text" class="inputText" name="city" value="{{$user->city}}">
 
                                 <span class="floating-label">City</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input maxlength="31" type="text" class="inputText EnterOnlyNumber" name="postalCode" value="{{$user->postal_code}}">
+                                <input maxlength="31" type="text" class="inputText" name="postalCode" value="{{$user->postal_code}}">
 
                                 <span class="floating-label">Postal Code</span>
                             </div>
@@ -83,7 +83,7 @@
                 </form>
 
                 <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">
-                      <p class="mt-1"><i class="fa fa-arrow-left"></i><a onclick="history.back()"> Back</a></p>
+                      <p class="mt-1"><i class="fa fa-arrow-left"></i><a onclick="location.replace(document.referrer);"> Back</a></p>
                     </div>
             </div>
         </div>

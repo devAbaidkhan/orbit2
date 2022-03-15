@@ -13,14 +13,14 @@
                     <div class="row">
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input maxlength="31" type="text" class="inputText EnterOnlyNumber" value="{{$user->registration_no}}" name="registrationNo">
+                                <input maxlength="31" type="text" class="inputText" value="{{$user->registration_no}}" name="registrationNo">
 
                                 <span class="floating-label">Registration No</span>
                             </div>
                         </div>
                         <div class="mb-3 col-12">
                             <div class="user-input-wrp">
-                                <input maxlength="31" type="text" class="inputText EnterOnlyNumber" value="{{$user->vat_no}}" name="vatNo">
+                                <input maxlength="31" type="text" class="inputText" value="{{$user->vat_no}}" name="vatNo">
 
                                 <span class="floating-label">VAT Number</span>
                             </div>
@@ -35,7 +35,7 @@
                     </div>
                 </form>
                 <div class="ob-sign-margin-top mt-md-0 forgot-pass ob-sign-link-href">
-                    <p class="mt-1"><i class="fa fa-arrow-left"></i><a onclick="history.back()"> Back</a></p>
+                    <p class="mt-1"><i class="fa fa-arrow-left"></i><a onclick="location.replace(document.referrer);"> Back</a></p>
                 </div>
             </div>
         </div>
