@@ -9080,3 +9080,24 @@ color: #777;
 {
     text-transform: capitalize;
 }
+
+@media(max-width: 576px)
+{
+    .navbar-brand {
+        margin: auto;
+  }
+}
+@media(min-width: 576px)
+{
+  .ans-header-logo-back{
+      display: none;
+  }
+}
+.ans-header-logo-back
+{
+    position: absolute;
+    left: 28px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    font-size: 24px;
+}

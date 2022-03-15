@@ -56,9 +56,13 @@
                     <a href="#">15% remaining</a>
                 </div>
             </div>
+            <a href="#" class="ans-header-logo-back">
+                <span class="fa fa-arrow-left"></span>
+            </a>
             <a class="navbar-brand" href="#">
                 <img class="img-fluid" src="{{asset('images/logo/logo.png')}}" alt="logo" width="200px" height="30px;">
             </a>
+
 
 
 
